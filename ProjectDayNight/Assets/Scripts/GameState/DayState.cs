@@ -27,6 +27,10 @@ public class DayState : State
             stateMachine.SetNewState(nightState);
         }
     }
+    public override void OnExit()
+    {
+        return;
+    }
 
     public void SetDuration(float d)
     {

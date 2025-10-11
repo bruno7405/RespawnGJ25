@@ -27,6 +27,11 @@ public class CompanyManager : MonoBehaviour
 
     public bool SpendMoney(int amount)
     {
+        if (amount < 0)
+        {
+            Debug.LogError("Cannot spend negative money");
+            return false;
+        }
         if (amount <= Money)
         {
             Money -= amount;

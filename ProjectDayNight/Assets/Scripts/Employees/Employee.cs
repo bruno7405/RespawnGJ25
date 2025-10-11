@@ -5,9 +5,9 @@ public class Employee : StateMachineManager
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] string employeeName = "Ben";
-    public int wage { get; private set; } = 10;
-
-    [SerializeField] int morale = 100;
+    [SerializeField] int wage = 10;
+    [SerializeField] int revenue = 30;
+    [SerializeField] int morale = 80;
 
     public int Morale
     {
@@ -20,7 +20,10 @@ public class Employee : StateMachineManager
     }
     public bool working { get; private set; } = true;
     public const int MAX_MORALE = 100;
+    void Awake()
+    {
 
+    }
     void Start()
     {
     }

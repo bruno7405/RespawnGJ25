@@ -30,4 +30,8 @@ public class NightState : State
     {
         duration = d;
     }
+    public override void OnExit()
+    {
+        return;
+    }
 }

@@ -51,6 +51,10 @@ public class UpgradeState : State
     {
         stateMachine.SetNewState(dayState);
     }
+    public override void OnExit()
+    {
+        return;
+    }
 
 
 

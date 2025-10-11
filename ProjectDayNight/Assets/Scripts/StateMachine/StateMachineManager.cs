@@ -24,6 +24,7 @@ public class StateMachineManager : MonoBehaviour
     {
         if (state != null)
         {
+            currentState?.OnExit();
             currentState = state;
             currentState.OnStart();
         }
