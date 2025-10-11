@@ -41,5 +41,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< Updated upstream
+=======
+  - name: Walls
+    uniqueID: 1800479985
+    locked: 0
+>>>>>>> Stashed changes
   m_RenderingLayers:
   - Default
