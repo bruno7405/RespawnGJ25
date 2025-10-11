@@ -14,7 +14,11 @@ public class PlayerInteractor : MonoBehaviour
     private void SelectNearestInteractable()
     {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, interactionRange, interactableLayer);
-        if (hitColliders.Length == 0) return;
+        if (hitColliders.Length == 0)
+        {
+            nearestInteractable = null;
+            return;
+        }
 
         float nearestDistance = Mathf.Infinity;
 

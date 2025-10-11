@@ -3,17 +3,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerMovement), typeof(PlayerInteractor))]
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerInteractor), typeof(PlayerAttack))]
 public class PlayerInput : MonoBehaviour
 {
     [Header("Input Actions")]
     [SerializeField] private InputActionAsset playerControls;
     private InputAction moveAction;
     private InputAction interactAction;
+    private InputAction attackAction;
+
     private Vector2 moveVector;
 
     PlayerMovement playerMovement;
     PlayerInteractor playerInteractior;
+    PlayerAttack playerAttack;
 
     public static bool active = true;
 
@@ -21,6 +24,7 @@ public class PlayerInput : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerInteractior = GetComponent<PlayerInteractor>();
+        playerAttack = GetComponent<PlayerAttack>();
 
         // Move Action
         moveAction = playerControls.FindActionMap("Player").FindAction("Move");
@@ -29,23 +33,31 @@ public class PlayerInput : MonoBehaviour
 
         // Interact Action
         interactAction = playerControls.FindActionMap("Player").FindAction("Interact");
-        interactAction.performed += Interact;
+
+        // Attack Action
+        attackAction = playerControls.FindActionMap("Player").FindAction("Attack");
+        
     }
 
     private void OnEnable()
     {
         moveAction.Enable();
         interactAction.Enable();
+        attackAction.Enable();
+
 
         interactAction.performed += Interact;
+        attackAction.performed += Attack;
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
         interactAction.Disable();
+        attackAction.Disable();
 
         interactAction.started -= Interact;
+        attackAction.started -= Attack;
     }
 
     private void Update()
@@ -59,5 +71,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (!active) return;
         playerInteractior.Interact();
+    }
+
+    private void Attack(InputAction.CallbackContext context)
+    {
+        if (!active) return;
+        playerAttack.Attack();
     }
 }
