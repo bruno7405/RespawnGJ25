@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class GameEvent : MonoBehaviour
+public class GameEvent : MonoBehaviour, IInteractable
 {
     [SerializeField] float eventDuration;
     float timeLeft;
@@ -29,6 +29,13 @@ public class GameEvent : MonoBehaviour
     {
         countdown = false;
         // Visuals
+        GetComponent<SpriteRenderer>().color = Color.green;
         // Delete object after a few seconds
+        Debug.Log("Task Complete!");
+    }
+
+    public void OnInteract(PlayerInteractor interactor)
+    {
+        CompleteTask();
     }
 }
