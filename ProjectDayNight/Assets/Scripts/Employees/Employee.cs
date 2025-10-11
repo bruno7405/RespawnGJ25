@@ -1,20 +1,32 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Employee : StateMachineBehaviour
+public class Employee : StateMachineManager
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] string employeeName = "Ben";
     public int wage { get; private set; } = 10;
-    public int morale { get; private set; } = 100;
+
+    [SerializeField] int morale = 100;
+
+    public int Morale
+    {
+        get => morale;
+        private set
+        {
+            morale = value;
+            CompanyManager.Instance?.RecalculateMorale();
+        }
+    }
     public bool working { get; private set; } = true;
+    public const int MAX_MORALE = 100;
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

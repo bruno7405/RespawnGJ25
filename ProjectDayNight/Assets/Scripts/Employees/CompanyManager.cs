@@ -5,7 +5,6 @@ public class CompanyManager : MonoBehaviour
     public static CompanyManager Instance { get; private set; }
 
     [SerializeField] int startingMoney = 100;
-    [SerializeField] int startingMorale = 100;
     [SerializeField] int startingNumEmployees = 5;
 
     public int Money { get; private set; }
@@ -23,7 +22,6 @@ public class CompanyManager : MonoBehaviour
         Instance = this;
 
         Money = startingMoney;
-        Morale = startingMorale;
         NumEmployees = startingNumEmployees;
     }
 
@@ -35,6 +33,21 @@ public class CompanyManager : MonoBehaviour
             return true;
         }
         return false; // not enough money
+    }
+    public void RecalculateMorale()
+    {
+        if (Employees.Length == 0)
+        {
+            Morale = 0;
+            return;
+        }
+
+        int totalMorale = 0;
+        foreach (var emp in Employees)
+        {
+            totalMorale += emp.Morale;
+        }
+        Morale = totalMorale / NumEmployees; // average morale
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
