@@ -19,6 +19,8 @@ public class Employee : StateMachineManager
             morale = Mathf.Clamp(value, 0, MAX_MORALE);
             //don't use null check because we want to know if it fails
             CompanyManager.Instance.UpdateMorale(morale - old);
+            if (old == 0 && morale > 0) CompanyManager.Instance.AddLowMoraleEmployee(this);
+            else if (morale == 0) CompanyManager.Instance.RemoveLowMoraleEmployee(this);
         }
     }
     public bool Working { get; private set; } = true;

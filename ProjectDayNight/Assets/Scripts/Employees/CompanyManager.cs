@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CompanyManager : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class CompanyManager : MonoBehaviour
     public int Money { get; private set; }
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
-    [SerializeField] HashSet<Employee> employees = new HashSet<Employee>();
+    [SerializeField] HashSet<Employee> employees = new();
+    public HashSet<Employee> LowMoraleEmployees { get; private set; } = new();
+
 
     void Awake()
     {
@@ -37,6 +40,23 @@ public class CompanyManager : MonoBehaviour
             NumEmployees--;
         }
     }
+    public void AddLowMoraleEmployee(Employee e)
+    {
+        LowMoraleEmployees.Add(e);
+    }
+    public void RemoveLowMoraleEmployee(Employee e)
+    {
+        LowMoraleEmployees.Remove(e);
+    }
+    public Employee[] GetEmployeeList()
+    {
+        return employees.ToArray();
+    }
+    public Employee[] GetLowMoraleEmployees()
+    {
+        return LowMoraleEmployees.ToArray();
+    }
+
 
     public bool SpendMoney(int amount)
     {
