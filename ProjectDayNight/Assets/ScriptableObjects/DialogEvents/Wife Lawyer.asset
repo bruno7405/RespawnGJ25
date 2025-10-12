@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
+  m_Name: Wife Lawyer
+  m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
+  npcName: ???
+  lines:
+  - npcLine: "Hello, sir. I am your wife\u2019s lawyer. I brought the divorce papers."
+    choices:
+    - choiceText: "Already? That was fast\u2026"
+      isCorrect: 1
+    - choiceText: She got a lawyer?! This is so frustrating.
+      isCorrect: 0
+  - npcLine: Could I come in for you to sign them?
+    choices:
+    - choiceText: "No! Leave and never come back. I am not becoming a divorcee on
+        top of a\u2013 never mind\u2026"
+      isCorrect: 0
+    - choiceText: We are really busy at the office right now. Can you come by later?
+      isCorrect: 1

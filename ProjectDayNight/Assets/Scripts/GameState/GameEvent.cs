@@ -5,7 +5,7 @@ public class GameEvent : MonoBehaviour, IInteractable
 {
     [SerializeField] float eventDuration;
     float timeLeft;
-    bool countdown = true;
+    protected bool countdown = true;
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class GameEvent : MonoBehaviour, IInteractable
         }
     }
 
-    void CompleteTask()
+    protected virtual void CompleteTask()
     {
         countdown = false;
         // Visuals
