@@ -45,9 +45,10 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        // Attack the nearest employee
+        // Kill the nearest employee
         if (nearestEmployee != null)
         {
+            // Move player
             Vector2 direction = nearestEmployee.position - transform.position;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, nearestDistance * 2, wallLayer);
             if (hit) // If there's a wall in the way, move towards the wall instead
@@ -58,7 +59,10 @@ public class PlayerAttack : MonoBehaviour
             else // Teleport twice the distance towards the employee
             {
                 transform.position += new Vector3(direction.x * 2, direction.y * 2, 0);
-            } 
+            }
+
+            // Kill employee
+            nearestEmployee.GetComponent<Employee>().KillEmployee();
         }
 
 
