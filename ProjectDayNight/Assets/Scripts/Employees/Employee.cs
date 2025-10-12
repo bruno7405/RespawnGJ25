@@ -10,6 +10,9 @@ public class Employee : StateMachineManager
     [SerializeField] int revenue;
     [SerializeField] int morale;
 
+    //States
+    [SerializeField] Death deathState;
+
     public int Morale
     {
         get => morale;
@@ -25,6 +28,22 @@ public class Employee : StateMachineManager
     }
     public bool Working { get; private set; } = true;
     public const int MAX_MORALE = 100;
+    /// <summary>
+    /// Calculates profit made by this employee for one day
+    /// </summary>
+    /// <returns>Profit made by employee for one day</returns>
+    public int ProfitMade()
+    {
+        if (Working)
+        {
+            return revenue - wage;
+        }
+        return -wage;
+    }
+    public void KillEmployee()
+    {
+        SetNewState(deathState);
+    }
 
     void OnEnable()
     {
@@ -58,14 +77,7 @@ public class Employee : StateMachineManager
     void Update()
     {
     }
-    public int ProfitMade()
-    {
-        if (Working)
-        {
-            return revenue - wage;
-        }
-        return -wage;
-    }
+
 
 
 }

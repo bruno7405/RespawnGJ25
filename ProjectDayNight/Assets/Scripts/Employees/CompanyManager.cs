@@ -15,7 +15,6 @@ public class CompanyManager : MonoBehaviour
     [SerializeField] HashSet<Employee> employees = new();
     public HashSet<Employee> LowMoraleEmployees { get; private set; } = new();
 
-
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,6 +38,7 @@ public class CompanyManager : MonoBehaviour
         {
             NumEmployees--;
         }
+        LowMoraleEmployees.Remove(e);
     }
     public void AddLowMoraleEmployee(Employee e)
     {

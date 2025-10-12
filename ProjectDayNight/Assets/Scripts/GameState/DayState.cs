@@ -24,6 +24,7 @@ public class DayState : State
 
         if (timeElapsed >= duration)
         {
+            CompanyManager.Instance.AddProfit();
             stateMachine.SetNewState(nightState);
         }
     }
