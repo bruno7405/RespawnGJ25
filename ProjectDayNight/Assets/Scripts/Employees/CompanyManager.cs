@@ -19,7 +19,7 @@ public class CompanyManager : MonoBehaviour
         foreach (var emp in employees)
         {
             if (emp.Morale > 0) emp.SetNewState(emp.SleepingState);
-            else emp.SetNewState(emp.DeathState);
+            else emp.SetNewState(emp.EscapeState);
         }
     }
     void HandleDayStart()
