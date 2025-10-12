@@ -9,25 +9,12 @@ public class Employee : StateMachineManager
     [SerializeField] int wage;
     [SerializeField] int revenue;
     [SerializeField] int morale;
+    public const int MAX_MORALE = 100;
+
 
     //States
     [SerializeField] Death deathState;
-
-    public int Morale
-    {
-        get => morale;
-        set
-        {
-            int old = morale;
-            morale = Mathf.Clamp(value, 0, MAX_MORALE);
-            //don't use null check because we want to know if it fails
-            CompanyManager.Instance.UpdateMorale(morale - old);
-            if (old == 0 && morale > 0) CompanyManager.Instance.AddLowMoraleEmployee(this);
-            else if (morale == 0) CompanyManager.Instance.RemoveLowMoraleEmployee(this);
-        }
-    }
-    public bool Working { get; private set; } = true;
-    public const int MAX_MORALE = 100;
+    [SerializeField] Idle idleState;
     /// <summary>
     /// Calculates profit made by this employee for one day
     /// </summary>
@@ -44,6 +31,25 @@ public class Employee : StateMachineManager
     {
         SetNewState(deathState);
     }
+    public int Morale
+    {
+        get => morale;
+        set
+        {
+            int old = morale;
+            morale = Mathf.Clamp(value, 0, MAX_MORALE);
+            //don't use null check because we want to know if it fails
+            CompanyManager.Instance.UpdateMorale(morale - old);
+            if (old == 0 && morale > 0) CompanyManager.Instance.AddLowMoraleEmployee(this);
+            else if (morale == 0) CompanyManager.Instance.RemoveLowMoraleEmployee(this);
+        }
+    }
+    private bool Working = true;
+    public void StartWorking()
+    {
+        Working = true;
+    }
+
 
     void OnEnable()
     {

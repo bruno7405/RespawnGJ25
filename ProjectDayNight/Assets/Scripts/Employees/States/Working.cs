@@ -1,29 +1,26 @@
 using UnityEngine;
 
-public class Death : State
+public class Working : State
 {
     Employee employee;
-    void Awake()
-    {
-        employee = (Employee)stateMachine;
-    }
+
     public override void OnExit()
     {
-        return;
     }
 
     public override void OnStart()
     {
-        Debug.Log("Employee has died");
-        parent.SetActive(false);
-
+        employee.StartWorking();
     }
 
     public override void OnUpdate()
     {
-        return;
     }
 
+    void Awake() 
+    {
+        employee = (Employee)stateMachine;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

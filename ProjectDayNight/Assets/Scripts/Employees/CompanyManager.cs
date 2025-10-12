@@ -12,25 +12,14 @@ public class CompanyManager : MonoBehaviour
     public int Money { get; private set; }
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
-    [SerializeField] HashSet<Employee> employees = new();
+    HashSet<Employee> employees = new();
     public HashSet<Employee> LowMoraleEmployees { get; private set; } = new();
 
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject); // ensure one active per scene
-            return;
-        }
-        Instance = this;
-
-        Money = startingMoney;
-        NumEmployees = startingNumEmployees;
-    }
     public void RegisterEmployee(Employee e)
     {
         employees.Add(e);
         NumEmployees++;
+
     }
     public void UnregisterEmployee(Employee e)
     {
@@ -56,8 +45,6 @@ public class CompanyManager : MonoBehaviour
     {
         return LowMoraleEmployees.ToArray();
     }
-
-
     public bool SpendMoney(int amount)
     {
         if (amount < 0)
@@ -72,14 +59,12 @@ public class CompanyManager : MonoBehaviour
         }
         return false; // not enough money
     }
-    public void UpdateMorale(int delta)
+    public void ChangeCompanyMorale(int delta)
     {
-        if (NumEmployees == 0)
+        foreach (var emp in employees)
         {
-            Morale = 0;
-            return;
+            emp.Morale += delta;
         }
-        Morale += delta / NumEmployees; // average morale
     }
     public void AddProfit()
     {
@@ -94,14 +79,29 @@ public class CompanyManager : MonoBehaviour
             GameStateManager.instance.GameOver();
         }
     }
-
-    public void ChangeCompanyMorale(int delta)
+    public void UpdateMorale(int delta)
     {
-        foreach (var emp in employees)
+        if (NumEmployees == 0)
         {
-            emp.Morale += delta;
+            Morale = 0;
+            return;
         }
+        Morale += delta / NumEmployees; // average morale
     }
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // ensure one active per scene
+            return;
+        }
+        Instance = this;
+
+        Money = startingMoney;
+        NumEmployees = startingNumEmployees;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
