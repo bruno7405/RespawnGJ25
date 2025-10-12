@@ -15,6 +15,7 @@ public class Death : State
     public override void OnStart()
     {
         Debug.Log("Employee has died");
+        employee.StateName = EmployeeState.Dead;
         parent.SetActive(false);
 
     }

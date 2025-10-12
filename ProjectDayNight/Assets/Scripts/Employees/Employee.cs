@@ -1,5 +1,13 @@
 using System;
 using UnityEngine;
+public enum EmployeeState
+{
+    Working,
+    SlackingOff,
+    Sleeping,
+    Escaping,
+    Dead
+}
 
 public class Employee : StateMachineManager
 {
@@ -27,6 +35,7 @@ public class Employee : StateMachineManager
     public Escape EscapeState => escapeState;
     [SerializeField] Sleeping sleepingState;
     public Sleeping SleepingState => sleepingState;
+    public EmployeeState StateName;
 
     /// <summary>
     /// Calculates profit made by this employee for one day

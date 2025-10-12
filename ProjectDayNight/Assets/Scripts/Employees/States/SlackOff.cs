@@ -13,6 +13,7 @@ public class SlackOff : State
 
     public override void OnStart()
     {
+        employee.StateName = EmployeeState.SlackingOff;
         reachedBreakSpot = false;
         //employee.Morale += 10;  //Gain morale for idling?
         employee.WalkTo(new(0,9), () => reachedBreakSpot = true);

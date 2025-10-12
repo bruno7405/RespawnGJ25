@@ -15,6 +15,7 @@ public class Escape : State
     public override void OnStart()
     {
         Debug.Log("Employee is escaping");
+        employee.StateName = EmployeeState.Escaping;
 
     }
 

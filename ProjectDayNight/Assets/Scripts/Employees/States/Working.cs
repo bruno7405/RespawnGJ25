@@ -17,6 +17,7 @@ public class Working : State
 
     public override void OnStart()
     {
+        employee.StateName = EmployeeState.Working;
         employee.readyForJob = true;
         reachedJobSite = false;
     }
