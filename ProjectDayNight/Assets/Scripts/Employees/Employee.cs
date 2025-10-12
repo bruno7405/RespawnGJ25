@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Employee : StateMachineManager
@@ -6,26 +5,28 @@ public class Employee : StateMachineManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] string employeeName = "Ben";
     [SerializeField] EmployeeType type;
+    public EmployeeType Type => type;
     [SerializeField] int wage;
     [SerializeField] int revenue;
     [SerializeField] int morale;
+    public float moveSpeed;
+    public bool readyForJob;
     public const int MAX_MORALE = 100;
+    private bool Working = true;
 
 
     //States
     [SerializeField] Death deathState;
+    public Death DeathState => deathState;
     [SerializeField] Idle idleState;
+    public Idle IdleState => idleState;
     /// <summary>
     /// Calculates profit made by this employee for one day
     /// </summary>
     /// <returns>Profit made by employee for one day</returns>
     public int ProfitMade()
     {
-        if (Working)
-        {
-            return revenue - wage;
-        }
-        return -wage;
+        return Working ? revenue - wage : -wage;
     }
     public void KillEmployee()
     {
@@ -44,12 +45,11 @@ public class Employee : StateMachineManager
             else if (morale == 0) CompanyManager.Instance.RemoveLowMoraleEmployee(this);
         }
     }
-    private bool Working = true;
     public void StartWorking()
     {
         Working = true;
+        readyForJob = true;
     }
-
 
     void OnEnable()
     {
@@ -73,6 +73,7 @@ public class Employee : StateMachineManager
         wage = type.BaseSalary;
         revenue = type.BaseRevenue;
         morale = type.BaseMorale;
+        readyForJob = false;
         CompanyManager.Instance?.UpdateMorale(morale);
     }
 }

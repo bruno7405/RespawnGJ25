@@ -3,14 +3,11 @@ using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
 {
+    [SerializeField] private Tilemap groundTilemap;
     public static Tilemap GroundTilemap;
 
-    [SerializeField] private Tilemap groundTilemap;
-
-    private void Awake()
-    {
-        GroundTilemap = groundTilemap;
-    }
+    // For future proofing (multiple scenes), should make this a singleton
+    private void Awake() => GroundTilemap = groundTilemap;
 
     public static Vector2Int PositionToCell(Vector2 position)
     {

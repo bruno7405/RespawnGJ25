@@ -731,7 +731,7 @@ Transform:
   m_GameObject: {fileID: 831124115}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.03, y: 9.4, z: 0}
+  m_LocalPosition: {x: 8.5, y: 8.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -813,6 +813,7 @@ MonoBehaviour:
   wage: 10
   revenue: 30
   morale: 80
+  moveSpeed: 5
   deathState: {fileID: 0}
   idleState: {fileID: 0}
 --- !u!114 &831124119
@@ -824,12 +825,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 831124115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978ce64b0d3a7cf409389d1959f60182, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fefb1b0556684fae8f69781eaab238a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Walking
+  m_EditorClassIdentifier: Assembly-CSharp::Working
   stateMachine: {fileID: 831124118}
   parent: {fileID: 831124115}
-  moveSpeed: 7
 --- !u!1 &980281018
 GameObject:
   m_ObjectHideFlags: 0

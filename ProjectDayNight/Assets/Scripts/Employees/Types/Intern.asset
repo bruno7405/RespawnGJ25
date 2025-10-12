@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aab52341f47d42daa62265fcb5f8a95, type: 3}
   m_Name: Intern
   m_EditorClassIdentifier: Assembly-CSharp::EmployeeType
-  role: 0
+  role: 1
   baseSalary: 0
   baseRevenue: 0
   baseMorale: 0
