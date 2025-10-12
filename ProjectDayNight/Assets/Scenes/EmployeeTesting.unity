@@ -847,8 +847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6607f7866389c44aaaad95bae5f11ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Idle
-  stateMachine: {fileID: 0}
-  parent: {fileID: 0}
+  stateMachine: {fileID: 831124118}
+  parent: {fileID: 831124115}
 --- !u!114 &831124121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,8 +861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994d241f0bc26430c9bd0870ef04f846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Death
-  stateMachine: {fileID: 0}
-  parent: {fileID: 0}
+  stateMachine: {fileID: 831124118}
+  parent: {fileID: 831124115}
 --- !u!114 &831124122
 MonoBehaviour:
   m_ObjectHideFlags: 0
