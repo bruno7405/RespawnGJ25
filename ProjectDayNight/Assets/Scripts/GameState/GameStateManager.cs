@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameStateManager : StateMachineManager
@@ -14,7 +15,18 @@ public class GameStateManager : StateMachineManager
     // Events
     [SerializeField] GameObject testEvent;
 
+    public event Action DayStart;
+    public event Action NightStart;
 
+    public void InvokeDayStart()
+    {
+        DayStart?.Invoke();
+    }
+
+    public void InvokeNightStart()
+    {
+        NightStart?.Invoke();
+    }
 
     private void Awake()
     {
@@ -25,7 +37,7 @@ public class GameStateManager : StateMachineManager
 
         dayState.SetDuration(secondsPerGameDay / 2);
         nightState.SetDuration(secondsPerGameDay / 2);
-        
+
     }
 
 

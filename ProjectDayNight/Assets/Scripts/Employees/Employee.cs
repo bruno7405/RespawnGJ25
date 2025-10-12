@@ -14,7 +14,7 @@ public class Employee : StateMachineManager
     [SerializeField] int morale;
     public const int MAX_MORALE = 100;
     public bool readyForJob;
-    private bool Working = true;
+    public bool Sleeping = false;
 
     //States
     [SerializeField] Death deathState;
@@ -23,13 +23,18 @@ public class Employee : StateMachineManager
     public SlackOff SlackOffState => slackOffState;
     [SerializeField] Working workingState;
     public Working WorkingState => workingState;
+    [SerializeField] Escape escapeState;
+    public Escape EscapeState => escapeState;
+    [SerializeField] Sleeping sleepingState;
+    public Sleeping SleepingState => sleepingState;
+
     /// <summary>
     /// Calculates profit made by this employee for one day
     /// </summary>
     /// <returns>Profit made by employee for one day</returns>
     public int ProfitMade()
     {
-        return Working ? revenue - wage : -wage;
+        return Sleeping ? -wage : revenue - wage;
     }
     public void KillEmployee()
     {
@@ -51,11 +56,6 @@ public class Employee : StateMachineManager
             if (old == 0 && morale > 0) CompanyManager.Instance.AddLowMoraleEmployee(this);
             else if (morale == 0) CompanyManager.Instance.RemoveLowMoraleEmployee(this);
         }
-    }
-    public void StartWorking()
-    {
-        Working = true;
-        readyForJob = true;
     }
 
     // Motion Properties & Methods

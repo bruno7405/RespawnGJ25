@@ -1,20 +1,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class CompanyManager : MonoBehaviour
 {
     public static CompanyManager Instance { get; private set; }
-
     [SerializeField] int startingMoney = 100;
     [SerializeField] int startingNumEmployees = 5;
-
     public int Money { get; private set; }
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
     HashSet<Employee> employees = new();
     HashSet<Employee> lowMoraleEmployees = new();
-
+    void HandleNightStart()
+    {
+        AddProfit();
+        foreach (var emp in employees)
+        {
+            if (emp.Morale > 0) emp.SetNewState(emp.SleepingState);
+            else emp.SetNewState(emp.DeathState);
+        }
+    }
+    void HandleDayStart()
+    {
+        foreach (var emp in employees)
+        {
+            emp.SetNewState(emp.WorkingState);
+        }
+    }
     public void RegisterEmployee(Employee e)
     {
         employees.Add(e);
@@ -100,7 +114,10 @@ public class CompanyManager : MonoBehaviour
 
         Money = startingMoney;
         NumEmployees = startingNumEmployees;
+        GameStateManager.instance.DayStart += HandleDayStart;
+        GameStateManager.instance.NightStart += HandleNightStart;
     }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public enum Role
 {
-    Employee,
     Intern,
+    Employee,
     Manager
 }
 [CreateAssetMenu(fileName = "EmployeeType", menuName = "Scriptable Objects/EmployeeType")]

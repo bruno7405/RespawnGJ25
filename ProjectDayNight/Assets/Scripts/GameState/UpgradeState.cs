@@ -49,7 +49,9 @@ public class UpgradeState : State
 
     private void SetDayState()
     {
+        ((GameStateManager)stateMachine).InvokeDayStart();
         stateMachine.SetNewState(dayState);
+
     }
     public override void OnExit()
     {
