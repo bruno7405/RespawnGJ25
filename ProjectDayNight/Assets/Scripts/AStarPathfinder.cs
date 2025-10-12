@@ -29,9 +29,9 @@ public class AStarPathfinder
     public List<Vector2Int> FindPath(Vector2Int start, Vector2Int goal)
     {
         if (!gridData.IsWalkable(start.x, start.y))
-            throw new Exception("Start position is not walkable.");
+            throw new ArgumentException("Start position is not walkable.");
         if (!gridData.IsWalkable(goal.x, goal.y))
-            throw new Exception("Goal position is not walkable.");
+            throw new ArgumentException("Goal position is not walkable.");
         if (start == goal)
             return new() { start };
 
@@ -83,8 +83,7 @@ public class AStarPathfinder
             }
         }
 
-        // No path found
-        return new();
+        throw new InvalidOperationException("No path exists between the specified locations");
     }
 
     private static float Heuristic(Vector2Int a, Vector2Int b)

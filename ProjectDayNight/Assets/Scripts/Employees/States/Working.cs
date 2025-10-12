@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,7 +66,16 @@ public class Working : State
     void WalkTo(Vector2Int location)
     {
         Vector2Int cellPosition = GridManager.PositionToCell(employee.transform.position);
-        path = pathfinder.FindPath(cellPosition, location);
+        try
+        {
+            path = pathfinder.FindPath(cellPosition, location);
+        }
+        catch (InvalidOperationException e) // No path found - add error context
+        {
+            string msg = "Impossible job location for employee: " + currentJob.location;
+            Debug.LogError(msg);
+            throw new InvalidOperationException(msg, e);
+        }
         currentPathIndex = 0;
     }
 
