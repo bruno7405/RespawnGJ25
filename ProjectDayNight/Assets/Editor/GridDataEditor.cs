@@ -56,14 +56,14 @@ public class GridDataEditor : Editor
         int minY = positions.Min(p => p.y);
         int maxY = positions.Max(p => p.y);
 
-        data.Width = maxX - minX + 1;
-        data.Height = maxY - minY + 1;
+        int width = maxX - minX + 1;
+        int height = maxY - minY + 1;
 
-        bool[] walkableGrid = new bool[data.Width * data.Height];
+        bool[] walkableGrid = new bool[width * height];
 
-        for (int y = 0; y < data.Height; y++)
+        for (int y = 0; y < height; y++)
         {
-            for (int x = 0; x < data.Width; x++)
+            for (int x = 0; x < width; x++)
             {
                 Vector3Int cellPos = new(minX + x, minY + y, 0);
                 if (!walkableLayer.HasTile(cellPos)) continue;
@@ -79,11 +79,11 @@ public class GridDataEditor : Editor
                     }
                 }
 
-                walkableGrid[y * data.Width + x] = isWalkable;
+                walkableGrid[y * width + x] = isWalkable;
             }
         }
 
-        data.SetWalkableGrid(walkableGrid);
+        data.SetWalkableGrid(walkableGrid, new(width, height));
 
         EditorUtility.SetDirty(data);
         Debug.Log("GridData generated from tilemap layers!");

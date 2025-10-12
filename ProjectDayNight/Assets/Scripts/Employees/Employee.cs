@@ -1,25 +1,28 @@
+using System;
 using UnityEngine;
 
 public class Employee : StateMachineManager
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] string employeeName = "Ben";
+    public string EmployeeName => employeeName;
     [SerializeField] EmployeeType type;
     public EmployeeType Type => type;
+    [SerializeField] EmployeeMotionManager motionManager;
     [SerializeField] int wage;
     [SerializeField] int revenue;
     [SerializeField] int morale;
-    public float moveSpeed;
-    public bool readyForJob;
     public const int MAX_MORALE = 100;
+    public bool readyForJob;
     private bool Working = true;
-
 
     //States
     [SerializeField] Death deathState;
     public Death DeathState => deathState;
     [SerializeField] Idle idleState;
     public Idle IdleState => idleState;
+    [SerializeField] Working workingState;
+    public Working WorkingState => workingState;
     /// <summary>
     /// Calculates profit made by this employee for one day
     /// </summary>
@@ -31,6 +34,10 @@ public class Employee : StateMachineManager
     public void KillEmployee()
     {
         SetNewState(deathState);
+    }
+    public void UrgeWork()
+    {
+        SetNewState(workingState);
     }
     public int Morale
     {
@@ -49,6 +56,28 @@ public class Employee : StateMachineManager
     {
         Working = true;
         readyForJob = true;
+    }
+
+    // Motion Properties & Methods
+    public float WalkSpeed => motionManager.WalkSpeed;
+    public float RunSpeed => motionManager.RunSpeed;
+    /// <summary>
+    /// Makes employee walk to location
+    /// </summary>
+    /// <param name="destination">Tilemap Coordinates</param>
+    /// <param name="callback">Callback to invoke after reaching destination</param>
+    public void WalkTo(Vector2Int destination, Action callback = null)
+    {
+        motionManager.WalkTo(destination, callback);
+    }
+    /// <summary>
+    /// Makes employee run to location
+    /// </summary>
+    /// <param name="destination">Tilemap Coordinates</param>
+    /// <param name="callback">Callback to invoke after reaching destination</param>
+    public void RunTo(Vector2Int destination, Action callback = null)
+    {
+        motionManager.RunTo(destination, callback);
     }
 
     void OnEnable()

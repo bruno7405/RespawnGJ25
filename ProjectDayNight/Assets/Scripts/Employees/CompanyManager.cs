@@ -13,7 +13,7 @@ public class CompanyManager : MonoBehaviour
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
     HashSet<Employee> employees = new();
-    public HashSet<Employee> LowMoraleEmployees { get; private set; } = new();
+    HashSet<Employee> lowMoraleEmployees = new();
 
     public void RegisterEmployee(Employee e)
     {
@@ -27,15 +27,15 @@ public class CompanyManager : MonoBehaviour
         {
             NumEmployees--;
         }
-        LowMoraleEmployees.Remove(e);
+        lowMoraleEmployees.Remove(e);
     }
     public void AddLowMoraleEmployee(Employee e)
     {
-        LowMoraleEmployees.Add(e);
+        lowMoraleEmployees.Add(e);
     }
     public void RemoveLowMoraleEmployee(Employee e)
     {
-        LowMoraleEmployees.Remove(e);
+        lowMoraleEmployees.Remove(e);
     }
     public Employee[] GetEmployeeList()
     {
@@ -43,7 +43,7 @@ public class CompanyManager : MonoBehaviour
     }
     public Employee[] GetLowMoraleEmployees()
     {
-        return LowMoraleEmployees.ToArray();
+        return lowMoraleEmployees.ToArray();
     }
     public bool SpendMoney(int amount)
     {

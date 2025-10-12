@@ -2,15 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Working : State
 {
-    Employee employee;
-    AStarPathfinder pathfinder;
-    List<Vector2Int> path;
-    EmployeeJobManager jobManager;
-    EmployeeJob currentJob;
-    int currentPathIndex;
+    private Employee employee;
+    private EmployeeJobManager jobManager;
+    private EmployeeJob currentJob;
+    private bool reachedJobSite;
 
     public override void OnExit()
     {
@@ -19,68 +18,46 @@ public class Working : State
     public override void OnStart()
     {
         employee.StartWorking();
-        currentPathIndex = -1;
+        reachedJobSite = false;
     }
 
     public override void OnUpdate()
     {
         if (employee.readyForJob)
         {
+            if (RefusalRoll()) // Refusal Chance: 12.5% for 50-59 morale, 25% for 40-49, ... 75% for 0-9
+            {
+                Debug.Log(employee.EmployeeName + " refused to work due to low morale (" + employee.Morale + ")");
+                employee.SetNewState(employee.IdleState);
+                return;
+            }
             StartJob();
         }
-        else if (currentPathIndex != -1)
+        else if (reachedJobSite)
         {
-            Vector2Int nextPos = path[currentPathIndex];
-            Vector2 employeePos = employee.transform.position;
-            if (Vector2.Distance(employeePos, GridManager.WorldTileCenter(nextPos)) > 0.01f)
-            {
-                float maxMove = employee.moveSpeed * Time.deltaTime;
-                employee.transform.position = Vector2.MoveTowards(
-                    employeePos,
-                    GridManager.WorldTileCenter(nextPos),
-                    maxMove
-                );
-            }
-            else if (currentPathIndex < path.Count - 1)
-            {
-                currentPathIndex++;
-            }
-            else
-            {
-                currentPathIndex = -1;
-                StartCoroutine(CompleteTask());
-            }
+            StartCoroutine(CompleteTask());
         }
+    }
+
+    bool RefusalRoll()
+    {
+        float chanceToRefuse = Mathf.Max(6 - employee.Morale / 10, 0) * 0.125f; // Increases by 12.5% for every 10 morale below 60, max 75%
+        return Random.value < chanceToRefuse;
     }
 
     void StartJob()
     {
         employee.readyForJob = false;
-
+        employee.Morale -= 10; // Lose morale for each task?
         currentJob = jobManager.NewJob();
 
         Debug.Log("Starting job at " + currentJob.location + " for " + currentJob.duration + " seconds");
-        WalkTo(currentJob.location);
-    }
-
-    void WalkTo(Vector2Int location)
-    {
-        Vector2Int cellPosition = GridManager.PositionToCell(employee.transform.position);
-        try
-        {
-            path = pathfinder.FindPath(cellPosition, location);
-        }
-        catch (InvalidOperationException e) // No path found - add error context
-        {
-            string msg = "Impossible job location for employee: " + currentJob.location;
-            Debug.LogError(msg);
-            throw new InvalidOperationException(msg, e);
-        }
-        currentPathIndex = 0;
+        employee.WalkTo(currentJob.location, () => reachedJobSite = true);
     }
 
     IEnumerator CompleteTask()
     {
+        reachedJobSite = false;
         yield return new WaitForSeconds(currentJob.duration);
         employee.readyForJob = true;
     }
@@ -88,7 +65,6 @@ public class Working : State
     void Awake()
     {
         employee = (Employee)stateMachine;
-        pathfinder = new();
         jobManager = new(employee.Type.Role);
     }
 }

@@ -3,31 +3,25 @@ using UnityEngine;
 public class Idle : State
 {
     Employee employee;
-    void Awake()
-    {
-        employee = (Employee)stateMachine;
-    }
+    bool reachedBreakSpot;
+    
     public override void OnExit()
     {
     }
 
     public override void OnStart()
     {
+        reachedBreakSpot = false;
+        employee.Morale += 10; // Gain morale for idling?
+        employee.WalkTo(new(0,9), () => reachedBreakSpot = true);
     }
 
     public override void OnUpdate()
     {
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        employee = (Employee)stateMachine;
     }
 }

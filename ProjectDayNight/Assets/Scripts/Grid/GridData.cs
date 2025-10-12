@@ -4,10 +4,11 @@ using System;
 [CreateAssetMenu(fileName = "GridData", menuName = "Pathfinding/GridData")]
 public class GridData : ScriptableObject
 {
-    [Header("Baked Data")]
-    public int Width;
-    public int Height;
-    [SerializeField] private bool[] walkableGrid;
+    private int width;
+    public int Width => width;
+    private int height;
+    public int Height => height;
+    private bool[] walkableGrid;
 
     private static GridData _instance;
     public static GridData Instance
@@ -27,10 +28,12 @@ public class GridData : ScriptableObject
         return walkableGrid[y * Width + x];
     }
 
-    public void SetWalkableGrid(bool[] newGrid)
+    public void SetWalkableGrid(bool[] newGrid, Vector2Int size)
     {
-        if (newGrid.Length != Width * Height)
+        if (newGrid.Length != size.x * size.y)
             throw new ArgumentException("Grid size does not match. Set dimensions first");
+        width = size.x;
+        height = size.y;
         walkableGrid = newGrid;
     }
 }
