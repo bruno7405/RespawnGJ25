@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CompanyManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class CompanyManager : MonoBehaviour
     public int Money { get; private set; }
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
-    public Employee[] Employees { get; private set; }
+    [SerializeField] HashSet<Employee> employees = new HashSet<Employee>();
 
     void Awake()
     {
@@ -23,6 +24,18 @@ public class CompanyManager : MonoBehaviour
 
         Money = startingMoney;
         NumEmployees = startingNumEmployees;
+    }
+    public void RegisterEmployee(Employee e)
+    {
+        employees.Add(e);
+        NumEmployees++;
+    }
+    public void UnregisterEmployee(Employee e)
+    {
+        if (employees.Remove(e))
+        {
+            NumEmployees--;
+        }
     }
 
     public bool SpendMoney(int amount)
@@ -39,22 +52,36 @@ public class CompanyManager : MonoBehaviour
         }
         return false; // not enough money
     }
-    public void RecalculateMorale()
+    public void UpdateMorale(int delta)
     {
-        if (Employees.Length == 0)
+        if (NumEmployees == 0)
         {
             Morale = 0;
             return;
         }
-
-        int totalMorale = 0;
-        foreach (var emp in Employees)
+        Morale += delta / NumEmployees; // average morale
+    }
+    public void AddProfit()
+    {
+        int totalProfit = 0;
+        foreach (var emp in employees)
         {
-            totalMorale += emp.Morale;
+            totalProfit += emp.ProfitMade();
         }
-        Morale = totalMorale / NumEmployees; // average morale
+        Money += totalProfit;
+        if (Money < 0)
+        {
+            GameStateManager.instance.GameOver();
+        }
     }
 
+    public void ChangeCompanyMorale(int delta)
+    {
+        foreach (var emp in employees)
+        {
+            emp.Morale += delta;
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
