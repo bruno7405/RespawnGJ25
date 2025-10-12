@@ -107,22 +107,23 @@ public class CompanyManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            Debug.LogWarning("Multiple CompanyManager instances detected! Destroying duplicate.");
             Destroy(gameObject); // ensure one active per scene
             return;
         }
+        Debug.Log("CompanyManager instance set");
         Instance = this;
 
         Money = startingMoney;
         NumEmployees = startingNumEmployees;
-        GameStateManager.instance.DayStart += HandleDayStart;
-        GameStateManager.instance.NightStart += HandleNightStart;
     }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GameStateManager.instance.DayStart += HandleDayStart;
+        GameStateManager.instance.NightStart += HandleNightStart;
     }
 
     // Update is called once per frame

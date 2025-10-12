@@ -82,15 +82,12 @@ public class Employee : StateMachineManager
 
     void OnEnable()
     {
-        //don't use null check because we want to know if it fails
-        CompanyManager.Instance.RegisterEmployee(this);
-
     }
     void OnDisable()
     {
         //Use null check because this if Instance is destroyed, EmployeeList will be empty anyway
         if (CompanyManager.Instance == null) return;
-        CompanyManager.Instance?.UnregisterEmployee(this);
+        CompanyManager.Instance.UnregisterEmployee(this);
     }
     void Awake()
     {
@@ -104,5 +101,10 @@ public class Employee : StateMachineManager
         morale = type.BaseMorale;
         readyForJob = false;
         CompanyManager.Instance?.UpdateMorale(morale);
+    }
+    void Start()
+    {
+        //don't use null check because we want to know if it fails
+        CompanyManager.Instance.RegisterEmployee(this);
     }
 }
