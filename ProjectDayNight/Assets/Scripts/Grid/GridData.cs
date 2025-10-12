@@ -7,7 +7,18 @@ public class GridData : ScriptableObject
     [Header("Baked Data")]
     public int Width;
     public int Height;
-    private bool[] walkableGrid;
+    [SerializeField] private bool[] walkableGrid;
+
+    private static GridData _instance;
+    public static GridData Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = Resources.Load<GridData>("GridData");
+            return _instance;
+        }
+    }
 
     public bool IsWalkable(int x, int y)
     {
