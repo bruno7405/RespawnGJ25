@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class DayState : State
@@ -15,9 +14,6 @@ public class DayState : State
         // Invoke events in random time?
         Debug.Log("day state");
 
-        // Coroutine for transition screen/animation?
-
-        Array.ForEach(CompanyManager.Instance.GetEmployeeList(), e => e.SetNewState(e.WorkingState));
         timeElapsed = 0;
     }
 
@@ -28,8 +24,9 @@ public class DayState : State
 
         if (timeElapsed >= duration)
         {
-            CompanyManager.Instance.AddProfit();
+            ((GameStateManager)stateMachine).InvokeNightStart();
             stateMachine.SetNewState(nightState);
+
         }
     }
     public override void OnExit()
@@ -37,5 +34,8 @@ public class DayState : State
         return;
     }
 
-    public void SetDuration(float d) => duration = d;
+    public void SetDuration(float d)
+    {
+        duration = d;
+    }
 }
