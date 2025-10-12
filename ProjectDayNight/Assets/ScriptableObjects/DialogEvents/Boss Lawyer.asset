@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
+  m_Name: Boss Lawyer
+  m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
+  npcName: Bob (Lawyer)
+  lines:
+  - npcLine: "Hello, sir. I can\u2019t continue working on your divorce for free."
+    choices:
+    - choiceText: I need a little more time, and I will have the money.
+      isCorrect: 1
+    - choiceText: "I told you I don\u2019t have the money yet! Is your memory that
+        fleeting?!"
+      isCorrect: 0
+  - npcLine: Could I come in for you to sign them?
+    choices:
+    - choiceText: "Today is not a good day\u2026I promise I will get you the money
+        soon."
+      isCorrect: 1
+    - choiceText: "NO! We are working really hard to get the money. My team\u2013
+        I mean, I need a little more time."
+      isCorrect: 0
