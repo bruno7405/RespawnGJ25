@@ -19,7 +19,7 @@ public class CompanyManager : MonoBehaviour
         foreach (var emp in employees)
         {
             if (emp.Morale > 0) emp.SetNewState(emp.SleepingState);
-            else emp.SetNewState(emp.DeathState);
+            else emp.SetNewState(emp.EscapeState);
         }
     }
     void HandleDayStart()
@@ -90,7 +90,7 @@ public class CompanyManager : MonoBehaviour
         Money += totalProfit;
         if (Money < 0)
         {
-            GameStateManager.instance.GameOver();
+            GameStateManager.Instance.GameOver();
         }
     }
     public void UpdateMorale(int delta)
@@ -122,8 +122,8 @@ public class CompanyManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameStateManager.instance.DayStart += HandleDayStart;
-        GameStateManager.instance.NightStart += HandleNightStart;
+        GameStateManager.Instance.DayStart += HandleDayStart;
+        GameStateManager.Instance.NightStart += HandleNightStart;
     }
 
     // Update is called once per frame

@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GameStateManager : StateMachineManager
 {
-    public static GameStateManager instance;
+    private static GameStateManager instance;
+    public static GameStateManager Instance => instance;
 
     [SerializeField] float secondsPerGameDay;
 

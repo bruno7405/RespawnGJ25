@@ -102,9 +102,10 @@ public class Employee : StateMachineManager
         readyForJob = false;
         CompanyManager.Instance?.UpdateMorale(morale);
     }
-    void Start()
+
+    new void Start()
     {
-        //don't use null check because we want to know if it fails
+        base.Start();
         CompanyManager.Instance.RegisterEmployee(this);
     }
 }
