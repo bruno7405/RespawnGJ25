@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
-    
+
     Vector2 movementVector;
     Rigidbody2D rb;
 
