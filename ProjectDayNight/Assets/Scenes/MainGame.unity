@@ -624,7 +624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &632993706
 Transform:
   m_ObjectHideFlags: 0
@@ -12815,6 +12815,18 @@ PrefabInstance:
     - target: {fileID: 1054442911277256215, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
       propertyPath: m_FlipX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445516581786471317, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.759424
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445516581786471317, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.90733
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445516581786471317, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.91823894
       objectReference: {fileID: 0}
     - target: {fileID: 7956370566442782302, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
       propertyPath: m_LocalPosition.x

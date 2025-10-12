@@ -75,15 +75,4 @@ public class Employee : StateMachineManager
         morale = type.BaseMorale;
         CompanyManager.Instance?.UpdateMorale(morale);
     }
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-
-
 }

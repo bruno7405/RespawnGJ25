@@ -196,8 +196,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -35836139
-  m_SortingLayer: 1
+  m_SortingLayerID: 1584204825
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -731,7 +731,7 @@ Transform:
   m_GameObject: {fileID: 831124115}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.5, y: 9.5, z: 0}
+  m_LocalPosition: {x: 11.03, y: 9.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -782,7 +782,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -35836139
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 21114cfbeb20c404f8fead4996fe8231, type: 3}
   m_Color: {r: 0.66638917, g: 1, b: 0.2924528, a: 1}
@@ -813,6 +813,8 @@ MonoBehaviour:
   wage: 10
   revenue: 30
   morale: 80
+  deathState: {fileID: 0}
+  idleState: {fileID: 0}
 --- !u!114 &831124119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2450,8 +2452,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
   groundTilemap: {fileID: 980281021}
-  tempStartPrefab: {fileID: 3173864465230426466, guid: 76d7ab659d8994b4192382ec9c8cbb78, type: 3}
-  tempGoalPrefab: {fileID: 3534471586438269651, guid: e3bbd6c317fb95d4b825552689b07964, type: 3}
 --- !u!4 &2120939503
 Transform:
   m_ObjectHideFlags: 0

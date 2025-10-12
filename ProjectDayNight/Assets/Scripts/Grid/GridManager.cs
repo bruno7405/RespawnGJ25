@@ -4,18 +4,12 @@ using UnityEngine.Tilemaps;
 public class GridManager : MonoBehaviour
 {
     public static Tilemap GroundTilemap;
-    public static GameObject tempStart;
-    public static GameObject tempGoal;
 
     [SerializeField] private Tilemap groundTilemap;
-    [SerializeField] private GameObject tempStartPrefab;
-    [SerializeField] private GameObject tempGoalPrefab;
 
     private void Awake()
     {
         GroundTilemap = groundTilemap;
-        tempStart = tempStartPrefab;
-        tempGoal = tempGoalPrefab;
     }
 
     public static Vector2Int PositionToCell(Vector2 position)

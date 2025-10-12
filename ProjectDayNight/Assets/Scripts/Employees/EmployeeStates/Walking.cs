@@ -12,16 +12,11 @@ public class Walking : State
 
     public override void OnStart()
     {
-        Debug.Log("Started Walking");
         pTransform = parent.transform;
         currentPathIndex = 0;
         pathfinder = new();
         Vector2Int cellPosition = GridManager.PositionToCell(pTransform.position);
         path = pathfinder.FindPath(cellPosition, new(0, 0));
-        foreach (Vector2Int pos in path)
-        {
-            Debug.Log(pos);
-        }
     }
 
     public override void OnUpdate()
@@ -42,13 +37,11 @@ public class Walking : State
         }
         else
         {
-            Debug.Log("Reached destination!");
             // else exit state
         }
     }
 
     public override void OnExit()
     {
-        Debug.Log("Stopped Walking");
     }
 }

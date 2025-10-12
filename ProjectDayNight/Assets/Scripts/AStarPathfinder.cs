@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AStarPathfinder : MonoBehaviour
+public class AStarPathfinder
 {
     private static readonly float SQRT2 = Mathf.Sqrt(2f);
 
@@ -28,10 +28,6 @@ public class AStarPathfinder : MonoBehaviour
 
     public List<Vector2Int> FindPath(Vector2Int start, Vector2Int goal)
     {
-        Vector3 startWorld = GridManager.WorldTileCenter(start);
-        Vector3 goalWorld = GridManager.WorldTileCenter(goal);
-        Instantiate(GridManager.tempStart, startWorld, Quaternion.identity);
-        Instantiate(GridManager.tempGoal, goalWorld, Quaternion.identity);
         if (!gridData.IsWalkable(start.x, start.y))
             throw new Exception("Start position is not walkable.");
         if (!gridData.IsWalkable(goal.x, goal.y))
