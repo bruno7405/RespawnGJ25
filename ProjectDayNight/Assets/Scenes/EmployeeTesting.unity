@@ -869,7 +869,7 @@ MonoBehaviour:
   morale: 80
   readyForJob: 0
   deathState: {fileID: 831124121}
-  idleState: {fileID: 831124120}
+  slackOffState: {fileID: 0}
   workingState: {fileID: 831124119}
 --- !u!114 &831124119
 MonoBehaviour:
