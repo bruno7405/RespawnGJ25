@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eb380807cd46371459d819c4604bc0c5
+guid: 0374016608a660d47b21170e1b960319
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 340098121224088192
-    second: Office_Worker_1_0
+      213: -4152430210992521329
+    second: Floor_Tile_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Office_Worker_1_0
+      name: Floor_Tile_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 6
-        height: 11
+        width: 72
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08ae658707548b400800000000000000
-      internalID: 340098121224088192
+      spriteID: f8fb03f39ba9f56c0800000000000000
+      internalID: -4152430210992521329
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Office_Worker_1_0: 340098121224088192
+      Floor_Tile_0: -4152430210992521329
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

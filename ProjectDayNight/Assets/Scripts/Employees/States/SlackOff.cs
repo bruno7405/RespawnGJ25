@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Idle : State
+public class SlackOff : State
 {
     Employee employee;
     bool reachedBreakSpot;

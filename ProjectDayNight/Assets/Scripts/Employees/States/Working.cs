@@ -28,7 +28,7 @@ public class Working : State
             if (RefusalRoll()) // Refusal Chance: 12.5% for 50-59 morale, 25% for 40-49, ... 75% for 0-9
             {
                 Debug.Log(employee.EmployeeName + " refused to work due to low morale (" + employee.Morale + ")");
-                employee.SetNewState(employee.IdleState);
+                employee.SetNewState(employee.SlackOffState);
                 return;
             }
             StartJob();

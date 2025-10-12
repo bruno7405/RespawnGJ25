@@ -50,6 +50,9 @@ TagManager:
   - name: Wall
     uniqueID: 1584204825
     locked: 0
+  - name: Deco
+    uniqueID: 425102293
+    locked: 0
   - name: Characters
     uniqueID: 1999681549
     locked: 0

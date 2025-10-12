@@ -19,8 +19,8 @@ public class Employee : StateMachineManager
     //States
     [SerializeField] Death deathState;
     public Death DeathState => deathState;
-    [SerializeField] Idle idleState;
-    public Idle IdleState => idleState;
+    [SerializeField] SlackOff slackOffState;
+    public SlackOff SlackOffState => slackOffState;
     [SerializeField] Working workingState;
     public Working WorkingState => workingState;
     /// <summary>
