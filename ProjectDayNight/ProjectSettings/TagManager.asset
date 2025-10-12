@@ -41,11 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-<<<<<<< Updated upstream
-=======
-  - name: Walls
-    uniqueID: 1800479985
+  - name: Background
+    uniqueID: 3555996009
     locked: 0
->>>>>>> Stashed changes
+  - name: Floor
+    uniqueID: 156938403
+    locked: 0
+  - name: Wall
+    uniqueID: 1584204825
+    locked: 0
+  - name: Characters
+    uniqueID: 1999681549
+    locked: 0
   m_RenderingLayers:
   - Default
