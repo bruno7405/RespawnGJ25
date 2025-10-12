@@ -20,7 +20,7 @@ public class GameEvent : MonoBehaviour, IInteractable
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            GameStateManager.instance.GameOver();
+            GameStateManager.Instance.GameOver();
             countdown = false;
         }
     }
