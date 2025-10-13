@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerMovement), typeof(PlayerInteractor), typeof(PlayerAttack))]
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerAttack))]
 public class PlayerInput : MonoBehaviour
 {
     [Header("Input Actions")]
@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     private Vector2 moveVector;
 
     PlayerMovement playerMovement;
-    PlayerInteractor playerInteractior;
+    PlayerInteractor playerInteractor;
     PlayerAttack playerAttack;
 
     public static bool active = true;
@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        playerInteractior = GetComponent<PlayerInteractor>();
+        playerInteractor = GetComponentInChildren<PlayerInteractor>();
         playerAttack = GetComponent<PlayerAttack>();
 
         // Move Action
@@ -70,7 +70,7 @@ public class PlayerInput : MonoBehaviour
     private void Interact(InputAction.CallbackContext context)
     {
         if (!active) return;
-        playerInteractior.Interact();
+        playerInteractor.Interact();
     }
 
     private void Attack(InputAction.CallbackContext context)

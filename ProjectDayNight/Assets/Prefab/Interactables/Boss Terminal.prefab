@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7238657765142889765}
   - component: {fileID: 5472442719515679753}
   - component: {fileID: 9031697300993664117}
+  - component: {fileID: 8447617377172547288}
   m_Layer: 6
   m_Name: Boss Terminal
   m_TagString: Untagged
@@ -60,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 7e90c118edbc2dc408c79a9ffd60e06f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -152,6 +153,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0833334, y: 0.7083333}
   m_EdgeRadius: 0
+--- !u!114 &8447617377172547288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969719155942075250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab755b01e36ae443bc9a4f8b25087db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HighlightController
+  normalMat: {fileID: -876546973899608171, guid: 7e90c118edbc2dc408c79a9ffd60e06f, type: 3}
+  highlightMat: {fileID: -876546973899608171, guid: 34fc749503de4914ab295bea745059f1, type: 3}
 --- !u!1001 &113695419346504042
 PrefabInstance:
   m_ObjectHideFlags: 0

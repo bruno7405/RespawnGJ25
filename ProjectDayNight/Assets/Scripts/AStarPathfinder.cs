@@ -28,8 +28,8 @@ public class AStarPathfinder
 
     public List<Vector2Int> FindPath(Vector2Int start, Vector2Int goal)
     {
-        Debug.Log(start);
-        Debug.Log(GridManager.GroundTilemap.CellToWorld((Vector3Int)start));
+        //Debug.Log(start);
+        //Debug.Log(GridManager.GroundTilemap.CellToWorld((Vector3Int)start));
         if (!gridData.IsWalkable(start.x, start.y))
             throw new ArgumentException("Start position is not walkable.");
         if (!gridData.IsWalkable(goal.x, goal.y))

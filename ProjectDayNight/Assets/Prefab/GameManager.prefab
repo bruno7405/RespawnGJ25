@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
   currentState: {fileID: 1811495818559965897}
-  secondsPerGameDay: 10
+  secondsPerGameDay: 3
   dayState: {fileID: 1811495818559965897}
   nightState: {fileID: 2758786526998476788}
 --- !u!1001 &3006790570757385113
@@ -612,6 +612,10 @@ PrefabInstance:
     - target: {fileID: 968643122386433202, guid: cb3b3b3ff284fe24f8ece5e43f98d41b, type: 3}
       propertyPath: m_Name
       value: GameStatCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808170504660563507, guid: cb3b3b3ff284fe24f8ece5e43f98d41b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

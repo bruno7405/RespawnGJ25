@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
@@ -6,6 +7,9 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] LayerMask interactableLayer;
     [SerializeField] Transform nearestInteractable = null;
 
+    private List<Transform> interactablesInRange = new List<Transform>();
+    private float nearestDistance = Mathf.Infinity;
+
     private void Update()
     {
         SelectNearestInteractable();
@@ -13,8 +17,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void SelectNearestInteractable()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, interactionRange, interactableLayer);
-        if (hitColliders.Length == 0)
+        if (interactablesInRange.Count == 0)
         {
             nearestInteractable = null;
             return;
@@ -22,15 +25,17 @@ public class PlayerInteractor : MonoBehaviour
 
         float nearestDistance = Mathf.Infinity;
 
-        foreach (var hitCollider in hitColliders)
+        foreach (var interactable in interactablesInRange)
         {
-            float distance = Vector2.Distance(transform.position, hitCollider.transform.position);
+            float distance = Vector2.Distance(transform.position, interactable.transform.position);
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestInteractable = hitCollider.transform;
+                nearestInteractable = interactable.transform;
             }
         }
+
+        nearestInteractable?.GetComponent<HighlightController>()?.Highlight();
     }
 
     public void Interact()
@@ -38,7 +43,20 @@ public class PlayerInteractor : MonoBehaviour
         nearestInteractable?.GetComponent<IInteractable>()?.OnInteract(this);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer != 6) return;
+        interactablesInRange.Add(collision.transform);
+        SelectNearestInteractable();
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer != 6) return;
+        collision.gameObject.GetComponent<HighlightController>()?.DeHighlight();
+        interactablesInRange.Remove(collision.transform);
+        SelectNearestInteractable();
+    }
 
     private void OnDrawGizmos()
     {
