@@ -50,4 +50,15 @@ public class EmployeeJobManager
         previousJob = newJob;
         return jobs[newJob];
     }
+
+    public static Vector2Int RandomHidePoint()
+    {
+        int x, y;
+        do
+        {
+            x = Random.Range(0, GridData.Instance.Width);
+            y = Random.Range(0, GridData.Instance.Height);
+        } while (!GridData.Instance.IsWalkable(x, y));
+        return new(x, y);
+    }
 }
