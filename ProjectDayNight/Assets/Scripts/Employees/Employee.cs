@@ -55,6 +55,7 @@ public class Employee : StateMachineManager
     {
         SetNewState(workingState);
     }
+
     public int Morale
     {
         get => morale;
@@ -68,6 +69,7 @@ public class Employee : StateMachineManager
             else if (morale == 0) CompanyManager.Instance.RemoveLowMoraleEmployee(this);
         }
     }
+
 
     // Motion Properties & Methods
     public float WalkSpeed => motionManager.WalkSpeed;

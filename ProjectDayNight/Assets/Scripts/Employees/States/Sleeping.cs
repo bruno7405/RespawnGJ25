@@ -10,12 +10,15 @@ public class Sleeping : State
     }
     public override void OnExit()
     {
+        
         employee.Sleeping = false;
     }
 
     public override void OnStart()
     {
         employee.Sleeping = true;
+        employee.StateName = EmployeeState.Sleeping;
+        EmployeeStatusUI.Instance.UpdateUI();
     }
 
     public override void OnUpdate()

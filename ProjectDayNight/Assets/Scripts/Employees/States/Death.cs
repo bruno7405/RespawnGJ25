@@ -18,6 +18,7 @@ public class Death : State
         employee.StateName = EmployeeState.Dead;
         parent.SetActive(false);
 
+        EmployeeStatusUI.Instance.UpdateUI();
     }
 
     public override void OnUpdate()

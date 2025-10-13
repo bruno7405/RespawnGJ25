@@ -4,7 +4,7 @@ public class StateMachineManager : MonoBehaviour
 {
     public State currentState;
 
-    protected void Start()
+    protected virtual void Start()
     {
         if (currentState != null)
         {
@@ -12,7 +12,7 @@ public class StateMachineManager : MonoBehaviour
         }
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (currentState != null)
         {
@@ -20,7 +20,7 @@ public class StateMachineManager : MonoBehaviour
         }
     }
 
-    public void SetNewState(State state)
+    public virtual void SetNewState(State state)
     {
         if (state != null)
         {

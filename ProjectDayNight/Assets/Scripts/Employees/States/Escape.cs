@@ -16,7 +16,7 @@ public class Escape : State
     {
         Debug.Log("Employee is escaping");
         employee.StateName = EmployeeState.Escaping;
-
+        EmployeeStatusUI.Instance.UpdateUI();
     }
 
     public override void OnUpdate()

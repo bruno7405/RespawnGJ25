@@ -20,6 +20,8 @@ public class Working : State
         employee.StateName = EmployeeState.Working;
         employee.readyForJob = true;
         reachedJobSite = false;
+
+        EmployeeStatusUI.Instance.UpdateUI();
     }
 
     public override void OnUpdate()

@@ -17,6 +17,8 @@ public class SlackOff : State
         reachedBreakSpot = false;
         //employee.Morale += 10;  //Gain morale for idling?
         employee.WalkTo(new(0,9), () => reachedBreakSpot = true);
+
+        EmployeeStatusUI.Instance.UpdateUI();
     }
 
     public override void OnUpdate()
