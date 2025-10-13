@@ -12,7 +12,7 @@ public class CompanyManager : MonoBehaviour
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
     HashSet<Employee> employees = new();
-    HashSet<Employee> lowMoraleEmployees => employees.Where(e => e.Morale == 0).ToHashSet();
+    HashSet<Employee> lowMoraleEmployees = new();
     void HandleNightStart()
     {
         AddProfit();
