@@ -12,15 +12,14 @@ public class CompanyManager : MonoBehaviour
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
     HashSet<Employee> employees = new();
-    HashSet<Employee> lowMoraleEmployees = new();
+    HashSet<Employee> lowMoraleEmployees => employees.Where(e => e.Morale == 0).ToHashSet();
     void HandleNightStart()
     {
         AddProfit();
-        foreach (var emp in employees)
-        {
-            if (emp.Morale > 0) emp.SetNewState(emp.SleepingState);
-            else emp.SetNewState(emp.EscapeState);
-        }
+
+        // Calculate # Escapists
+        int numEscapists = employees.Count - Mathf.Max(Morale - 1, 0) * employees.Count / 100;
+        employees.OrderBy(e => e.Morale).Take(numEscapists).ToList().ForEach(e => e.SetNewState(e.EscapeState));
     }
     void HandleDayStart()
     {
