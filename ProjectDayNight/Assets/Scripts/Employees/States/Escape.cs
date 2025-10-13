@@ -16,7 +16,6 @@ public class Escape : State
 
     public override void OnStart()
     {
-        Debug.Log("Employee " + employee.EmployeeName + " is escaping");
         employee.StateName = EmployeeState.Escaping;
         EmployeeStatusUI.Instance.UpdateUI();
         employee.transform.position = GridManager.WorldTileCenter(EmployeeJobManager.RandomHidePoint());

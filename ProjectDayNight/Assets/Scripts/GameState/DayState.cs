@@ -14,7 +14,7 @@ public class DayState : State
         // Show day number
         // Invoke events in random time?
         Debug.Log("day state");
-
+        ((GameStateManager)stateMachine).InvokeNewDay();
         timeElapsed = 0;
     }
 
@@ -25,7 +25,15 @@ public class DayState : State
         
         if (timeElapsed >= duration)
         {
-            ((GameStateManager)stateMachine).InvokeNightStart();
+            try
+            {
+                ((GameStateManager)stateMachine).InvokeNightStart();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Failed to invoke night start: " + e.Message);
+            }
+
             stateMachine.SetNewState(nightState);
 
         }

@@ -4,27 +4,32 @@ using UnityEngine;
 public class UpgradeState : State
 {
     [SerializeField] List<Upgrade> upgrades = new List<Upgrade>();
+
+    [SerializeField] GameStatsUI gameStatsUI;
     [SerializeField] UpgradesUI upgradesUI;
 
     [SerializeField] DayState dayState;
 
     public static UpgradeState instance;
 
-
-
     private void Awake()
     {
-        instance = this;
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else instance = this;
     }
 
+    /// <summary>
+    /// Displays stats UI
+    /// Wait for display to close, then show upgrades UI (event)
+    /// </summary>
     public override void OnStart()
     {
-        // Adds all money for the day
-        // Checks quota(game over?)
-        ((GameStateManager)stateMachine).InvokeNewDay();
-        // Enables UpgradeU
-
+        gameStatsUI.DisplayStats();
     }
+
     public void ShowUpgradesUI()
     {
         upgradesUI.gameObject.SetActive(true);
@@ -57,6 +62,14 @@ public class UpgradeState : State
         return;
     }
 
+    private void OnEnable()
+    {
+        gameStatsUI.OnDisplayClosed += ShowUpgradesUI;
+    }
 
+    private void OnDisable()
+    {
+        gameStatsUI.OnDisplayClosed -= ShowUpgradesUI;
+    }
 
 }

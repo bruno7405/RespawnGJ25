@@ -9,7 +9,7 @@ public class GameStatFade : MonoBehaviour
 
     float lifeTime;      // set by spawner: 2 * statInterval
 
-    public void Init(string text, Color color, float lifeTimeSeconds)
+    public void UpdateUI(string text, Color color, float lifeTimeSeconds)
     {
         this.lifeTime = lifeTimeSeconds;
 
@@ -17,7 +17,7 @@ public class GameStatFade : MonoBehaviour
         label.color = color;
 
         cg.alpha = 1f;
-        StartCoroutine(FadeRoutine());
+        //StartCoroutine(FadeRoutine());
     }
 
     IEnumerator FadeRoutine()

@@ -6,31 +6,42 @@ using System.Collections.Generic;
 
 public class GameStatsUI : MonoBehaviour
 {
-    [SerializeField] RectTransform statsContainer;
+    [SerializeField] GameObject root;
+    [SerializeField] RectTransform statsContainer; // where stats are spawned
     [SerializeField] GameStatFade statPrefab;      // prefab with StatUIEntry + TMP Text
     [SerializeField] float statInterval = 1f;
     [SerializeField] float statMoveDistance = 10f;
-    [SerializeField] UpgradeState upgradeState;
-    [SerializeField] Color goodColor = new Color(0.3f, 1f, 0.3f, 1f); // green
-    [SerializeField] Color badColor  = new Color(1f, 0.3f, 0.3f, 1f); // red
+    [SerializeField] Color goodColor = new Color(0.3f, 1f, 0.3f, 1f);
+    [SerializeField] Color badColor  = new Color(1f, 0.3f, 0.3f, 1f);
+    [SerializeField] Animator animator;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+    public event Action OnDisplayClosed;
+
+    private void Awake()
     {
-        GameStateManager.Instance.NewDay += DisplayStats;
+        root.SetActive(false);
     }
-    private void DisplayStats()
+
+    public void DisplayStats()
     {
-        // Start the display sequence.
+        root.SetActive(true);
+
+        foreach (Transform child in statsContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
         StartCoroutine(RunTransition());
     }
+
     IEnumerator RunTransition()
     {
-
-        List<int[]> report = new();
         float lifeTime = 2f * statInterval; // fade time for each stat
-        // 3) Show stats at fixed interval; each new one pushes older ones DOWN
+
         int profit = CompanyManager.Instance.GetProfit();
+
+        yield return new WaitForSeconds(0.35f); // wait for panel slide in
 
         if (profit >= 0) SpawnStat("Money: +$" + profit.ToString(), true, lifeTime);
         else SpawnStat("Money: -$" + Mathf.Abs(profit).ToString(), false, lifeTime);
@@ -40,24 +51,21 @@ public class GameStatsUI : MonoBehaviour
         SpawnStat("Gained 5 Morale", true, lifeTime);
         yield return new WaitForSeconds(statInterval);
 
-        // 6) Now allow upgrades to be shown
-        upgradeState.ShowUpgradesUI();
+        StartCoroutine(CloseStatsPanel());
     }
+
     void SpawnStat(String stat, bool isPositive, float lifeTime)
     {
-        var entry = Instantiate(statPrefab, statsContainer);
-
-        // newest at top: set as first sibling so older ones push DOWN
-        entry.transform.SetAsFirstSibling();
-        // set text & color
+        var statCard = Instantiate(statPrefab, statsContainer);
         Color col = isPositive ? goodColor : badColor;
-        entry.Init(stat, col, lifeTime);
-
+        statCard.UpdateUI(stat, col, lifeTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator CloseStatsPanel()
     {
-        
+        animator.SetTrigger("slideOut");
+        yield return new WaitForSeconds(0.5f);
+        OnDisplayClosed?.Invoke();
+        root.SetActive(false);
     }
 }

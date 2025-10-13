@@ -186,7 +186,6 @@ MonoBehaviour:
   dialogTMP: {fileID: 3569315807888271523}
   choice1Button: {fileID: 3775030726048184957}
   choice2Button: {fileID: 760410184015184106}
-  testDialogEvent: {fileID: 11400000, guid: de9ec30b3ea43b0428c1b606eb25c9ab, type: 2}
 --- !u!1 &2312646666522370027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1133,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 406bc6159dbb9d941bb11f6c94657a63, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
