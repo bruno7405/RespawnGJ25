@@ -16,12 +16,12 @@ public class GameStateManager : StateMachineManager
     // Events
     [SerializeField] GameObject testEvent;
 
-    public event Action DayStart;
+    public event Action NewDay;
     public event Action NightStart;
 
-    public void InvokeDayStart()
+    public void InvokeNewDay()
     {
-        DayStart?.Invoke();
+        NewDay?.Invoke();
     }
 
     public void InvokeNightStart()

@@ -18,7 +18,9 @@ public class Employee : StateMachineManager
     public EmployeeType Type => type;
     [SerializeField] EmployeeMotionManager motionManager;
     [SerializeField] int wage;
+    public int Wage => wage;
     [SerializeField] int revenue;
+    public int Revenue => revenue;
     [SerializeField] int morale;
     public const int MAX_MORALE = 100;
     public bool readyForJob;

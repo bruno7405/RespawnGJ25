@@ -122,7 +122,7 @@ public class CompanyManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameStateManager.Instance.DayStart += HandleDayStart;
+        GameStateManager.Instance.NewDay += HandleDayStart;
         GameStateManager.Instance.NightStart += HandleNightStart;
     }
 
