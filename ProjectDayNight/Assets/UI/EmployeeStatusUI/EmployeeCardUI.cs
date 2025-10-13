@@ -15,7 +15,7 @@ public class EmployeeCardUI : MonoBehaviour
 
     public void UpdateCardUI(Employee employee)
     {
-        Debug.Log(employee.EmployeeName + " is " + employee.StateName.ToString());
+        employeeIcon.sprite = employee.GetComponentInChildren<SpriteRenderer>().sprite;
         employeeName.text = employee.EmployeeName;
         employeeMoney.text = "Wage: $" + employee.Wage + "\nMakes: $" + employee.Revenue;
         
