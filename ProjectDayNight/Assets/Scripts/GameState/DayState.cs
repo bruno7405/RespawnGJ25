@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DayState : State
@@ -21,7 +22,7 @@ public class DayState : State
     {
         timeElapsed += Time.deltaTime;
         timeUI.SetTimeElasped(timeElapsed, true);
-
+        
         if (timeElapsed >= duration)
         {
             ((GameStateManager)stateMachine).InvokeNightStart();

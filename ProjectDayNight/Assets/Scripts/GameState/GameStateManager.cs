@@ -10,17 +10,19 @@ public class GameStateManager : StateMachineManager
 
     // Day and Night
     [SerializeField] DayState dayState;
+    public DayState DayState => dayState;
     [SerializeField] NightState nightState;
+    public NightState NightState => nightState;
     TimeUI timeUI;
 
-    // Events
-    [SerializeField] GameObject testEvent;
+    public int CurrentDay { get; private set; } = 0;
 
     public event Action NewDay;
     public event Action NightStart;
 
     public void InvokeNewDay()
     {
+        CurrentDay++;
         NewDay?.Invoke();
     }
 
@@ -41,7 +43,6 @@ public class GameStateManager : StateMachineManager
 
     }
 
-
     public void AddUpgrade()
     {
 
@@ -51,6 +52,5 @@ public class GameStateManager : StateMachineManager
     {
         Debug.Log("game over!");
     }
-
 
 }

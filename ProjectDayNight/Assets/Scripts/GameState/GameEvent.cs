@@ -1,16 +1,22 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class GameEvent : MonoBehaviour, IInteractable
 {
     [SerializeField] float eventDuration;
+    [SerializeField] int dollarPenalty;
+
     float timeLeft;
     protected bool countdown = true;
+
+    // Not active; completed or failed
+    public bool resolved { get; private set; } = false;
 
     void Start()
     {
         timeLeft = eventDuration;
-    }
+    }   
 
     // Countdown event duration, when time runs out before task complete, game over
     void Update()
@@ -18,16 +24,18 @@ public class GameEvent : MonoBehaviour, IInteractable
         if (!countdown) return;
 
         timeLeft -= Time.deltaTime;
-        if (timeLeft < 0)
+        if (timeLeft <= 0)
         {
-            GameStateManager.Instance.GameOver();
+            resolved = true;
             countdown = false;
+            GameStateManager.Instance.GameOver();
         }
     }
 
     protected virtual void CompleteTask()
     {
         countdown = false;
+        resolved = true;
         // Visuals
         GetComponent<SpriteRenderer>().color = Color.green;
         // Delete object after a few seconds

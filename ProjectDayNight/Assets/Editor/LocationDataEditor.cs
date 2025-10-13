@@ -10,7 +10,7 @@ public class LocationDataEditor : Editor
     public override void OnInspectorGUI()
     {
         LocationData data = (LocationData)target;
-        // Scene Objects Listz
+
         amountOfLocations = EditorGUILayout.IntField("Amount of Locations", amountOfLocations);
 
         while (sceneObjects.Count < amountOfLocations) sceneObjects.Add(null);

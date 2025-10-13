@@ -868,9 +868,12 @@ MonoBehaviour:
   revenue: 30
   morale: 80
   readyForJob: 0
+  Sleeping: 0
   deathState: {fileID: 831124121}
-  slackOffState: {fileID: 0}
+  slackOffState: {fileID: 831124120}
   workingState: {fileID: 831124119}
+  escapeState: {fileID: 0}
+  sleepingState: {fileID: 0}
 --- !u!114 &831124119
 MonoBehaviour:
   m_ObjectHideFlags: 0
