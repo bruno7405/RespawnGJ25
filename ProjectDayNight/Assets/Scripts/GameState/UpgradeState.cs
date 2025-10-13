@@ -22,7 +22,11 @@ public class UpgradeState : State
         // Adds all money for the day
         // Checks quota(game over?)
         ((GameStateManager)stateMachine).InvokeNewDay();
-        // Enables UpgradeUI
+        // Enables UpgradeU
+
+    }
+    public void ShowUpgradesUI()
+    {
         upgradesUI.gameObject.SetActive(true);
 
         // Sets upgrade options
@@ -32,8 +36,6 @@ public class UpgradeState : State
             upgradesUI.CreateUpgradeButton(upgrades[index]);
             //upgrades.RemoveAt(index);
         }
-
-
     }
 
     public override void OnUpdate() {}

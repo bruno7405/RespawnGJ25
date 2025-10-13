@@ -79,14 +79,18 @@ public class CompanyManager : MonoBehaviour
             emp.Morale += delta;
         }
     }
-    public void AddProfit()
+    public int GetProfit()
     {
         int totalProfit = 0;
         foreach (var emp in employees)
         {
             totalProfit += emp.ProfitMade();
         }
-        Money += totalProfit;
+        return totalProfit;
+    }
+    public void AddProfit()
+    {
+        Money += GetProfit();
         if (Money < 0)
         {
             GameStateManager.Instance.GameOver();
