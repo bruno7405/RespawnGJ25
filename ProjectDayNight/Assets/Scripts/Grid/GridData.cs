@@ -23,6 +23,7 @@ public class GridData : ScriptableObject
 
     public bool IsWalkable(int x, int y)
     {
+        if (walkableGrid == null || walkableGrid.Length == 0) throw new InvalidOperationException("Walkable grid is empty or not initialized");
         if (x < 0 || x >= Width || y < 0 || y >= Height)
             return false;
         return walkableGrid[y * Width + x];

@@ -79,18 +79,20 @@ public class Employee : StateMachineManager
     /// </summary>
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
-    public void WalkTo(Vector2Int destination, Action callback = null)
+    /// <returns>Action to force cancel path</returns>
+    public Action WalkTo(Vector2Int destination, Action callback = null)
     {
-        motionManager.WalkTo(destination, callback);
+        return motionManager.WalkTo(destination, callback);
     }
     /// <summary>
     /// Makes employee run to location
     /// </summary>
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
-    public void RunTo(Vector2Int destination, Action callback = null)
+    /// <returns>Action to force cancel path</returns>
+    public Action RunTo(Vector2Int destination, Action callback = null)
     {
-        motionManager.RunTo(destination, callback);
+        return motionManager.RunTo(destination, callback);
     }
 
     void OnEnable()

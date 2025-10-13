@@ -10,9 +10,11 @@ public class Working : State
     private EmployeeJobManager jobManager;
     private EmployeeJob currentJob;
     private bool reachedJobSite;
+    private Action cancelWalk;
 
     public override void OnExit()
     {
+        cancelWalk?.Invoke();
     }
 
     public override void OnStart()
@@ -55,7 +57,7 @@ public class Working : State
         currentJob = jobManager.NewJob();
 
         Debug.Log("Starting job at " + currentJob.location + " for " + currentJob.duration + " seconds");
-        employee.WalkTo(currentJob.location, () => reachedJobSite = true);
+        cancelWalk = employee.WalkTo(currentJob.location, () => reachedJobSite = true);
     }
 
     IEnumerator CompleteTask()
