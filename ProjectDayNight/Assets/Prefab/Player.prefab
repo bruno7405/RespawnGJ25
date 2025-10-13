@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2446337000771814471}
   - component: {fileID: 7645529483408302742}
   - component: {fileID: 724060448445667358}
+  - component: {fileID: 4493260062893900968}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -174,6 +175,20 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &4493260062893900968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385427241164261779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed7ee3c0ccdc8743b77f887a646d37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimationManager
+  animator: {fileID: 2374350838961066993}
+  sprite: {fileID: 1054442911277256215}
 --- !u!1 &3601228721701285721
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984161643571936307}
   - component: {fileID: 1054442911277256215}
+  - component: {fileID: 2374350838961066993}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -251,7 +267,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1999681549
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -6248741079362886434, guid: cf145bc44569fa643815b2ade33ed6ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -264,6 +280,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2374350838961066993
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601228721701285721}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c39ee32b9d35a94c9052fea092e48c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8693247660922930272
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +346,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6179246, g: 0.7665094, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.91823894, g: 0.90733, b: 0.759424, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
