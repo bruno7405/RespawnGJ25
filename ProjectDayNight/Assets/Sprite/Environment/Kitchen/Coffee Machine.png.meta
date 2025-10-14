@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d28a524a47171f040a010c17fc2f1dc4
+guid: 623d8b992d29bc44bbad6cce1b9499e4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2167232792254407409
-    second: Wall Decor 4_0
+      213: -3887449798981549634
+    second: Coffee Machine_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wall Decor 4_0
+      name: Coffee Machine_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 21
-        height: 7
+        width: 3
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f0d191802417ce1e0800000000000000
-      internalID: -2167232792254407409
+      spriteID: eb18a8121010d0ac0800000000000000
+      internalID: -3887449798981549634
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Wall Decor 4_0: -2167232792254407409
+      Coffee Machine_0: -3887449798981549634
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
