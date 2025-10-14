@@ -15,6 +15,7 @@ public class DayState : State
         // Invoke events in random time?
         Debug.Log("day state");
         ((GameStateManager)stateMachine).InvokeNewDay();
+        AudioManager.instance.PlayBackgroundMusic("DaySong");
         timeElapsed = 0;
     }
 
@@ -25,17 +26,7 @@ public class DayState : State
         
         if (timeElapsed >= duration)
         {
-            try
-            {
-                ((GameStateManager)stateMachine).InvokeNightStart();
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError("Failed to invoke night start: " + e.Message);
-            }
-
             stateMachine.SetNewState(nightState);
-
         }
     }
     public override void OnExit()

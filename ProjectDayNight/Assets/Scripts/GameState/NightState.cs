@@ -11,7 +11,8 @@ public class NightState : State
     {
         // Call EmployeeManager to start escape sequence
         Debug.Log("night state");
-
+        ((GameStateManager)stateMachine).InvokeNightStart();
+        AudioManager.instance.PlayBackgroundMusic("NightSong");
         timeElapsed = 0;
     }
 

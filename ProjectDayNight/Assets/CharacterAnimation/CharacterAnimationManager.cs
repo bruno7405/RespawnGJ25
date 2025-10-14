@@ -22,11 +22,11 @@ public class CharacterAnimationManager : MonoBehaviour
         if (posChange.magnitude > 0.01f)
         {
             animator.SetBool("isMoving", true);
-            if (posChange.x > 0)
+            if (posChange.x > 0.01)
             {
                 sprite.flipX = false;
             }
-            else if (posChange.x < 0)
+            else if (posChange.x < 0.01)
             {
                 sprite.flipX = true;
             }
