@@ -1,15 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Working : State
 {
     private Employee employee;
-    private EmployeeJobManager jobManager;
     private EmployeeJob currentJob;
-    private bool reachedJobSite;
     private Action cancelWalk;
 
     public override void OnExit()
@@ -21,7 +18,6 @@ public class Working : State
     {
         employee.StateName = EmployeeState.Working;
         employee.readyForJob = true;
-        reachedJobSite = false;
 
         EmployeeStatusUI.Instance.UpdateUI();
     }
@@ -32,15 +28,11 @@ public class Working : State
         {
             if (RefusalRoll()) // Refusal Chance: 12.5% for 50-59 morale, 25% for 40-49, ... 75% for 0-9
             {
-                Debug.Log(employee.EmployeeName + " refused to work due to low morale (" + employee.Morale + ")");
+                Debug.Log(employee.Name + " refused to work due to low morale (" + employee.Morale + ")");
                 employee.SetNewState(employee.SlackOffState);
                 return;
             }
             StartJob();
-        }
-        else if (reachedJobSite)
-        {
-            StartCoroutine(CompleteTask());
         }
     }
 
@@ -53,23 +45,29 @@ public class Working : State
     void StartJob()
     {
         employee.readyForJob = false;
-        employee.Morale -= 10; // Lose morale for each task?
-        currentJob = jobManager.NewJob();
+        var newJob = employee.GetNewJob();
+        currentJob?.Unassign();
 
-        Debug.Log("Starting job at " + currentJob.location + " for " + currentJob.duration + " seconds");
-        cancelWalk = employee.WalkTo(currentJob.location, () => reachedJobSite = true);
+        if (newJob == null)
+        {
+            Debug.Log(employee.Name + " has no available jobs, going to slack off");
+            employee.SetNewState(employee.SlackOffState);
+            return;
+        }
+
+        currentJob = newJob;
+        Debug.Log("Employee " + employee.Name + " starting " + currentJob.Name + " at " + currentJob.Location + " for " + currentJob.Duration + " seconds");
+        cancelWalk = employee.WalkTo(currentJob.Location, () => StartCoroutine(CompleteTask()));
     }
 
     IEnumerator CompleteTask()
     {
-        reachedJobSite = false;
-        yield return new WaitForSeconds(currentJob.duration);
+        yield return new WaitForSeconds(currentJob.Duration);
         employee.readyForJob = true;
     }
 
     void Awake()
     {
         employee = (Employee)stateMachine;
-        jobManager = new(employee.Type.Role);
     }
 }

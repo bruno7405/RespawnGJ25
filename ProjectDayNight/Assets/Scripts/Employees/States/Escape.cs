@@ -3,11 +3,9 @@ using UnityEngine;
 public class Escape : State
 {
     Employee employee;
-    EmployeeJobManager jobManager;
     void Awake()
     {
         employee = (Employee)stateMachine;
-        jobManager = new(employee.Type.Role);
     }
     public override void OnExit()
     {
@@ -16,10 +14,10 @@ public class Escape : State
 
     public override void OnStart()
     {
-        Debug.Log("Employee " + employee.EmployeeName + " is escaping");
+        Debug.Log("Employee " + employee.Name + " is escaping");
         employee.StateName = EmployeeState.Escaping;
         EmployeeStatusUI.Instance.UpdateUI();
-        employee.transform.position = GridManager.WorldTileCenter(EmployeeJobManager.RandomHidePoint());
+        employee.transform.position = GridManager.RandomWalkablePos();
     }
 
     public override void OnUpdate()

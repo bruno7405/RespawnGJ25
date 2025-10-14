@@ -1,5 +1,3 @@
-using System;
-using TMPro;
 using UnityEngine;
 
 public class GameEvent : MonoBehaviour, IInteractable
@@ -28,7 +26,8 @@ public class GameEvent : MonoBehaviour, IInteractable
         {
             resolved = true;
             countdown = false;
-            GameStateManager.Instance.GameOver();
+            if (!CompanyManager.Instance.SpendMoney(dollarPenalty))
+                GameStateManager.Instance.GameOver();
         }
     }
 

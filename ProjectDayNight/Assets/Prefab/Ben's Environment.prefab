@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5241443539792850727}
   - component: {fileID: 3031828226576363678}
   - component: {fileID: 5998825269519950292}
+  - component: {fileID: 6600300074688918910}
   m_Layer: 0
   m_Name: Printer_0
   m_TagString: Untagged
@@ -137,6 +138,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5833333, y: 0.6666667}
   m_EdgeRadius: 0
+--- !u!114 &6600300074688918910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217392229176570933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1809fe39179e349944aaf699e860d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EmployeeJob
+  jobName: Printing
+  description: Photos for bruno's collection
+  duration: 3
+  allowedRoles: 000000000100000002000000
+  sr: {fileID: 3031828226576363678}
 --- !u!1 &587789093450041692
 GameObject:
   m_ObjectHideFlags: 0

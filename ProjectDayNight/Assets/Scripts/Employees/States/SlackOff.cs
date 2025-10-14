@@ -9,14 +9,21 @@ public class SlackOff : State
 
     public override void OnExit()
     {
+        Debug.Log("Employee " + employee.Name + " finished slacking off");
+        employee.StatusIcon.Hide();
     }
 
     public override void OnStart()
     {
+        employee.StatusIcon.SetSprite(employee.StatusIcon.SlackingOffSprite);
         employee.StateName = EmployeeState.SlackingOff;
         reachedBreakSpot = false;
         //employee.Morale += 10;  //Gain morale for idling?
-        employee.WalkTo(new(3,4), () => reachedBreakSpot = true);
+        employee.WalkTo(new(3, 4), () => {
+            Debug.Log("Employee " + employee.Name + " reached break spot");
+            reachedBreakSpot = true;
+            employee.StatusIcon.Show();
+        });
 
         EmployeeStatusUI.Instance.UpdateUI();
     }

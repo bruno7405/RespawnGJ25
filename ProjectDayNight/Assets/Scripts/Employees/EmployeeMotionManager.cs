@@ -20,7 +20,7 @@ public class EmployeeMotionManager : MonoBehaviour
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
     /// <returns>Action to force cancel path</returns>
-    public Action WalkTo(Vector2Int destination, Action callback = null)
+    public Action WalkTo(Vector2 destination, Action callback = null)
     {
         currentSpeed = walkSpeed;
         SetPath(destination, callback);
@@ -32,20 +32,21 @@ public class EmployeeMotionManager : MonoBehaviour
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
     /// <returns>Action to force cancel path</returns>
-    public Action RunTo(Vector2Int destination, Action callback = null)
+    public Action RunTo(Vector2 destination, Action callback = null)
     {
         currentSpeed = runSpeed;
         SetPath(destination, callback);
         return () => { currentPathIndex = -1; currentPath = null; currentCallback = null; };
     }
 
-    void SetPath(Vector2Int location, Action callback = null)
+    void SetPath(Vector2 location, Action callback = null)
     {
         currentCallback = callback;
-        Vector2Int cellPosition = GridManager.PositionToCell(transform.position);
+        Vector2Int currentCell = GridManager.PositionToCell(transform.position);
+        Vector2Int goalCell = GridManager.PositionToCell(location);
         try
         {
-            currentPath = pathfinder.FindPath(cellPosition, location);
+            currentPath = pathfinder.FindPath(currentCell, goalCell);
         }
         catch (InvalidOperationException e) // No path found - add error context
         {

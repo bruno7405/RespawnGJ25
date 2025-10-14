@@ -33,4 +33,15 @@ public class GridManager : MonoBehaviour
         NullCheck();
         return Vector2Int.RoundToInt(worldCoord) + (Vector2)GroundTilemap.cellSize / 2;
     }
+
+    public static Vector2 RandomWalkablePos()
+    {
+        int x, y;
+        do
+        {
+            x = Random.Range(0, GridData.Instance.Width);
+            y = Random.Range(0, GridData.Instance.Height);
+        } while (!GridData.Instance.IsWalkable(x, y));
+        return WorldTileCenter(new(x, y));
+    }
 }

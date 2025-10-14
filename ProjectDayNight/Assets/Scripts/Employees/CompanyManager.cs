@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System;
 
 public class CompanyManager : MonoBehaviour
 {
@@ -12,13 +11,21 @@ public class CompanyManager : MonoBehaviour
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
     HashSet<Employee> employees = new();
-    HashSet<Employee> lowMoraleEmployees => employees.Where(e => e.Morale == 0).ToHashSet();
+
+    /* So far, used nowhere in code other than returning it... so just leave it as a method bro
+    ** I don't imagine it'll ever be accessed more than once per day, at night start
+    ** If it becomes more frequent, just make it a cached prop, way better than the maintenance overhead :D */
+    // HashSet<Employee> lowMoraleEmployees => employees.Where(e => e.Morale == 0).ToHashSet();
+    public Employee[] GetLowMoraleEmployees() => employees.Where(e => e.Morale == 0).ToArray();
     void HandleNightStart()
     {
         AddProfit();
         // Calculate # Escapists
         int numEscapists = employees.Count - Mathf.Max(Morale - 1, 0) * employees.Count / 100;
-        employees.OrderBy(e => e.Morale).Take(numEscapists).ToList().ForEach(e => e.SetNewState(e.EscapeState));
+        employees.OrderBy(e => e.Morale).Take(numEscapists).ToList().ForEach(e => {
+            e.StatusIcon.ForceHide(); 
+            e.SetNewState(e.EscapeState);
+        });
     }
     void HandleDayStart()
     {
@@ -38,10 +45,6 @@ public class CompanyManager : MonoBehaviour
     public Employee[] GetEmployeeList()
     {
         return employees.ToArray();
-    }
-    public Employee[] GetLowMoraleEmployees()
-    {
-        return lowMoraleEmployees.ToArray();
     }
     public bool SpendMoney(int amount)
     {

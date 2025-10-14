@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UpgradeState : State
 {
-    [SerializeField] List<Upgrade> upgrades = new List<Upgrade>();
+    [SerializeField] List<Upgrade> upgrades = new();
 
     [SerializeField] GameStatsUI gameStatsUI;
     [SerializeField] UpgradesUI upgradesUI;

@@ -7,6 +7,9 @@ public class GameStateManager : StateMachineManager
     public static GameStateManager Instance => instance;
 
     [SerializeField] float secondsPerGameDay;
+    
+    [Range(0f, 10f)]
+    [SerializeField] float timeScale = 1f;
 
     // Day and Night
     [SerializeField] DayState dayState;
@@ -34,6 +37,7 @@ public class GameStateManager : StateMachineManager
     private void Awake()
     {
         instance = this;
+        Time.timeScale = timeScale;
 
         timeUI = GetComponentInChildren<TimeUI>();
         timeUI.SetSecondsPerGameDay(secondsPerGameDay);

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 public enum EmployeeState
 {
     Working,
@@ -13,9 +14,10 @@ public class Employee : StateMachineManager
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] string employeeName = "Ben";
-    public string EmployeeName => employeeName;
+    public string Name => employeeName;
     [SerializeField] EmployeeType type;
     public EmployeeType Type => type;
+    public Role Role => type.Role;
     [SerializeField] EmployeeMotionManager motionManager;
     [SerializeField] int wage;
     public int Wage => wage;
@@ -40,6 +42,9 @@ public class Employee : StateMachineManager
     public EmployeeState StateName;
     [SerializeField] int moraleDecreasePerDay = 5;
     public int MoraleDecreasePerDay => moraleDecreasePerDay;
+
+    [SerializeField] private StatusIcon statusIcon;
+    public StatusIcon StatusIcon => statusIcon;
 
     /// <summary>
     /// Calculates profit made by this employee for one day
@@ -80,7 +85,7 @@ public class Employee : StateMachineManager
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
     /// <returns>Action to force cancel path</returns>
-    public Action WalkTo(Vector2Int destination, Action callback = null)
+    public Action WalkTo(Vector2 destination, Action callback = null)
     {
         return motionManager.WalkTo(destination, callback);
     }
@@ -90,9 +95,16 @@ public class Employee : StateMachineManager
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
     /// <returns>Action to force cancel path</returns>
-    public Action RunTo(Vector2Int destination, Action callback = null)
+    public Action RunTo(Vector2 destination, Action callback = null)
     {
         return motionManager.RunTo(destination, callback);
+    }
+    public EmployeeJob GetNewJob()
+    {
+        var availableJobs = EmployeeJobRegistry.GetAvailableJobs(Role);
+        var randomJob = availableJobs.Count > 0 ? availableJobs[Random.Range(0, availableJobs.Count)] : null;
+        randomJob?.Assign();
+        return randomJob;
     }
 
     void OnEnable()
@@ -115,18 +127,18 @@ public class Employee : StateMachineManager
             Debug.LogError("Employee type not set for " + employeeName);
             return;
         }
+        gameObject.name = "Employee_" + employeeName;
         wage = type.BaseSalary;
         revenue = type.BaseRevenue;
         morale = type.BaseMorale;
         readyForJob = false;
         CompanyManager.Instance?.UpdateMorale(morale);
-        moraleDecreasePerDay = UnityEngine.Random.Range(MAX_MORALE / 5, MAX_MORALE / 2);
+        moraleDecreasePerDay = Random.Range(MAX_MORALE / 5, MAX_MORALE / 2);
     }
 
     new void Start()
     {
         base.Start();
         CompanyManager.Instance.RegisterEmployee(this);
-        GameStateManager.Instance.NightStart += HandleNightStart;
     }
 }

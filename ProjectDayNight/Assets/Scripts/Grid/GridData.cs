@@ -25,9 +25,9 @@ public class GridData : ScriptableObject
         }
     }
 
-    public bool IsWalkable(int x, int y, bool worldCentered = true)
+    public bool IsWalkable(int x, int y, bool isTilemapDomain = true)
     {
-        if (worldCentered)
+        if (isTilemapDomain)
         {
             x -= offset.x;
             y -= offset.y;
