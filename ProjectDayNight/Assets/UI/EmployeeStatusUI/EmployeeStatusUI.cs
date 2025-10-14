@@ -13,13 +13,12 @@ public class EmployeeStatusUI : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
         instance = this;
         uiParent.SetActive(false);
-    }
-
-    private void OnEnable()
-    {
-        UpdateUI();
     }
 
     public void UpdateUI()
@@ -48,5 +47,17 @@ public class EmployeeStatusUI : MonoBehaviour
     {
         PlayerMovement.Instance.EnableMovement();
         uiParent.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        GameStateManager.Instance.NightStart += CloseUI;
+        GameStateManager.Instance.DayStart += CloseUI;
+    }
+
+    private void OnDisable()
+    {
+        GameStateManager.Instance.NightStart -= CloseUI;
+        GameStateManager.Instance.DayStart -= CloseUI;
     }
 }

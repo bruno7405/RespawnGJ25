@@ -38,16 +38,18 @@ public class NightState : State
 
     IEnumerator DayToNightTransition()
     {
+        // Lights off
         blackScreenUI.Black();
         VisualsManager.Instance?.LightsOff();
-
-        // Audio
-
+        // Lights off sound effect
 
         yield return new WaitForSeconds(2f);
 
         AudioManager.Instance.PlayBackgroundMusic("NightSong");
         blackScreenUI.FadeOut();
+
+        // UI Popup
+        InformationPopupUI.Instance.DisplayText("EMPLOYEES ARE TRYING TO ESCAPE", false);
     }
 
     public override void OnExit()

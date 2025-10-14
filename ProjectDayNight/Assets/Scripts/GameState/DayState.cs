@@ -14,8 +14,16 @@ public class DayState : State
         // Invoke events in random time?
         Debug.Log("day state");
         ((GameStateManager)stateMachine).InvokeNewDay();
+
+        // UI Popup
+        InformationPopupUI.Instance.DisplayText("Keep employees on task", true);
+
+        // Play Music
         AudioManager.Instance.PlayBackgroundMusic("DaySong");
+
+        // Lights
         VisualsManager.Instance.LightsOn();
+
         timeElapsed = 0;
     }
 
