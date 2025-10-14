@@ -38,6 +38,8 @@ public class Employee : StateMachineManager
     [SerializeField] Sleeping sleepingState;
     public Sleeping SleepingState => sleepingState;
     public EmployeeState StateName;
+    [SerializeField] int moraleDecreasePerDay = 5;
+    public int MoraleDecreasePerDay => moraleDecreasePerDay;
 
     /// <summary>
     /// Calculates profit made by this employee for one day
@@ -104,6 +106,10 @@ public class Employee : StateMachineManager
         if (CompanyManager.Instance == null) return;
         CompanyManager.Instance.UnregisterEmployee(this);
     }
+    void HandleNightStart()
+    {
+        Morale -= moraleDecreasePerDay;
+    }
     void Awake()
     {
         if (type == null)
@@ -116,11 +122,13 @@ public class Employee : StateMachineManager
         morale = type.BaseMorale;
         readyForJob = false;
         CompanyManager.Instance?.UpdateMorale(morale);
+        moraleDecreasePerDay = UnityEngine.Random.Range(MAX_MORALE / 5, MAX_MORALE / 2);
     }
 
     new void Start()
     {
         base.Start();
         CompanyManager.Instance.RegisterEmployee(this);
+        GameStateManager.Instance.NightStart += HandleNightStart;
     }
 }

@@ -17,13 +17,13 @@ public class GameStateManager : StateMachineManager
 
     public int CurrentDay { get; private set; } = 0;
 
-    public event Action NewDay;
+    public event Action DayStart;
     public event Action NightStart;
 
     public void InvokeNewDay()
     {
         CurrentDay++;
-        NewDay?.Invoke();
+        DayStart?.Invoke();
     }
 
     public void InvokeNightStart()

@@ -16,7 +16,6 @@ public class CompanyManager : MonoBehaviour
     void HandleNightStart()
     {
         AddProfit();
-
         // Calculate # Escapists
         int numEscapists = employees.Count - Mathf.Max(Morale - 1, 0) * employees.Count / 100;
         employees.OrderBy(e => e.Morale).Take(numEscapists).ToList().ForEach(e => e.SetNewState(e.EscapeState));
@@ -125,7 +124,7 @@ public class CompanyManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameStateManager.Instance.NewDay += HandleDayStart;
+        GameStateManager.Instance.DayStart += HandleDayStart;
         GameStateManager.Instance.NightStart += HandleNightStart;
     }
 

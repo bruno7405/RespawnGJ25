@@ -50,7 +50,7 @@ public class BossTaskManager : MonoBehaviour
 
     void Start()
     {
-        GameStateManager.Instance.NewDay += QueueTasks;
+        GameStateManager.Instance.DayStart += QueueTasks;
         dialogEvents = allGameEvents.OfType<DialogEventInteractable>().OrderBy(_ => Random.value).ToList();
         standardTasks = allGameEvents.Except(dialogEvents).OrderBy(_ => Random.value).ToList();
         dialogEventEnumerator = dialogEvents.GetEnumerator();

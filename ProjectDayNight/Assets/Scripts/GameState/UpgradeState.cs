@@ -27,6 +27,7 @@ public class UpgradeState : State
     /// </summary>
     public override void OnStart()
     {
+        ((GameStateManager)stateMachine).InvokeNewDay();
         gameStatsUI.DisplayStats();
     }
 
