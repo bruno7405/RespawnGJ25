@@ -12,7 +12,7 @@ public class CompanyManager : MonoBehaviour
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
     HashSet<Employee> employees = new();
-    HashSet<Employee> lowMoraleEmployees = new();
+    HashSet<Employee> lowMoraleEmployees => employees.Where(e => e.Morale == 0).ToHashSet();
     void HandleNightStart()
     {
         AddProfit();
@@ -29,25 +29,11 @@ public class CompanyManager : MonoBehaviour
     }
     public void RegisterEmployee(Employee e)
     {
-        employees.Add(e);
-        NumEmployees++;
-
+        if (employees.Add(e)) NumEmployees++;
     }
     public void UnregisterEmployee(Employee e)
     {
-        if (employees.Remove(e))
-        {
-            NumEmployees--;
-        }
-        lowMoraleEmployees.Remove(e);
-    }
-    public void AddLowMoraleEmployee(Employee e)
-    {
-        lowMoraleEmployees.Add(e);
-    }
-    public void RemoveLowMoraleEmployee(Employee e)
-    {
-        lowMoraleEmployees.Remove(e);
+        if (employees.Remove(e)) NumEmployees--;
     }
     public Employee[] GetEmployeeList()
     {
