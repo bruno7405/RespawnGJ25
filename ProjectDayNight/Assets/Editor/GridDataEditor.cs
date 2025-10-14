@@ -83,7 +83,7 @@ public class GridDataEditor : Editor
             }
         }
 
-        data.SetWalkableGrid(walkableGrid, new(width, height));
+        data.SetGridData(walkableGrid, new(width, height), new(minX, minY));
 
         EditorUtility.SetDirty(data);
         Debug.Log("GridData generated from tilemap layers!");

@@ -16,7 +16,7 @@ public class SlackOff : State
         employee.StateName = EmployeeState.SlackingOff;
         reachedBreakSpot = false;
         //employee.Morale += 10;  //Gain morale for idling?
-        employee.WalkTo(new(0,9), () => reachedBreakSpot = true);
+        employee.WalkTo(new(3,4), () => reachedBreakSpot = true);
 
         EmployeeStatusUI.Instance.UpdateUI();
     }
