@@ -60,12 +60,12 @@ public class StatusIcon : MonoBehaviour
 
     private IEnumerator AnimatePopFadeIn(float easeFadeOut = 1f)
     {
-        yield return AnimatePopFade(Vector3.zero, Vector3.one, 1f, 1f, 1/easeFadeOut);
+        yield return AnimatePopFade(Vector3.zero, Vector3.one, 0.5f, 1f, 1/easeFadeOut);
     }
 
     private IEnumerator AnimatePopFadeOut(float easeFadeIn = 1f)
     {
-        yield return AnimatePopFade(Vector3.one, Vector3.zero, 1f, 1f, easeFadeIn);
+        yield return AnimatePopFade(Vector3.one, Vector3.zero, 1f, 0f, easeFadeIn);
         gameObject.SetActive(false);
     }
 

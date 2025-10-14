@@ -16146,7 +16146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7604178b72a54942ae2e0e2654b980c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
-  groundTilemap: {fileID: 6143414052754084821}
+  grid: {fileID: 6209945682208234129}
 --- !u!1 &5055372133794695287
 GameObject:
   m_ObjectHideFlags: 0

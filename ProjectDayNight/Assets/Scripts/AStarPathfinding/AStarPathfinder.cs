@@ -6,8 +6,6 @@ public class AStarPathfinder
 {
     private static readonly float SQRT2 = Mathf.Sqrt(2f);
 
-    private readonly GridData gridData = GridData.Instance;
-
     private static readonly Vector2Int[] Neighbors =
     {
         new(1, 0),    // E
@@ -22,17 +20,17 @@ public class AStarPathfinder
 
     public AStarPathfinder()
     {
-        if (gridData == null)
-            throw new Exception("GridData not found in Resources. Please create one.");
+        if (GridManager.Grid == null)
+            throw new Exception("GridManager not initialized. Please load grid.");
     }
 
     public List<Vector2Int> FindPath(Vector2Int start, Vector2Int goal)
     {
         //Debug.Log(start);
         //Debug.Log(GridManager.GroundTilemap.CellToWorld((Vector3Int)start));
-        if (!gridData.IsWalkable(start.x, start.y))
+        if (!GridManager.IsWalkable(start.x, start.y))
             throw new ArgumentException("Start position is not walkable.");
-        if (!gridData.IsWalkable(goal.x, goal.y))
+        if (!GridManager.IsWalkable(goal.x, goal.y))
             throw new ArgumentException("Goal position is not walkable.");
         if (start == goal)
             return new() { start };
@@ -58,13 +56,13 @@ public class AStarPathfinder
             {
                 Vector2Int neighborPos = current.position + dir;
 
-                if (!gridData.IsWalkable(neighborPos.x, neighborPos.y)) continue;
+                if (!GridManager.IsWalkable(neighborPos.x, neighborPos.y)) continue;
 
                 // Prevent cutting corners through obstacles
                 if (Mathf.Abs(dir.x) + Mathf.Abs(dir.y) == 2)
                 {
-                    if (!gridData.IsWalkable(current.position.x, current.position.y + dir.y)) continue;
-                    if (!gridData.IsWalkable(current.position.x + dir.x, current.position.y)) continue;
+                    if (!GridManager.IsWalkable(current.position.x, current.position.y + dir.y)) continue;
+                    if (!GridManager.IsWalkable(current.position.x + dir.x, current.position.y)) continue;
                 }
 
                 Node neighbor = GetOrCreateNode(neighborPos, allNodes);

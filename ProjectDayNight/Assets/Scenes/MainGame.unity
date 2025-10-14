@@ -198,6 +198,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 586876520}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!156049354 &129891685 stripped
+Grid:
+  m_CorrespondingSourceObject: {fileID: 6209945682208234129, guid: 2bc039a0c4e1b7b4b90dbe1244415f28, type: 3}
+  m_PrefabInstance: {fileID: 357047241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &327901000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 782557208656391239, guid: 2463816ea7abf46b084d4c312ba5bffb, type: 3}
@@ -215,6 +220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ben's Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 5645522867089984993, guid: 2bc039a0c4e1b7b4b90dbe1244415f28, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 129891685}
     - target: {fileID: 6934824184529188651, guid: 2bc039a0c4e1b7b4b90dbe1244415f28, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
