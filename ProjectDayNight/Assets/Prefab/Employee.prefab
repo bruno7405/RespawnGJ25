@@ -433,7 +433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatusIcon
   statusIconSprites: {fileID: 11400000, guid: 4a46a32d65269404eb7e7beff70cf694, type: 2}
   sr: {fileID: 8739651710756093364}
-  durationInOut: 0.3
+  durationInOut: 0.4
   easeFadeInOut: 7
-  maxBounceScale: 1.2
+  maxBounceInOut: 1.5
+  continuousBounce: 1.2
   bounceFrequency: 2

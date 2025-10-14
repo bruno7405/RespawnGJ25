@@ -8,7 +8,8 @@ public class StatusIcon : MonoBehaviour
     [SerializeField] private float durationInOut = 0.3f;
     [SerializeField] private float easeFadeInOut;
     [Range(1f, 2f)]
-    [SerializeField] private float maxBounceScale = 1.2f;
+    [SerializeField] private float maxBounceInOut = 1.5f;
+    [SerializeField] private float continuousBounce = 1.2f;
     [SerializeField] private float bounceFrequency = 2f;
 
     // Sprite References
@@ -39,14 +40,14 @@ public class StatusIcon : MonoBehaviour
         if (Active) return;
         gameObject.SetActive(true);
         StartCoroutine(AnimatePopFadeIn(easeFadeInOut));
-        StartCoroutine(AnimateBounce());
+        // StartCoroutine(AnimateBounce());
     }
 
     public void Hide()
     {
         if (!Active) return;
         StopAllCoroutines();
-        StartCoroutine(AnimatePopFadeOut());
+        StartCoroutine(AnimatePopFadeOut(easeFadeInOut));
     }
 
     public void ForceHide()
@@ -60,28 +61,38 @@ public class StatusIcon : MonoBehaviour
 
     private IEnumerator AnimatePopFadeIn(float easeFadeOut = 1f)
     {
-        yield return AnimatePopFade(Vector3.zero, Vector3.one, 0.5f, 1f, 1/easeFadeOut);
+        yield return AnimatePopFade(true, maxBounceInOut, easeFadeOut);
     }
 
     private IEnumerator AnimatePopFadeOut(float easeFadeIn = 1f)
     {
-        yield return AnimatePopFade(Vector3.one, Vector3.zero, 1f, 0f, easeFadeIn);
+        yield return AnimatePopFade(false, maxBounceInOut, easeFadeIn);
         gameObject.SetActive(false);
     }
 
-    private IEnumerator AnimatePopFade(Vector3 startScale, Vector3 endScale, float startAlpha, float endAlpha, float easeInOut = 1f)
+    private IEnumerator AnimatePopFade(bool direction, float maxBounceScale, float easeFade = 1f)
     {
+        // direction: true = in, false = out
+        Vector3 startScale = direction ? Vector3.zero : Vector3.one;
+        Vector3 endScale = direction ? Vector3.one : Vector3.zero;
+        float startAlpha = direction ? 1f : 1f;
+        float endAlpha = direction ? 1f : 1f;
+        float unitScaleQ2Radians = Mathf.PI - Mathf.Asin(1 / maxBounceScale); // Quadrant 2, where localScale = 1
+        if (!direction) easeFade = 1 / easeFade;
+
+        transform.localScale = startScale;
+
         float t = 0f;
         while (t < durationInOut)
         {
             float progress = t / durationInOut;
 
-            float finalRadians = Mathf.PI - Mathf.Asin(1 / maxBounceScale); // Quadrant 2
-            float scaleProgress = Mathf.Sin(progress * finalRadians);
-            transform.localScale = Vector3.LerpUnclamped(startScale, endScale * maxBounceScale, scaleProgress);
+            float scaleProgress = (Mathf.Sin(direction ? progress*unitScaleQ2Radians : unitScaleQ2Radians*(1-progress)) + 1) / 2;
+            transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one * maxBounceScale, scaleProgress);
+            Debug.Log(transform.localScale);
 
             // Alpha
-            SetAlpha(Mathf.Lerp(startAlpha, endAlpha, Mathf.Pow(progress, easeInOut)));
+            SetAlpha(Mathf.Lerp(startAlpha, endAlpha, Mathf.Pow(progress, 1/easeFade)));
 
             t += Time.deltaTime;
             yield return null;
@@ -93,13 +104,13 @@ public class StatusIcon : MonoBehaviour
 
     private IEnumerator AnimateBounce()
     {
-        // Bounce indefinitely using maxBounceScale
-        float t = -bounceFrequency / 2;
+        // Bounce indefinitely using continuousBounce
+        float t = -continuousBounce / 2;
         while (true)
         {
             t += Time.deltaTime;
             float progress = (Mathf.Sin(t * Mathf.PI * 2 * bounceFrequency) + 1) / 2; // oscillates between 0 and 1
-            transform.localScale = Vector3.LerpUnclamped(Vector3.one, Vector3.one * maxBounceScale, progress);
+            transform.localScale = Vector3.LerpUnclamped(Vector3.one, Vector3.one * continuousBounce, progress);
             yield return null;
         }
     }
