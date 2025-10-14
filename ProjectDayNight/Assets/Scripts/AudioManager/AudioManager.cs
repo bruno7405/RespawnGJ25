@@ -6,18 +6,18 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds; // each sound has its own source
     private AudioSource mainAudioSource;
 
-    public static AudioManager instance;
+    private static AudioManager instance;
+    public static AudioManager Instance => instance;
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance != null && instance != this)
         {
-            instance = this;
+            Destroy(this);
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            instance = this;
         }
 
         DontDestroyOnLoad(gameObject);
@@ -44,6 +44,7 @@ public class AudioManager : MonoBehaviour
         }
 
         mainAudioSource.clip = s.audioClip;
+        mainAudioSource.volume = s.volume;
         mainAudioSource.Play();
     }
 

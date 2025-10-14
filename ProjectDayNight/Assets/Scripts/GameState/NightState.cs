@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class NightState : State
@@ -7,12 +8,15 @@ public class NightState : State
 
     [SerializeField] State endState;
     [SerializeField] TimeUI timeUI;
+    [SerializeField] BlackScreenUI blackScreenUI;
+
     public override void OnStart()
     {
-        // Call EmployeeManager to start escape sequence
         Debug.Log("night state");
         ((GameStateManager)stateMachine).InvokeNightStart();
-        AudioManager.instance.PlayBackgroundMusic("NightSong");
+        
+        StartCoroutine(DayToNightTransition());
+
         timeElapsed = 0;
     }
 
@@ -31,6 +35,21 @@ public class NightState : State
     {
         duration = d;
     }
+
+    IEnumerator DayToNightTransition()
+    {
+        blackScreenUI.Black();
+        VisualsManager.Instance?.LightsOff();
+
+        // Audio
+
+
+        yield return new WaitForSeconds(2f);
+
+        AudioManager.Instance.PlayBackgroundMusic("NightSong");
+        blackScreenUI.FadeOut();
+    }
+
     public override void OnExit()
     {
         return;
