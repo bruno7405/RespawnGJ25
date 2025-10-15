@@ -89,7 +89,6 @@ public class StatusIcon : MonoBehaviour
 
             float scaleProgress = (Mathf.Sin(direction ? progress*unitScaleQ2Radians : unitScaleQ2Radians*(1-progress)) + 1) / 2;
             transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one * maxBounceScale, scaleProgress);
-            Debug.Log(transform.localScale);
 
             // Alpha
             SetAlpha(Mathf.Lerp(startAlpha, endAlpha, Mathf.Pow(progress, 1/easeFade)));

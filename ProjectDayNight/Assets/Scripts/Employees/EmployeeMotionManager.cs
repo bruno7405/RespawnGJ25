@@ -14,6 +14,8 @@ public class EmployeeMotionManager : MonoBehaviour
     private float currentSpeed;
     private Action currentCallback;
 
+    public bool IsMoving => currentPath != null;
+
     /// <summary>
     /// Makes employee walk to location
     /// </summary>

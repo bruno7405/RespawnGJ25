@@ -5,20 +5,22 @@ public class EmployeeJob : MonoBehaviour
 {
     [SerializeField] private string jobName;
     [SerializeField] private string description;
-    [Range(0f, 10f)]
-    [SerializeField] private float duration;
+    [Range(1, 10)]
+    [SerializeField] private int duration;
     [SerializeField] private Role[] allowedRoles = (Role[])Enum.GetValues(typeof(Role));
     [SerializeField] private SpriteRenderer sr;
-    public float Duration => duration;
+    [SerializeField] private Vector2 locationOffset;
+    public int Duration => duration;
     public Role[] AllowedRoles => allowedRoles;
     public string Name => jobName;
     public string Description => description;
     public bool IsAssigned { get; private set; }
-    public Vector2 Location => sr == null ? transform.position : new(transform.position.x, sr.bounds.min.y);
+    private Vector2 location;
+    public Vector2 Location => location;
 
     public void Assign()
     {
-        if (IsAssigned) throw new System.InvalidOperationException("Job is already assigned");
+        if (IsAssigned) throw new InvalidOperationException("Job is already assigned");
         IsAssigned = true;
         // Visuals
         sr.color = Color.cyan;
@@ -34,5 +36,6 @@ public class EmployeeJob : MonoBehaviour
     {
         EmployeeJobRegistry.RegisterJob(this);
         IsAssigned = false;
+        location = locationOffset + (sr == null ? (Vector2)transform.position : new(transform.position.x, sr.bounds.min.y));
     }
 }

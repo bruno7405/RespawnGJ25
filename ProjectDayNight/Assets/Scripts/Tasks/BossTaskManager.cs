@@ -8,7 +8,6 @@ public class BossTaskManager : MonoBehaviour
 {
     private static BossTaskManager instance;
     public static BossTaskManager Instance => instance;
-    [SerializeField] private List<GameEvent> allGameEvents;
     [SerializeField] private int maxActiveTasks = 3;
     [SerializeField] private int minTaskQueueTime;
     [SerializeField] private int maxTaskQueueTime;
@@ -23,10 +22,20 @@ public class BossTaskManager : MonoBehaviour
     private float nextQueueTime;
 
     public List<GameEvent> ActiveTasks { get; private set; }
+
+    // 3 on Day 1, 5 on Day 2, 7 on Day 3
     public int StandardTasksToday => Mathf.Min(GameStateManager.Instance.CurrentDay + 1, 4);
     public int DialogTasksToday => Mathf.Min(GameStateManager.Instance.CurrentDay, 3);
-    // 3 on Day 1, 5 on Day 2, 7 on Day 3
     public int TotalTasksToday => StandardTasksToday + DialogTasksToday;
+
+    public void RegisterTask(BossTask task)
+    {
+        standardTasks.Add(task);
+    }
+    public void RegisterDialogue(DialogEventInteractable d)
+    {
+        dialogEvents.Add(d);
+    }
 
     void QueueTasks()
     {
@@ -51,8 +60,6 @@ public class BossTaskManager : MonoBehaviour
     void Start()
     {
         GameStateManager.Instance.DayStart += QueueTasks;
-        dialogEvents = allGameEvents.OfType<DialogEventInteractable>().OrderBy(_ => Random.value).ToList();
-        standardTasks = allGameEvents.Except(dialogEvents).OrderBy(_ => Random.value).ToList();
         dialogEventEnumerator = dialogEvents.GetEnumerator();
         standardTaskEnumerator = standardTasks.GetEnumerator();
         timeSinceTask = 0;
@@ -60,14 +67,17 @@ public class BossTaskManager : MonoBehaviour
 
     void Update()
     {
-        if (GameStateManager.Instance.currentState != GameStateManager.Instance.DayState) return;
+        if (!GameStateManager.Instance.IsDay || queuedEvents == null) return;
 
         ActiveTasks.RemoveAll(task => task == null || task.resolved);
 
         timeSinceTask += Time.deltaTime;
         if (ActiveTasks.Count < maxActiveTasks && queuedEvents.Count > 0 && timeSinceTask >= nextQueueTime)
         {
-            ActiveTasks.Add(queuedEvents.Dequeue());
+            var nextEvent = queuedEvents.Dequeue();
+            nextEvent.StartCountdown();
+            ActiveTasks.Add(nextEvent);
+            Debug.Log("New Task: " + ActiveTasks.Last().Name);
             timeSinceTask = 0;
             nextQueueTime = Random.Range((float)minTaskQueueTime, maxTaskQueueTime);
         }
@@ -75,6 +85,8 @@ public class BossTaskManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        ActiveTasks = new List<GameEvent>();
+        standardTasks = new();
+        dialogEvents = new();
+        ActiveTasks = new();
     }
 }

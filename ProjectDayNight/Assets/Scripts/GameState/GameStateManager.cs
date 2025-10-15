@@ -27,6 +27,7 @@ public class GameStateManager : StateMachineManager
 
     public event Action DayStart;
     public event Action NightStart;
+    public bool IsDay => currentState == dayState;
 
     public void InvokeNewDay()
     {

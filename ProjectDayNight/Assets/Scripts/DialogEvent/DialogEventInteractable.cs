@@ -9,9 +9,7 @@ public class DialogEventInteractable : GameEvent
     /// </summary>
     protected override void CompleteTask()
     {
-        countdown = false;
-        // Visuals
-        GetComponent<SpriteRenderer>().color = Color.green;
+        base.CompleteTask();
         DialogEventManager.Instance.SetDialogEvent(dialogEvent);
     }
 }

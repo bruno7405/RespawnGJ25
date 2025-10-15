@@ -71,7 +71,10 @@ public class PlayerAttack : MonoBehaviour
             }
 
             // Kill employee
-            nearestEmployee.GetComponent<Employee>().KillEmployee();
+            var employee = nearestEmployee.GetComponent<Employee>();
+            // TODO VERY UNSEMANTIC, THIS IS ALL IN ATTACK METHOD/FILE
+            if (GameStateManager.Instance.IsDay) employee.KillEmployee();
+            else employee.UrgeWork();
         }
     }
 
