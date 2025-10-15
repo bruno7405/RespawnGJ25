@@ -38,4 +38,10 @@ public class EmployeeJob : MonoBehaviour
         IsAssigned = false;
         location = locationOffset + (sr == null ? (Vector2)transform.position : new(transform.position.x, sr.bounds.min.y));
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(locationOffset + new Vector2(transform.position.x, sr.bounds.min.y), 0.05f);
+    }
 }
