@@ -12,11 +12,7 @@ public class CompanyManager : MonoBehaviour
     public int NumEmployees { get; private set; }
     HashSet<Employee> employees = new();
 
-    /* So far, used nowhere in code other than returning it... so just leave it as a method bro
-    ** I don't imagine it'll ever be accessed more than once per day, at night start
-    ** If it becomes more frequent, just make it a cached prop, way better than the maintenance overhead :D */
-    // HashSet<Employee> lowMoraleEmployees => employees.Where(e => e.Morale == 0).ToHashSet();
-    public Employee[] GetLowMoraleEmployees() => employees.Where(e => e.Morale == 0).ToArray();
+
     void HandleNightStart()
     {
         AddProfit();
@@ -67,11 +63,11 @@ public class CompanyManager : MonoBehaviour
             emp.Morale += delta;
         }
     }
-    public void ChangeCompanyRevenue(int delta)
+    public void ChangeCompanyRevenue(int pct)
     {
         foreach (var emp in employees)
         {
-            emp.Revenue += delta;
+            emp.Revenue += emp.Revenue * pct / 100;
         }
     }
     public int GetProfit()
