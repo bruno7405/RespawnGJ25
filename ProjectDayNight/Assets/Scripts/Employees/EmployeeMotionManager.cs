@@ -59,6 +59,13 @@ public class EmployeeMotionManager : MonoBehaviour
         currentPathIndex = 0;
     }
 
+    public void Stop()
+    {
+        currentPath = null;
+        currentPathIndex = -1;
+        currentCallback = null;
+    }
+
     void Update()
     {
         if (currentPath == null || currentPathIndex == -1) return;

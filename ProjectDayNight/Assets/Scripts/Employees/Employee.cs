@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 public enum EmployeeState
@@ -7,6 +8,7 @@ public enum EmployeeState
     SlackingOff,
     Sleeping,
     Escaping,
+    Running,
     Dead
 }
 
@@ -38,6 +40,8 @@ public class Employee : StateMachineManager
     public Escape EscapeState => escapeState;
     [SerializeField] Sleeping sleepingState;
     public Sleeping SleepingState => sleepingState;
+    [SerializeField] Running runningState;
+    public Running RunningState => runningState;
     public EmployeeState StateName;
     [SerializeField] int moraleDecreasePerDay = 5;
     public int MoraleDecreasePerDay => moraleDecreasePerDay;
@@ -98,6 +102,10 @@ public class Employee : StateMachineManager
     {
         return motionManager.RunTo(destination, callback);
     }
+    public void StopMoving()
+    {
+        motionManager.Stop();
+    }
     public EmployeeJob GetNewJob()
     {
         var availableJobs = EmployeeJobRegistry.GetAvailableJobs(Role);
@@ -108,16 +116,38 @@ public class Employee : StateMachineManager
 
     void OnEnable()
     {
+        if (GameStateManager.Instance != null) GameStateManager.Instance.NightStart += HandleNightStart;
     }
     void OnDisable()
     {
         //Use null check because this if Instance is destroyed, EmployeeList will be empty anyway
+        currentState?.OnExit();
+        if (GameStateManager.Instance != null) GameStateManager.Instance.NightStart -= HandleNightStart;
         if (CompanyManager.Instance == null) return;
         CompanyManager.Instance.UnregisterEmployee(this);
     }
     void HandleNightStart()
     {
         Morale -= moraleDecreasePerDay;
+    }
+    public void StartEscape(Exit exit)
+    {
+        EscapeState.SetExit(exit);
+        currentState?.OnExit();
+        currentState = EscapeState;
+        currentState.OnStart();
+    }
+    public override void SetNewState(State newState)
+    {
+        if (StateName == EmployeeState.Dead)
+        {
+            Debug.LogWarning("Tried to change state of dead employee " + Name);
+        }
+        if (newState == escapeState)
+        {
+            throw new ArgumentException("Use StartEscape(Exit) to set Escape state");
+        }
+        base.SetNewState(newState);
     }
     void Awake()
     {
@@ -139,6 +169,8 @@ public class Employee : StateMachineManager
     {
         base.Start();
         CompanyManager.Instance.RegisterEmployee(this);
+        GameStateManager.Instance.DayStart -= HandleNightStart;
         GameStateManager.Instance.NightStart += HandleNightStart;
     }
+
 }

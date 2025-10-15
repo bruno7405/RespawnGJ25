@@ -1,7 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.Collections;
 
+public class Exit
+{
+    public Vector2 position;
+    private bool occupied;
+    public bool Occupied
+    {
+        get => occupied;
+        set
+        {
+            occupied = value;
+            if (occupied || GameStateManager.Instance.currentState != GameStateManager.Instance.NightState) return;
+            CompanyManager.Instance.AssignEmployeeToExit(this);
+        }
+    }
+}
 public class CompanyManager : MonoBehaviour
 {
     public static CompanyManager Instance { get; private set; }
@@ -11,17 +27,32 @@ public class CompanyManager : MonoBehaviour
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
     HashSet<Employee> employees = new();
-
+    HashSet<Employee> runningEmployees = new();
+    [SerializeField] int numExits = 2;
+    [SerializeField] Transform[] exitPositions;
+    Exit[] exits;
 
     void HandleNightStart()
     {
         AddProfit();
         // Calculate # Escapists
         int numEscapists = employees.Count - Mathf.Max(Morale - 1, 0) * employees.Count / 100;
-        employees.OrderBy(e => e.Morale).Take(numEscapists).ToList().ForEach(e => {
-            e.StatusIcon.ForceHide(); 
-            e.SetNewState(e.EscapeState);
-        });
+        List<Employee> escapingEmployees = employees.OrderBy(e => e.Morale).Take(numEscapists).ToList();
+        for (int i = 0; i < Mathf.Min(numExits, numEscapists); i++)
+        {
+            escapingEmployees[i].transform.position = exits[i].position;
+            escapingEmployees[i].StartEscape(exits[i]);
+        }
+        for (int i = numExits; i < numEscapists; i++)
+        {
+            escapingEmployees[i].SetNewState(escapingEmployees[i].RunningState);
+        }
+    }
+    public void AssignEmployeeToExit(Exit exit)
+    {
+        if (runningEmployees.Count == 0) return;
+        Employee emp = runningEmployees.First();
+        emp.RunTo(exit.position, () => emp.StartEscape(exit));
     }
     void HandleDayStart()
     {
@@ -29,6 +60,14 @@ public class CompanyManager : MonoBehaviour
         {
             emp.SetNewState(emp.WorkingState);
         }
+    }
+    public void AddRunner(Employee e)
+    {
+        runningEmployees.Add(e);
+    }
+    public void RemoveRunner(Employee e)
+    {
+        runningEmployees.Remove(e);
     }
     public void RegisterEmployee(Employee e)
     {
@@ -110,19 +149,44 @@ public class CompanyManager : MonoBehaviour
 
         Money = startingMoney;
         NumEmployees = startingNumEmployees;
+        exits = new Exit[numExits];
+        if (exitPositions.Length < numExits)
+        {
+            throw new System.InvalidOperationException("Not enough exit positions set in CompanyManager!");
+        }
+        for (int i = 0; i < numExits; i++)
+        {
+            exits[i] = new Exit { position = exitPositions[i].position, Occupied = false };
+        }
     }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameStateManager.Instance.DayStart -= HandleDayStart;
         GameStateManager.Instance.DayStart += HandleDayStart;
+
+        GameStateManager.Instance.NightStart -= HandleNightStart;
         GameStateManager.Instance.NightStart += HandleNightStart;
+    }
+    void OnEnable()
+    {
+        if (GameStateManager.Instance != null)
+        {
+            GameStateManager.Instance.DayStart += HandleDayStart;
+            GameStateManager.Instance.NightStart += HandleNightStart;
+        }
+    }
+    void OnDisable()
+    {
+        GameStateManager.Instance.DayStart -= HandleDayStart;
+        GameStateManager.Instance.NightStart -= HandleNightStart;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

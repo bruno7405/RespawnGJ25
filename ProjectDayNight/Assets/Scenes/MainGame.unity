@@ -14609,7 +14609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5008600889875816565, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: secondsPerGameDay
-      value: 300
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8726432498261460643, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_Name
@@ -20160,6 +20160,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CompanyManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3148634147436773430, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
+      propertyPath: exitPositions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148634147436773430, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
+      propertyPath: 'exitPositions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2099922319618854608}
+    - target: {fileID: 3148634147436773430, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
+      propertyPath: 'exitPositions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5341313489016250562}
     - target: {fileID: 8101702625085874308, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.71922

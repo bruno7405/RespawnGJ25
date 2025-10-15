@@ -9,7 +9,8 @@ public class SlackOff : State
 
     public override void OnExit()
     {
-        Debug.Log("Employee " + employee.Name + " finished slacking off");
+        //Debug.Log("Employee " + employee.Name + " finished slacking off");
+        employee.StopMoving();
         employee.StatusIcon.Hide();
     }
 

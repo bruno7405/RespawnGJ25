@@ -11,8 +11,7 @@ public class GameStateManager : StateMachineManager
 
     [Range(0f, 10f)]
     [SerializeField] float timeScale = 1f;
-    [SerializeField] List<Exit> exits = new();
-    public List<Exit> Exits => exits;
+
 
     // Day and Night
     [SerializeField] DayState dayState;
