@@ -85,11 +85,15 @@ public class EmployeeMotionManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        pathfinder = new();
+        currentSpeed = walkSpeed;
+    }
+
     void Awake()
     {
         currentPath = null;
         currentPathIndex = -1;
-        pathfinder = new();
-        currentSpeed = walkSpeed;
     }
 }

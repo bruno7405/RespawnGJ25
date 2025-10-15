@@ -518,6 +518,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3480227466653370804, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480227466653370804, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.minScalar
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4314555453150437806, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.65
@@ -557,6 +565,14 @@ PrefabInstance:
     - target: {fileID: 4314555453150437806, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926781132231200065, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926781132231200065, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12219,7 +12235,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3697390587089783605, guid: f3470c6680b590f44952212823d94192, type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4371654315421756032, guid: f3470c6680b590f44952212823d94192, type: 3}
       propertyPath: m_Name
@@ -14349,6 +14365,10 @@ PrefabInstance:
     - target: {fileID: 2488695767503819929, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008600889875816565, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
+      propertyPath: secondsPerGameDay
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8726432498261460643, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_Name

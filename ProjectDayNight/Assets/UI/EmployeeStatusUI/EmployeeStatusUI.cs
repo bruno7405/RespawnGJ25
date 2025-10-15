@@ -49,7 +49,7 @@ public class EmployeeStatusUI : MonoBehaviour
         uiParent.SetActive(false);
     }
 
-    private void OnEnable()
+    private void Start()
     {
         GameStateManager.Instance.NightStart += CloseUI;
         GameStateManager.Instance.DayStart += CloseUI;
