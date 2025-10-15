@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3681401084094989288}
   - component: {fileID: 6694046586468749851}
   - component: {fileID: 7261685093483583597}
+  - component: {fileID: 1771588322377159553}
   - component: {fileID: 4567622880730778418}
   - component: {fileID: 1797081734731424467}
   m_Layer: 7
@@ -115,6 +116,7 @@ MonoBehaviour:
   workingState: {fileID: 6694046586468749851}
   escapeState: {fileID: 8168128420069791238}
   sleepingState: {fileID: 7261685093483583597}
+  runningState: {fileID: 1771588322377159553}
   StateName: 0
   moraleDecreasePerDay: 5
   statusIcon: {fileID: 1047594324222384018}
@@ -186,6 +188,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a057b89bb87a042f4932540578af417e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sleeping
+  stateMachine: {fileID: 473684626684070313}
+  parent: {fileID: 780775935571918064}
+--- !u!114 &1771588322377159553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780775935571918064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30eeee95863f4df0b46cb32ec0a2b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Running
   stateMachine: {fileID: 473684626684070313}
   parent: {fileID: 780775935571918064}
 --- !u!114 &4567622880730778418

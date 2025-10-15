@@ -21,6 +21,7 @@ public class Running : State
     }
     void RunLoop()
     {
+        //Debug.Log($"RunLoop called on: {this}  (emp is: {employee})");
         employee.RunTo(GridManager.RandomWalkablePos(), RunLoop);
     }
 

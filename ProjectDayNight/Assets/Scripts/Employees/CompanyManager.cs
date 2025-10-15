@@ -26,6 +26,7 @@ public class CompanyManager : MonoBehaviour
     public int Money { get; private set; }
     public int Morale { get; private set; }
     public int NumEmployees { get; private set; }
+    [SerializeField] int minEscapists = 3;
     HashSet<Employee> employees = new();
     HashSet<Employee> runningEmployees = new();
     [SerializeField] int numExits = 2;
@@ -36,7 +37,9 @@ public class CompanyManager : MonoBehaviour
     {
         AddProfit();
         // Calculate # Escapists
-        int numEscapists = employees.Count - Mathf.Max(Morale - 1, 0) * employees.Count / 100;
+        if (minEscapists > NumEmployees)
+            throw new System.InvalidOperationException("minEscapists cannot be greater than startingNumEmployees!");
+        int numEscapists = Mathf.Max(employees.Count - Morale * employees.Count / 100, minEscapists);
         List<Employee> escapingEmployees = employees.OrderBy(e => e.Morale).Take(numEscapists).ToList();
         for (int i = 0; i < Mathf.Min(numExits, numEscapists); i++)
         {

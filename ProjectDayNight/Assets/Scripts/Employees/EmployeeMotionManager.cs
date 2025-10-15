@@ -89,8 +89,9 @@ public class EmployeeMotionManager : MonoBehaviour
         {
             currentPathIndex = -1;
             currentPath = null;
-            currentCallback?.Invoke();
-            currentCallback = null;
+            var cb = currentCallback;
+            currentCallback = null;   // clear first to avoid clobbering a new value set by cb
+            cb?.Invoke();
         }
     }
 
