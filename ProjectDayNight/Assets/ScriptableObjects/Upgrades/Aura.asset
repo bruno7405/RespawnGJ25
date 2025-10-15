@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30cff2a615912d340b2dde3b83651282, type: 3}
-  m_Name: Pizza Party
+  m_Name: Aura
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
-  upgradeName: Pizza Party
-  image: {fileID: 0}
-  description: Only one slice per person :)
-  category: 0
-  increasePercentage: 20
+  upgradeName: Aura
+  image: {fileID: -6248741079362886434, guid: cf145bc44569fa643815b2ade33ed6ee, type: 3}
+  description: Glow even brighter than before!
+  category: 4
+  increasePercentage: 30

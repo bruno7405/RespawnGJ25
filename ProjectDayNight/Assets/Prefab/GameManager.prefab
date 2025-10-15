@@ -662,11 +662,12 @@ MonoBehaviour:
   stateMachine: {fileID: 5008600889875816565}
   parent: {fileID: 8726432498261460643}
   upgrades:
+  - {fileID: 11400000, guid: 15d35b0acc7fa8e4688886cbd917a74b, type: 2}
   - {fileID: 11400000, guid: a31f5f9e86cd52a458d304d0120b4580, type: 2}
-  - {fileID: 11400000, guid: 943994eda766f024e8e995609b3877ba, type: 2}
+  - {fileID: 11400000, guid: 322898e3cf5f7224ab204276d3daade9, type: 2}
   - {fileID: 11400000, guid: 97a13145eea4b8d4cb1ad46064ee19fd, type: 2}
   - {fileID: 11400000, guid: a2e83d4041a3a904a88437573b3c3eb4, type: 2}
-  - {fileID: 11400000, guid: 15459c136b0e956499c38cba56e54c00, type: 2}
+  - {fileID: 11400000, guid: 943994eda766f024e8e995609b3877ba, type: 2}
   gameStatsUI: {fileID: 7160205052453299916}
   upgradesUI: {fileID: 5770766811389044910}
   dayState: {fileID: 1811495818559965897}
@@ -717,8 +718,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
   currentState: {fileID: 1811495818559965897}
-  secondsPerGameDay: 20
+  secondsPerGameDay: 10
   timeScale: 1
+  exits: []
   dayState: {fileID: 1811495818559965897}
   nightState: {fileID: 2758786526998476788}
 --- !u!1001 &3006790570757385113

@@ -4,6 +4,9 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class PlayerAttack : MonoBehaviour
 {
+    private static PlayerAttack instance;
+    public static PlayerAttack Instance => instance;
+
     public static bool canAttack = true;
 
     [SerializeField] private float attackRange = 2f;
@@ -15,6 +18,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else instance = this;
+
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -64,7 +73,10 @@ public class PlayerAttack : MonoBehaviour
             // Kill employee
             nearestEmployee.GetComponent<Employee>().KillEmployee();
         }
+    }
 
-
+    public void IncreaseRange(int percentage)
+    {
+        attackRange += attackRange * (percentage / 100f);
     }
 }

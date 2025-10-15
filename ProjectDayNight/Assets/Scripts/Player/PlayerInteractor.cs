@@ -3,12 +3,26 @@ using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
 {
+    private static PlayerInteractor instance;
+    public static PlayerInteractor Instance => instance;
+
     [SerializeField] private float interactionRange = 2f;
     [SerializeField] LayerMask interactableLayer;
     [SerializeField] Transform nearestInteractable = null;
+    [SerializeField] CircleCollider2D interactionCollider;
 
     private List<Transform> interactablesInRange = new List<Transform>();
-    private float nearestDistance = Mathf.Infinity;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else instance = this;
+
+        interactionCollider.radius = interactionRange;
+    }
 
     private void Update()
     {
@@ -56,6 +70,12 @@ public class PlayerInteractor : MonoBehaviour
         collision.gameObject.GetComponent<HighlightController>()?.DeHighlight();
         interactablesInRange.Remove(collision.transform);
         SelectNearestInteractable();
+    }
+
+    public void IncreaseRange(int percentage)
+    {
+        interactionRange += interactionRange * (percentage / 100f);
+        interactionCollider.radius = interactionRange;
     }
 
     private void OnDrawGizmos()

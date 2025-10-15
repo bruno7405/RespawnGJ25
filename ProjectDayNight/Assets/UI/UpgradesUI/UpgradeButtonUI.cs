@@ -25,23 +25,26 @@ public class UpgradeButtonUI : MonoBehaviour
         title.text = upgrade.name;
         image.sprite = upgrade.image;
         description.text = upgrade.description;
-        statText.text = "Increases " + upgrade.stat + " by " + upgrade.increasePercentage.ToString() + "%";
 
-        int randomVal = (int)Random.Range(0, 2);
-        if (randomVal == 0) 
-        switch (randomVal)
+        // set stat text based on upgrade category
+        switch (upgrade.category)
         {
-            case 0:
-                button.image.color = new Color(243, 222, 138);
+            case Upgrade.Category.playerSpeed: // increase speed
+                statText.text = "+" + upgrade.increasePercentage.ToString() + "% " + "walk speed";
                 break;
-            case 1:
-                button.image.color = new Color(163, 185, 201);
+            case Upgrade.Category.playerInteractRange: // increase range
+                statText.text = "+" + upgrade.increasePercentage.ToString() + "% " + "range";
                 break;
-            case 2:
-                button.image.color = new Color(163, 201, 198);
+            case Upgrade.Category.playerLightRange: // increase view distance (night time)
+                statText.text = "+" + upgrade.increasePercentage.ToString() + "% " + "light";
                 break;
-
-            }
+            case Upgrade.Category.morale: // increase morale
+                statText.text = "+" + upgrade.increasePercentage.ToString() + " morale";
+                break;
+            case Upgrade.Category.productivity: // increase revenue
+                statText.text = "+" + upgrade.increasePercentage.ToString() + "% " + "revenue";
+                break;
+        }
     }
 
     private void OnUpgradeChosen()

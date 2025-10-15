@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30cff2a615912d340b2dde3b83651282, type: 3}
-  m_Name: False Promises
+  m_Name: Long Arms
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
-  upgradeName: False Promises
+  upgradeName: Longer Arms
   image: {fileID: 0}
-  description: Promise of promotions that never come. Efficiency skyrockets.
-  stat: 0
-  increasePercentage: 30
+  description: Well that's quite Fantastic ain't it.
+  category: 3
+  increasePercentage: 15

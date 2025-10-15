@@ -13,7 +13,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else instance = this;
+
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -27,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
     {
         v.Normalize();
         movementVector = v;
+    }
+
+    public void IncreaseSpeed(int percentage)
+    {
+        speed *= (1 + (percentage / 100f));
     }
 
     public void EnableMovement()

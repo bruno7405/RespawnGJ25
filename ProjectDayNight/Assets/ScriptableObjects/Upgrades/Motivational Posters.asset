@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cff2a615912d340b2dde3b83651282, type: 3}
   m_Name: Motivational Posters
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
-  upgradeName: Motivational Posters
+  upgradeName: Live Laugh Love
   image: {fileID: 0}
-  description: Do it for the greater good of our company!
-  stat: 1
-  increasePercentage: 5
+  description: Great! You found a motivational poster in the storage. Your employees
+    feel inspired.
+  category: 1
+  increasePercentage: 15

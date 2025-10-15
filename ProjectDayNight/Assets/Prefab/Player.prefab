@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1640505563303639788}
   - component: {fileID: 6270378191802059379}
   - component: {fileID: 7943279457384505637}
+  - component: {fileID: 8209324841714525342}
   - component: {fileID: 4415819830616553841}
   m_Layer: 3
   m_Name: Player
@@ -126,6 +127,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimationManager
   animator: {fileID: 5827223528021044994}
   sprite: {fileID: 7368155345430076440}
+--- !u!114 &8209324841714525342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283124064015858482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cbc4da8a89d6642945204c94021c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisibility
+  playerLight: {fileID: 1085757895247878279}
 --- !u!58 &4415819830616553841
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -442,9 +456,9 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.867
+  m_FalloffIntensity: 1
   m_Color: {r: 0.39650932, g: 0.39308167, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 000000006931f4d3a3b05a09190c6d5ed58b56190db83077
@@ -468,7 +482,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 4.47
+  m_PointLightOuterRadius: 6
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -529,6 +543,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   nearestInteractable: {fileID: 0}
+  interactionCollider: {fileID: 8453000397385494492}
 --- !u!58 &8453000397385494492
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -564,4 +579,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2
+  m_Radius: 1
