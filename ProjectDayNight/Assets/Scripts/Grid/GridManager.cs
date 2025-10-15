@@ -129,13 +129,6 @@ public class GridManager : MonoBehaviour
         return FloorTilemap.CellToWorld((Vector3Int)coord) + FloorTilemap.cellSize / 2;
     }
 
-    // Lazy implementation, relies on unit size tilemap tiles
-    public static Vector2 WorldTileCenter(Vector2 worldCoord)
-    {
-        NullCheck();
-        return Vector2Int.RoundToInt(worldCoord) + (Vector2)FloorTilemap.cellSize / 2;
-    }
-
     public static Vector2 RandomWalkablePos()
     {
         int x, y;

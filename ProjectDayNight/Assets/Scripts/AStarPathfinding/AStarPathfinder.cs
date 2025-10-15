@@ -24,7 +24,7 @@ public class AStarPathfinder
             throw new Exception("GridManager not initialized. Please load grid.");
     }
 
-    public List<Vector2Int> FindPath(Vector2Int start, Vector2Int goal)
+    public List<Vector2> FindPath(Vector2Int start, Vector2Int goal)
     {
         //Debug.Log(start);
         //Debug.Log(GridManager.GroundTilemap.CellToWorld((Vector3Int)start));
@@ -94,13 +94,13 @@ public class AStarPathfinder
         return dx + dy + (SQRT2 - 2f) * Mathf.Min(dx, dy);
     }
 
-    private static List<Vector2Int> ReconstructPath(Node end)
+    private static List<Vector2> ReconstructPath(Node end)
     {
-        var path = new List<Vector2Int>();
+        var path = new List<Vector2>();
         Node current = end;
         while (current != null)
         {
-            path.Add(current.position);
+            path.Add(GridManager.WorldTileCenter(current.position));
             current = current.parent;
         }
         path.Reverse();

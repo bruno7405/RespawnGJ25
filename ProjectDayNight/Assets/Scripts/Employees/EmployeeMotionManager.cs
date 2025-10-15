@@ -9,12 +9,13 @@ public class EmployeeMotionManager : MonoBehaviour
     [SerializeField] private float runSpeed;
     public float RunSpeed => runSpeed;
     private AStarPathfinder pathfinder;
-    private List<Vector2Int> currentPath;
+    private List<Vector2> currentPath;
     private int currentPathIndex;
     private float currentSpeed;
     private Action currentCallback;
 
-    public bool IsMoving => currentPath != null;
+    public bool IsMoving => currentPath != null && currentPathIndex != -1;
+    public bool IsMovingLeft => IsMoving && (currentPath[currentPathIndex].x < transform.position.x);
 
     /// <summary>
     /// Makes employee walk to location
@@ -70,14 +71,14 @@ public class EmployeeMotionManager : MonoBehaviour
     {
         if (currentPath == null || currentPathIndex == -1) return;
 
-        Vector2Int nextPos = currentPath[currentPathIndex];
+        Vector2 nextPos = currentPath[currentPathIndex];
         Vector2 employeePos = transform.position;
-        if (Vector2.Distance(employeePos, GridManager.WorldTileCenter(nextPos)) > 0.01f)
+        if (Vector2.Distance(employeePos, nextPos) > 0.01f)
         {
             float maxMove = currentSpeed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(
                 employeePos,
-                GridManager.WorldTileCenter(nextPos),
+                nextPos,
                 maxMove
             );
         }
