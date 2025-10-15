@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 87bc78cbb51cf0a40b0745513b0e9bc9
+guid: 1c0374ea5d1644d449e423413d865133
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8066275590162245913
-    second: Wall Decor 5_0
+      213: -9092473551223977699
+    second: Escape Door_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wall Decor 5_0
+      name: Escape Door_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 11
+        width: 11
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 919660c89ea21ff60800000000000000
-      internalID: 8066275590162245913
+      spriteID: d1909a9aa7b01d180800000000000000
+      internalID: -9092473551223977699
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Wall Decor 5_0: 8066275590162245913
+      Escape Door_0: -9092473551223977699
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
