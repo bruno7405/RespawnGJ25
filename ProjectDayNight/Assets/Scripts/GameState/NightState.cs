@@ -48,6 +48,8 @@ public class NightState : State
         AudioManager.Instance.PlayBackgroundMusic("NightSong");
         blackScreenUI.FadeOut();
 
+        yield return new WaitForSeconds(1f);
+
         // UI Popup
         InformationPopupUI.Instance.DisplayText("EMPLOYEES ARE TRYING TO ESCAPE", false);
     }

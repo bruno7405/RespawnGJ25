@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7985810253115137285
 RectTransform:
   m_ObjectHideFlags: 0
@@ -354,8 +354,8 @@ MonoBehaviour:
   animator: {fileID: 1302808053027424092}
   popupTMP: {fileID: 5491158807051408509}
   backgroundImage: {fileID: 2544211826831723508}
-  displayDuration: 3
+  displayDuration: 2
   dayTextColor: {r: 0.3529412, g: 0.8392157, b: 1, a: 1}
   dayBackgroundColor: {r: 0, g: 0, b: 0, a: 0.9019608}
-  nightTextColor: {r: 1, g: 0.24213827, b: 0.24213827, a: 1}
-  nightBackgroundColor: {r: 0.7484276, g: 0.7484276, b: 0.7484276, a: 0.9019608}
+  nightTextColor: {r: 0.6415094, g: 0.21181908, b: 0.21181908, a: 1}
+  nightBackgroundColor: {r: 0.12578613, g: 0.12578613, b: 0.12578613, a: 0.9019608}
