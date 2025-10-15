@@ -139,5 +139,6 @@ public class Employee : StateMachineManager
     {
         base.Start();
         CompanyManager.Instance.RegisterEmployee(this);
+        GameStateManager.Instance.NightStart += HandleNightStart;
     }
 }
