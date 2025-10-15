@@ -67,6 +67,13 @@ public class CompanyManager : MonoBehaviour
             emp.Morale += delta;
         }
     }
+    public void ChangeCompanyRevenue(int delta)
+    {
+        foreach (var emp in employees)
+        {
+            emp.Revenue += delta;
+        }
+    }
     public int GetProfit()
     {
         int totalProfit = 0;

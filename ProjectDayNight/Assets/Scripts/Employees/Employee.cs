@@ -21,8 +21,7 @@ public class Employee : StateMachineManager
     [SerializeField] EmployeeMotionManager motionManager;
     [SerializeField] int wage;
     public int Wage => wage;
-    [SerializeField] int revenue;
-    public int Revenue => revenue;
+    public int Revenue;
     [SerializeField] int morale;
     public const int MAX_MORALE = 100;
     public bool readyForJob;
@@ -52,7 +51,7 @@ public class Employee : StateMachineManager
     /// <returns>Profit made by employee for one day</returns>
     public int ProfitMade()
     {
-        return Sleeping ? -wage : revenue - wage;
+        return Sleeping ? -wage : Revenue - wage;
     }
     public void KillEmployee()
     {
@@ -129,7 +128,7 @@ public class Employee : StateMachineManager
         }
         gameObject.name = "Employee_" + employeeName;
         wage = type.BaseSalary;
-        revenue = type.BaseRevenue;
+        Revenue = type.BaseRevenue;
         morale = type.BaseMorale;
         readyForJob = false;
         CompanyManager.Instance?.UpdateMorale(morale);
