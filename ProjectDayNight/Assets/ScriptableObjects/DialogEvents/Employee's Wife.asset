@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
   m_Name: Employee's Wife
   m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
-  npcName: 
+  npcName: Employee's Wife
   lines:
-  - npcLine: 
+  - npcLine: My husband forgot his food at home. Can I come in and give it to him?
     choices:
-    - choiceText: 
+    - choiceText: Sorry, he just left on an errand. I can hold onto the food until
+        he gets back.
+      isCorrect: 1
+    - choiceText: "He doesn\u2019t deserve food!"
       isCorrect: 0
-    - choiceText: 
-      isCorrect: 0
-  - npcLine: 
+  - npcLine: "Oh, I\u2019ll just wait here then\u2026"
     choices:
-    - choiceText: 
-      isCorrect: 0
-    - choiceText: 
+    - choiceText: "It\u2019s gonna take a while, and I\u2019m sure you have other
+        things to do. I\u2019ll let him know that you stopped by."
+      isCorrect: 1
+    - choiceText: Get off my property!
       isCorrect: 0

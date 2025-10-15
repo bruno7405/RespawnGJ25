@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
   m_Name: Building Security
   m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
-  npcName: 
+  npcName: Building Security
   lines:
-  - npcLine: 
+  - npcLine: "Hi, I\u2019m just making the rounds. How are you guys doing up here?"
     choices:
-    - choiceText: 
+    - choiceText: Great! Thanks for stopping by.
+      isCorrect: 1
+    - choiceText: Uh, hi, everything is totally normal up here. Nothing weird going
+        on, pal.
       isCorrect: 0
-    - choiceText: 
-      isCorrect: 0
-  - npcLine: 
+  - npcLine: Can I come in?
     choices:
-    - choiceText: 
-      isCorrect: 0
-    - choiceText: 
+    - choiceText: I heard a ruckus on the floor above us. You might want to go check
+        that instead.
+      isCorrect: 1
+    - choiceText: "NO- I mean\u2026No? I am totally not hiding anything\u2026"
       isCorrect: 0

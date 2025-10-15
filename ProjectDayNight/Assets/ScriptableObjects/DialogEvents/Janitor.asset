@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
   m_Name: Janitor
   m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
-  npcName: 
+  npcName: Janitor
   lines:
-  - npcLine: 
+  - npcLine: I am here to clean the office.
     choices:
-    - choiceText: 
+    - choiceText: We are about to have a meeting. Could you come by later?
+      isCorrect: 1
+    - choiceText: "We don\u2019t need you. Leave!"
       isCorrect: 0
-    - choiceText: 
-      isCorrect: 0
-  - npcLine: 
+  - npcLine: "But I am here now. Can\u2019t I just come in?"
     choices:
-    - choiceText: 
-      isCorrect: 0
-    - choiceText: 
+    - choiceText: "Don\u2019t worry, I just had my intern do it. But thanks for stopping
+        by."
+      isCorrect: 1
+    - choiceText: Too bad. Walking up the stairs is good for cardio.
       isCorrect: 0

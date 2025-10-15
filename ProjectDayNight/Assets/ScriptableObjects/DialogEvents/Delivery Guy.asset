@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
   m_Name: Delivery Guy
   m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
-  npcName: 
+  npcName: Delivery Guy
   lines:
-  - npcLine: 
+  - npcLine: Hi, I have a package downstairs. Where can I drop it off?
     choices:
-    - choiceText: 
+    - choiceText: You can just give it to me!
+      isCorrect: 1
+    - choiceText: "Is it my new \u2018staple\u2019 gun? *cackles*"
       isCorrect: 0
-    - choiceText: 
-      isCorrect: 0
-  - npcLine: 
+  - npcLine: "It\u2019s kind of heavy\u2026"
     choices:
-    - choiceText: 
-      isCorrect: 0
-    - choiceText: 
+    - choiceText: No problem! I go to the gym.
+      isCorrect: 1
+    - choiceText: "I could have my interns help\u2026But I would have to let them
+        out\u2026"
       isCorrect: 0
