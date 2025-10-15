@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] Transform nearestInteractable = null;
     [SerializeField] CircleCollider2D interactionCollider;
 
+    [SerializeField] GameObject informationUI; // pops up when near an interactable
+
     private List<Transform> interactablesInRange = new List<Transform>();
 
     private void Awake()
@@ -22,6 +25,7 @@ public class PlayerInteractor : MonoBehaviour
         else instance = this;
 
         interactionCollider.radius = interactionRange;
+        informationUI.SetActive(false);
     }
 
     private void Update()
@@ -34,6 +38,7 @@ public class PlayerInteractor : MonoBehaviour
         if (interactablesInRange.Count == 0)
         {
             nearestInteractable = null;
+            informationUI.SetActive(false);
             return;
         }
 
@@ -50,6 +55,9 @@ public class PlayerInteractor : MonoBehaviour
         }
 
         nearestInteractable?.GetComponent<HighlightController>()?.Highlight();
+        informationUI.SetActive(true);
+        var pos = nearestInteractable.position;
+        informationUI.transform.position = new Vector2(pos.x, nearestInteractable.GetComponent<SpriteRenderer>().bounds.min.y - 0.15f);
     }
 
     public void Interact()
