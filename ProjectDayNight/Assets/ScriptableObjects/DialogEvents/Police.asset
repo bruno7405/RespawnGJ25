@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
   m_Name: Police
   m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
-  npcName: Cop
+  npcName: Police
   lines:
   - npcLine: Hey, we got a concerned call that your employees are locked inside.
     choices:

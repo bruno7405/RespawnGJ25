@@ -40,7 +40,7 @@ public class StatusIcon : MonoBehaviour
         if (Active) return;
         gameObject.SetActive(true);
         StartCoroutine(AnimatePopFadeIn(easeFadeInOut));
-        // StartCoroutine(AnimateBounce());
+        StartCoroutine(AnimateBounce());
     }
 
     public void Hide()

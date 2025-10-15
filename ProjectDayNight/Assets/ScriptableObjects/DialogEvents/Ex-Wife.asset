@@ -12,17 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
   m_Name: Ex-Wife
   m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
-  npcName: 
+  npcName: Ex-Wife
   lines:
-  - npcLine: 
+  - npcLine: "I forgot how much your face irritates me\u2026Anyways, I am here for
+      the house key."
     choices:
-    - choiceText: 
+    - choiceText: "Honey- I mean\u2026Nevermind. The keys are on my desk. I\u2019ll
+        bring them later."
+      isCorrect: 1
+    - choiceText: "If it isn\u2019t the apple of my eye\u2026I have the keys inside,
+        but I don\u2019t have the will to get them."
       isCorrect: 0
-    - choiceText: 
-      isCorrect: 0
-  - npcLine: 
+  - npcLine: I can just come in and grab them. Move!
     choices:
-    - choiceText: 
-      isCorrect: 0
-    - choiceText: 
+    - choiceText: We are swamped. I promise I will bring them soon.
+      isCorrect: 1
+    - choiceText: "So you can scare my interns and give them ideas about escaping-
+        I mean, leaving? I don\u2019t think so. Be gone, witch!"
       isCorrect: 0

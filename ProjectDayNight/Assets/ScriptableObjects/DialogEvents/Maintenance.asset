@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d3b4398f30c7044999c60afbf2cda7, type: 3}
   m_Name: Maintenance
   m_EditorClassIdentifier: Assembly-CSharp::DialogEvent
-  npcName: 
+  npcName: Maintenance
   lines:
-  - npcLine: 
+  - npcLine: I am here to change the air filters!
     choices:
-    - choiceText: 
+    - choiceText: Oh, already?
+      isCorrect: 1
+    - choiceText: "We don\u2019t need fresh air."
       isCorrect: 0
-    - choiceText: 
-      isCorrect: 0
-  - npcLine: 
+  - npcLine: I have to change them regularly. Building policy.
     choices:
-    - choiceText: 
-      isCorrect: 0
-    - choiceText: 
+    - choiceText: They were just changed the other day! But thank you!
+      isCorrect: 1
+    - choiceText: "We\u2019ll just open the windows! Leave!"
       isCorrect: 0
