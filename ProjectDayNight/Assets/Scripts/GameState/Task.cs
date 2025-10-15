@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameEvent : MonoBehaviour, IInteractable
+public class Task : MonoBehaviour, IInteractable
 {
     [Range(10, 120)]
     [SerializeField] private int eventDuration;

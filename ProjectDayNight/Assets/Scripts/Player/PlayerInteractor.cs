@@ -33,7 +33,7 @@ public class PlayerInteractor : MonoBehaviour
         SelectNearestInteractable();
     }
 
-    private void SelectNearestInteractable()
+    public void SelectNearestInteractable()
     {
         if (interactablesInRange.Count == 0)
         {
@@ -84,6 +84,22 @@ public class PlayerInteractor : MonoBehaviour
     {
         interactionRange += interactionRange * (percentage / 100f);
         interactionCollider.radius = interactionRange;
+    }
+
+    public void AddInteractable(Transform t)
+    {
+        if (interactablesInRange.Contains(t)) return;
+        if (t.gameObject.layer != 6) return;
+
+        if (Vector2.Distance(transform.position, t.position) <= interactionRange)
+        {
+            interactablesInRange.Add(t);
+        }
+    }
+
+    public void RemoveInteractable(Transform t)
+    {
+        interactablesInRange.Remove(t);
     }
 
     private void OnDrawGizmos()

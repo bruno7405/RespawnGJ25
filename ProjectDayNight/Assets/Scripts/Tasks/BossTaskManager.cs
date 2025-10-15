@@ -13,15 +13,15 @@ public class BossTaskManager : MonoBehaviour
     [SerializeField] private int maxTaskQueueTime;
     private float timeSinceTask;
 
-    private List<GameEvent> standardTasks;
-    private IEnumerator<GameEvent> standardTaskEnumerator;
+    private List<Task> standardTasks;
+    private IEnumerator<Task> standardTaskEnumerator;
     private List<DialogEventInteractable> dialogEvents;
     private IEnumerator<DialogEventInteractable> dialogEventEnumerator;
 
-    private Queue<GameEvent> queuedEvents;
+    private Queue<Task> queuedEvents;
     private float nextQueueTime;
 
-    public List<GameEvent> ActiveTasks { get; private set; }
+    public List<Task> ActiveTasks { get; private set; }
 
     // 3 on Day 1, 5 on Day 2, 7 on Day 3
     public int StandardTasksToday => Mathf.Min(GameStateManager.Instance.CurrentDay + 1, 4);
@@ -39,7 +39,7 @@ public class BossTaskManager : MonoBehaviour
 
     void QueueTasks()
     {
-        List<GameEvent> selectedEvents = new(new GameEvent[TotalTasksToday]);
+        List<Task> selectedEvents = new(new Task[TotalTasksToday]);
         for (int i = 0; i < StandardTasksToday; i++)
         {
             if (!standardTaskEnumerator.MoveNext()) throw new InvalidOperationException("Not enough standard tasks.");

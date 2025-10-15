@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class BossTask : GameEvent
+public class BossTask : Task
 {
     [SerializeField] private string description;
     [SerializeField] private SpriteRenderer sr;

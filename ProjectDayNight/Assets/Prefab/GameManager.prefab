@@ -237,8 +237,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DayState
   stateMachine: {fileID: 5008600889875816565}
   parent: {fileID: 8726432498261460643}
+  timeBetweenTasks: 10
+  dialogEvents:
+  - {fileID: 11400000, guid: de9ec30b3ea43b0428c1b606eb25c9ab, type: 2}
+  - {fileID: 11400000, guid: e984b2afeaf01ab498c1e99d3cc3b592, type: 2}
+  - {fileID: 11400000, guid: 86970deda62ef448e942325d3295ab7b, type: 2}
+  - {fileID: 11400000, guid: 9ea6da82966a14395ba44fcc01cf890b, type: 2}
+  - {fileID: 11400000, guid: f3da32eb7e7954bf5ba1a08270d309bc, type: 2}
+  - {fileID: 11400000, guid: b7a7fcda1ad724acda0c8d182ff29186, type: 2}
+  - {fileID: 11400000, guid: d756da0c2b1c24eef88377a6fa46a062, type: 2}
+  - {fileID: 11400000, guid: 178823fda7c294430a65ae8470927b78, type: 2}
+  - {fileID: 11400000, guid: 62e90252729354721a3c8b5a960b8a6e, type: 2}
   nightState: {fileID: 2758786526998476788}
   timeUI: {fileID: 4577962519221747203}
+  bossTaskManager: {fileID: 0}
 --- !u!1 &3955312989305387470
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,9 +730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
   currentState: {fileID: 1811495818559965897}
-  secondsPerGameDay: 10
+  secondsPerGameDay: 120
   timeScale: 1
-  exits: []
   dayState: {fileID: 1811495818559965897}
   nightState: {fileID: 2758786526998476788}
 --- !u!1001 &3006790570757385113
