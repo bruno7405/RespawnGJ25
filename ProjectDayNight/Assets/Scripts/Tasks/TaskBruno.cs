@@ -24,7 +24,6 @@ public class TaskBruno : MonoBehaviour, IInteractable
     void Start()
     {
         informationPopupUI = InformationPopupUI.Instance;
-        MinimapManager.Instance.RegisterTask(this);
     }
 
     void Update()
@@ -54,6 +53,7 @@ public class TaskBruno : MonoBehaviour, IInteractable
         // SFX
 
         informationPopupUI.DisplayText(eventName, true);
+        MinimapManager.Instance.RegisterTask(this);
     }
 
     protected virtual void FailTask()

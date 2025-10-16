@@ -8879,6 +8879,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5008600889875816565, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
+      propertyPath: secondsPerGameDay
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 7014008458221956702, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

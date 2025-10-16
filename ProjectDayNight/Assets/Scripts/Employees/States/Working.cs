@@ -55,7 +55,7 @@ public class Working : State
         }
 
         currentJob = newJob;
-        Debug.Log("Employee " + employee.Name + " starting " + currentJob.Name + " at " + currentJob.Location + " for " + currentJob.Duration + " seconds");
+        //Debug.Log("Employee " + employee.Name + " starting " + currentJob.Name + " at " + currentJob.Location + " for " + currentJob.Duration + " seconds");
         employee.WalkTo(currentJob.Location, () => StartCoroutine(CompleteTask()), true);
     }
 
