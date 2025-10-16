@@ -64,7 +64,7 @@ public class Employee : StateMachineManager
             throw new InvalidOperationException("Can only kill employees at night!");
         if (StateName == EmployeeState.Running || StateName == EmployeeState.Escaping)
         {
-            CompanyManager.Instance.NumEscapists--;
+            CompanyManager.Instance.NumRunners--;
         }
         currentState?.OnExit();
         currentState = deathState;

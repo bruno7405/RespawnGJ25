@@ -18,6 +18,8 @@ public class Escape : State
     public override void OnExit()
     {
         exit.Occupied = false;
+        CompanyManager.Instance.Escaping = false;
+
     }
 
     public override void OnStart()
@@ -26,11 +28,17 @@ public class Escape : State
         {
             throw new System.InvalidOperationException("Escape state started without an exit assigned!");
         }
+        if (CompanyManager.Instance.Escaping)
+        {
+            throw new System.InvalidOperationException("Another employee is already escaping!");
+        }
+        CompanyManager.Instance.Escaping = true;
         exit.Occupied = true;
         Debug.Log("Employee " + employee.Name + " is escaping");
         timer = 0f;
         employee.StateName = EmployeeState.Escaping;
         EmployeeStatusUI.Instance.UpdateUI();
+        InformationPopupUI.Instance.DisplayText(employee.Name + " is at the exit. Stop them before they escape", false, 2f);
     }
 
     public override void OnUpdate()

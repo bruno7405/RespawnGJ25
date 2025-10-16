@@ -15,7 +15,7 @@ public class InformationPopupUI : MonoBehaviour
     [SerializeField] Image backgroundImage;
 
     [Header("Params")]
-    [SerializeField] float displayDuration = 3f;
+    const float displayDuration = 3f;
     [SerializeField] Color dayTextColor;
     [SerializeField] Color dayBackgroundColor;
     [SerializeField] Color nightTextColor;
@@ -38,12 +38,12 @@ public class InformationPopupUI : MonoBehaviour
         StartCoroutine(DisplaySequence(text, isDay));
     }
 
-    public void DisplayText(string text, bool isDay, Color textColor)
+    public void DisplayText(string text, bool isDay, float duration = displayDuration)
     {
-        StartCoroutine(DisplaySequence(text, isDay, textColor));
+        StartCoroutine(DisplaySequence(text, isDay, duration));
     }
 
-    private IEnumerator DisplaySequence(string text, bool isDay)
+    private IEnumerator DisplaySequence(string text, bool isDay, float duration = displayDuration)
     {
         root.SetActive(true);
         popupTMP.text = text;
@@ -59,7 +59,7 @@ public class InformationPopupUI : MonoBehaviour
             popupTMP.color = new Color(nightTextColor.r, nightTextColor.g, nightTextColor.b, nightTextColor.a);
         }
 
-        yield return new WaitForSeconds(displayDuration);
+        yield return new WaitForSeconds(duration);
 
         animator.SetTrigger("slideOut");
 

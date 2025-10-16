@@ -40,7 +40,7 @@ public class NightState : State
         timeElapsed += Time.deltaTime;
         timeUI.SetTimeElasped(timeElapsed, false);
 
-        if (CompanyManager.Instance.NumEscapists <= 0)
+        if (CompanyManager.Instance.NumRunners <= 0)
         {
             stateMachine.SetNewState(endState);
         }

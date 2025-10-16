@@ -2,21 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Unity.Collections;
+using System.Collections;
 
 public class Exit
 {
     public Vector2 position;
-    private bool occupied;
-    public bool Occupied
-    {
-        get => occupied;
-        set
-        {
-            occupied = value;
-            if (occupied || GameStateManager.Instance.currentState != GameStateManager.Instance.NightState) return;
-            CompanyManager.Instance.AssignEmployeeToExit(this);
-        }
-    }
+    public bool Occupied;
 }
 public class CompanyManager : MonoBehaviour
 {
@@ -32,7 +23,12 @@ public class CompanyManager : MonoBehaviour
     [SerializeField] int numExits = 2;
     [SerializeField] Transform[] exitPositions;
     Exit[] exits;
-    public int NumEscapists;
+    public int NumRunners;
+    public int NumEscapists = 0;
+    [SerializeField] float minEscapeInterval = 10f;
+    [SerializeField] float maxEscapeInterval = 30f;
+    public bool Escaping = false;
+
 
     void HandleNightStart()
     {
@@ -40,22 +36,36 @@ public class CompanyManager : MonoBehaviour
         // Calculate # Escapists
         if (minEscapists > NumEmployees)
             throw new System.InvalidOperationException("minEscapists cannot be greater than startingNumEmployees!");
-        NumEscapists = Mathf.Max(employees.Count - Morale * employees.Count / 100, minEscapists);
-        List<Employee> escapingEmployees = employees.OrderBy(e => e.Morale).Take(NumEscapists).ToList();
-        for (int i = 0; i < Mathf.Min(numExits, NumEscapists); i++)
+        NumRunners = Mathf.Max(employees.Count - Morale * employees.Count / 100, minEscapists);
+        runningEmployees = new(employees.OrderBy(e => e.Morale).Take(NumRunners));
+        foreach (var emp in runningEmployees)
         {
-            escapingEmployees[i].transform.position = exits[i].position;
-            escapingEmployees[i].StartEscape(exits[i]);
+            emp.SetNewState(emp.RunningState);
         }
-        for (int i = numExits; i < NumEscapists; i++)
+        StartCoroutine(EscapeLoop());
+    }
+    IEnumerator EscapeLoop()
+    {
+        if (GameStateManager.Instance.currentState != GameStateManager.Instance.NightState)
         {
-            escapingEmployees[i].SetNewState(escapingEmployees[i].RunningState);
+            yield break; // only run at night
+        }
+        while (NumRunners > 0)
+        {
+            // 1. Wait random time
+            float waitTime = Random.Range(minEscapeInterval, maxEscapeInterval);
+            yield return new WaitForSeconds(waitTime);
+
+            if (NumRunners <= 0) yield break;
+            if (Escaping) continue;
+            AssignEmployeeToExit();
         }
     }
-    public void AssignEmployeeToExit(Exit exit)
+    public void AssignEmployeeToExit()
     {
         if (runningEmployees.Count == 0) return;
         Employee emp = runningEmployees.First();
+        Exit exit = exits[Random.Range(0, numExits)];
         emp.RunTo(exit.position, () => emp.StartEscape(exit));
     }
     void HandleDayStart()
