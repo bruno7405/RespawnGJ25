@@ -15,6 +15,9 @@ public class PlayerAttack : MonoBehaviour
     Transform nearestEmployee;
 
     Rigidbody2D rb;
+    Vector2 raycastHitPoint = new Vector2(100, 100);
+
+    GameStateManager gameManager;
 
     private void Awake()
     {
@@ -25,6 +28,11 @@ public class PlayerAttack : MonoBehaviour
         else instance = this;
 
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        gameManager = GameStateManager.Instance;
     }
 
     public void Attack()
@@ -58,22 +66,13 @@ public class PlayerAttack : MonoBehaviour
         if (nearestEmployee != null)
         {
             // Move player
-            Vector2 direction = nearestEmployee.position - transform.position;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, nearestDistance * 2, wallLayer);
-            if (hit) // If there's a wall in the way, move towards the wall instead
-            {
-                Vector2 d = (hit.point - (Vector2) transform.position) * 0.8f;
-                transform.position += new Vector3(d.x, d.y, 0);
-            }
-            else // Teleport twice the distance towards the employee
-            {
-                transform.position += new Vector3(direction.x * 2, direction.y * 2, 0);
-            }
+            Vector2 direction = (nearestEmployee.position - transform.position) * 0.9f;
+            transform.position += (Vector3) direction;
 
             // Kill employee
             var employee = nearestEmployee.GetComponent<Employee>();
             // TODO VERY UNSEMANTIC, THIS IS ALL IN ATTACK METHOD/FILE
-            if (GameStateManager.Instance.IsDay) employee.KillEmployee();
+            if (gameManager.IsDay) employee.KillEmployee();
             else employee.UrgeWork();
         }
     }
@@ -81,5 +80,11 @@ public class PlayerAttack : MonoBehaviour
     public void IncreaseRange(int percentage)
     {
         attackRange += attackRange * (percentage / 100f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(raycastHitPoint, 0.05f);
     }
 }

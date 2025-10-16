@@ -10,6 +10,18 @@ public class NightState : State
     [SerializeField] TimeUI timeUI;
     [SerializeField] BlackScreenUI blackScreenUI;
 
+    // Singleton References
+    AudioManager audioManager;
+    VisualsManager visualsManager;
+    InformationPopupUI informationPopupUI;
+
+    private void Start()
+    {
+        audioManager = AudioManager.Instance;
+        visualsManager = VisualsManager.Instance;
+        informationPopupUI = InformationPopupUI.Instance;
+    }
+
     public override void OnStart()
     {
         Debug.Log("night state");
@@ -40,18 +52,18 @@ public class NightState : State
     {
         // Lights off
         blackScreenUI.Black();
-        VisualsManager.Instance?.LightsOff();
-        // Lights off sound effect
+        visualsManager.LightsOff();
+        audioManager.PlayOneShot("LightSwitch", 0.1f);
 
         yield return new WaitForSeconds(2f);
 
-        AudioManager.Instance.PlayBackgroundMusic("NightSong");
+        audioManager.PlayBackgroundMusic("NightSong");
         blackScreenUI.FadeOut();
 
         yield return new WaitForSeconds(1f);
 
         // UI Popup
-        InformationPopupUI.Instance.DisplayText("EMPLOYEES ARE TRYING TO ESCAPE", false);
+        informationPopupUI.DisplayText("EMPLOYEES ARE TRYING TO ESCAPE", false);
     }
 
     public override void OnExit()
