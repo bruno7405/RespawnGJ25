@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,12 +6,17 @@ public class UpgradeState : State
 {
     [SerializeField] List<Upgrade> upgrades = new();
 
-    [SerializeField] GameStatsUI gameStatsUI;
+    [SerializeField] EndOfDayStatsUI gameStatsUI;
     [SerializeField] UpgradesUI upgradesUI;
+    [SerializeField] BlackScreenUI blackScreenUI;
 
     [SerializeField] DayState dayState;
 
     public static UpgradeState instance;
+
+    // Singleton References
+    AudioManager audioManager;
+    InformationPopupUI informationPopupUI;
 
     private void Awake()
     {
@@ -19,6 +25,9 @@ public class UpgradeState : State
             Destroy(this);
         }
         else instance = this;
+
+        audioManager = AudioManager.Instance;
+        informationPopupUI = InformationPopupUI.Instance;
     }
 
     /// <summary>
@@ -74,11 +83,13 @@ public class UpgradeState : State
 
 
 
-        Invoke(nameof(SetDayState), 1);
+        StartCoroutine(SetDayState());
     }
 
-    private void SetDayState()
+    private IEnumerator SetDayState()
     {
+        blackScreenUI.FadeIn();
+        yield return new WaitForSeconds(1);
         stateMachine.SetNewState(dayState);
 
     }
