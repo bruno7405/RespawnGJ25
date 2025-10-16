@@ -10,7 +10,7 @@ public class BlackScreenUI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        root.SetActive(true);
+        //root.SetActive(true);
     }
 
     public void FadeIn()
