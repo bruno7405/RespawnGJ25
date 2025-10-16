@@ -770,7 +770,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 641476901}
-  - component: {fileID: 641476902}
   m_Layer: 0
   m_Name: =========Managers=========
   m_TagString: Untagged
@@ -799,21 +798,6 @@ Transform:
   - {fileID: 297655492}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &641476902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641476900}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6491360be90770a48a2dd9317e4cb5d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossTaskManager
-  maxActiveTasks: 3
-  minTaskQueueTime: 0
-  maxTaskQueueTime: 0
 --- !u!1 &664362851
 GameObject:
   m_ObjectHideFlags: 0
@@ -5126,6 +5110,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 934999757029478508}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1001 &1150730499171162161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12320,6 +12305,7 @@ MonoBehaviour:
   allowedRoles: 01000000
   sr: {fileID: 5334705145445367074}
   locationOffset: {x: 0.3, y: -0.1}
+  jobType: 0
 --- !u!1 &1899527142838258101
 GameObject:
   m_ObjectHideFlags: 0
@@ -12997,6 +12983,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 1743529446688277816}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!4 &2214492280564196477
 Transform:
   m_ObjectHideFlags: 0
@@ -14357,7 +14344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5008600889875816565, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: secondsPerGameDay
-      value: 300
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8726432498261460643, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_Name
@@ -15110,6 +15097,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 2577412976815342797}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1 &3198194860735923268
 GameObject:
   m_ObjectHideFlags: 0
@@ -17258,6 +17246,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 1062292445922761832}
   locationOffset: {x: 0, y: -0.35}
+  jobType: 0
 --- !u!1 &4197037753155718838
 GameObject:
   m_ObjectHideFlags: 0
@@ -17747,6 +17736,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 4402657867973862079}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1839735485 &4404119189929038454
 Tilemap:
   m_ObjectHideFlags: 0
@@ -29383,6 +29373,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 4712967564255946509}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!212 &4985401020270128061
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36623,6 +36614,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 5241146282649933025}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1 &5246628249926644943
 GameObject:
   m_ObjectHideFlags: 0
@@ -37218,6 +37210,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 686788033348386271}
   locationOffset: {x: 0, y: -0.35}
+  jobType: 0
 --- !u!4 &5646635765555741396
 Transform:
   m_ObjectHideFlags: 0
@@ -56468,6 +56461,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 191037972862591508}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!61 &5936561675290861839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56800,6 +56794,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 3008554900925481679}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1 &6068050907131291266
 GameObject:
   m_ObjectHideFlags: 0
@@ -56969,6 +56964,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 6184727124443010758}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!4 &6206165954074674508
 Transform:
   m_ObjectHideFlags: 0
@@ -57017,6 +57013,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 3211340434661753006}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1 &6224616201813648331
 GameObject:
   m_ObjectHideFlags: 0
@@ -57133,6 +57130,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 862936703278208739}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!4 &6319712352397720648
 Transform:
   m_ObjectHideFlags: 0
@@ -57351,6 +57349,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 6088784659239869270}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1 &6506479604138220517
 GameObject:
   m_ObjectHideFlags: 0
@@ -57438,6 +57437,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 633032559704294105}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!212 &6550259182363014444
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57578,6 +57578,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 4789389127873708318}
   locationOffset: {x: 0, y: -0.35}
+  jobType: 0
 --- !u!212 &6601847885865051459
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58665,6 +58666,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 2863531931119540108}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!212 &7199399017193991031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58940,6 +58942,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 4280623224263887307}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!212 &7375266460641919561
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -60649,6 +60652,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 4745354176471728946}
   locationOffset: {x: 0.25, y: 0}
+  jobType: 0
 --- !u!114 &8384396607876956026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60749,6 +60753,7 @@ MonoBehaviour:
   allowedRoles: 01000000
   sr: {fileID: 154140982402169153}
   locationOffset: {x: -0.5, y: -0.1}
+  jobType: 0
 --- !u!61 &8440443695164952076
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60889,6 +60894,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 8033469672905418438}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!61 &8489139111431943079
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61063,6 +61069,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 2865803287194678594}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!61 &8589744569559300841
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61145,6 +61152,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 6620219496028360830}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!61 &8615523451763577537
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61228,6 +61236,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 150713582040771226}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!61 &8636567036904931748
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61397,6 +61406,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 3993936961010976587}
   locationOffset: {x: -0.3, y: 0}
+  jobType: 0
 --- !u!20 &8723594163254716485
 Camera:
   m_ObjectHideFlags: 0
@@ -61778,6 +61788,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 1790507219448438599}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1 &8764381575746724200
 GameObject:
   m_ObjectHideFlags: 0
@@ -61814,6 +61825,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 3230964872968504329}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1 &8764383886459491658
 GameObject:
   m_ObjectHideFlags: 0
@@ -61850,6 +61862,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 7453306369205391473}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!1 &8798646375387865955
 GameObject:
   m_ObjectHideFlags: 0
@@ -61947,6 +61960,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 6601847885865051459}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!4 &8882183223443179541
 Transform:
   m_ObjectHideFlags: 0
@@ -62083,6 +62097,7 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 3933143896273303540}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 0
 --- !u!61 &9001066752921895950
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62302,6 +62317,7 @@ MonoBehaviour:
   allowedRoles: 0000000001000000
   sr: {fileID: 1535545268074521273}
   locationOffset: {x: 0.2, y: 0}
+  jobType: 0
 --- !u!61 &9163794795838217721
 BoxCollider2D:
   m_ObjectHideFlags: 0

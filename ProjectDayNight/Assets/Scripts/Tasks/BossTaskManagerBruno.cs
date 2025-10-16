@@ -39,7 +39,7 @@ public class BossTaskManagerBruno : MonoBehaviour
 
     public void ActivateDialogTask(DialogEvent dialog)
     {
-        if (currentTasks.Count >= 3) return;
+        if (currentTasks.Count >= maxTasks) return;
 
 
         phoneTask.Activate(timeForDialogTasks, dialog);
@@ -49,5 +49,10 @@ public class BossTaskManagerBruno : MonoBehaviour
     public void RemoveTask(TaskBruno task)
     {
         currentTasks.Remove(task);
+    }
+
+    public List<TaskBruno> GetActiveTasks()
+    {
+        return currentTasks;
     }
 }
