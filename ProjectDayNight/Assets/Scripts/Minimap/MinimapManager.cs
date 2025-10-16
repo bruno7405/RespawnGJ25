@@ -26,11 +26,11 @@ public class MinimapManager : MonoBehaviour
     {
         instance = this;
         iconData = Resources.Load<MinimapIconSprites>("MinimapIconSprites");
+        employeeIcons = new();
     }
     void Start()
     {
         NullCheck();
-        employeeIcons = new();
         MinimapSize = new Vector2Int(GridWidth, GridHeight) * tilePixelSize + new Vector2Int(borderWidth * 2, borderWidth * 2);
         grid = new bool[GridWidth, GridHeight];
         for (int i = 0; i < GridWidth * GridHeight; i++)
