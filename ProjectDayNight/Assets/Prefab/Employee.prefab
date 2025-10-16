@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Employee
   currentState: {fileID: 6694046586468749851}
-  employeeName: Ben
+  employeeName: Bruno
   type: {fileID: 11400000, guid: 56ab8074538b64623adb0cbb0d4d5716, type: 2}
   motionManager: {fileID: 4567622880730778418}
   wage: 0
@@ -320,7 +320,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: eb380807cd46371459d819c4604bc0c5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8396226, g: 0.7929455, b: 0.7089266, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

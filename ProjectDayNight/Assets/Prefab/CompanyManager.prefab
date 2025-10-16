@@ -143,6 +143,18 @@ MonoBehaviour:
   exitPositions:
   - {fileID: 2768490698330641287}
   - {fileID: 2414059407309026388}
+  NumRunners: 0
+  minEscapeInterval: 10
+  maxEscapeInterval: 30
+  Escaping: 0
+  employeePrefabs:
+  - {fileID: 2768043933756504757, guid: ff4105496358c5940ad233ffb70288b5, type: 3}
+  - {fileID: 3863598661906993202, guid: b8ffeed62a554284d8d46be032bf39a4, type: 3}
+  - {fileID: 1439971626147964181, guid: e8796904812a91c4cbf754d5413cbeed, type: 3}
+  - {fileID: 1179227167226542285, guid: d24ae0b2129c73c4ca575de81d91a1a4, type: 3}
+  - {fileID: 5585815800368619782, guid: fd2cc6dc514475c46824a1287be731ab, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1924178333530707181
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,11 +24,11 @@ public class CompanyManager : MonoBehaviour
     [SerializeField] Transform[] exitPositions;
     Exit[] exits;
     public int NumRunners;
-    public int NumEscapists = 0;
     [SerializeField] float minEscapeInterval = 10f;
     [SerializeField] float maxEscapeInterval = 30f;
     public bool Escaping = false;
 
+    [SerializeField] List<GameObject> employeePrefabs;
 
     void HandleNightStart()
     {
@@ -70,6 +70,28 @@ public class CompanyManager : MonoBehaviour
     }
     void HandleDayStart()
     {
+        // For all employee candidates, respawn ones that are dead
+        if (GameStateManager.Instance.CurrentDay != 1)
+        {
+            foreach (var employeePrefab in employeePrefabs)
+            {
+                var candidate = employeePrefab.GetComponent<Employee>();
+                bool skipEmployee = false;
+                foreach (var e in employees) // check if candidate is already alive in company
+                {
+                    if (candidate.name.Equals(e.name)) skipEmployee = true;
+                }
+
+                if (skipEmployee) continue;
+                else
+                {
+                    Debug.Log("Respawning: " + candidate.name);
+                    Instantiate(employeePrefab, GridManager.RandomWalkablePos(), Quaternion.identity);
+                }
+            }
+        }
+        
+        // Set employees to work
         foreach (var emp in employees)
         {
             emp.SetNewState(emp.WorkingState);

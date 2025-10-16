@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UpgradeState : State
 {
@@ -9,12 +10,16 @@ public class UpgradeState : State
     [SerializeField] EndOfDayStatsUI gameStatsUI;
     [SerializeField] UpgradesUI upgradesUI;
     [SerializeField] BlackScreenUI blackScreenUI;
+    [SerializeField] DayNightTransitionUI dayNightTransitionUI;
+    [SerializeField] EndScreenUI endScreenUI;
 
     [SerializeField] DayState dayState;
 
     public static UpgradeState instance;
 
     // Singleton References
+    GameStateManager gameStateManager;
+    CompanyManager companyManager;
     AudioManager audioManager;
     InformationPopupUI informationPopupUI;
 
@@ -25,7 +30,12 @@ public class UpgradeState : State
             Destroy(this);
         }
         else instance = this;
+    }
 
+    private void Start()
+    {
+        gameStateManager = GameStateManager.Instance;
+        companyManager = CompanyManager.Instance;
         audioManager = AudioManager.Instance;
         informationPopupUI = InformationPopupUI.Instance;
     }
@@ -36,7 +46,6 @@ public class UpgradeState : State
     /// </summary>
     public override void OnStart()
     {
-        ((GameStateManager)stateMachine).InvokeNewDay();
         gameStatsUI.DisplayStats();
     }
 
@@ -83,15 +92,41 @@ public class UpgradeState : State
 
 
 
-        StartCoroutine(SetDayState());
+        StartCoroutine(UpgradesToDayTransition());
     }
 
-    private IEnumerator SetDayState()
+    private IEnumerator UpgradesToDayTransition()
     {
+        #region Splash Art Transition
         blackScreenUI.FadeIn();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
+        blackScreenUI.FadeOut();
 
-        stateMachine.SetNewState(dayState);
+        dayNightTransitionUI.TransitionToDay(3f);
+        yield return new WaitForSeconds(3);
+
+        blackScreenUI.FadeIn();
+        yield return new WaitForSeconds(0.5f);
+        dayNightTransitionUI.HideUI();
+        blackScreenUI.FadeOut();
+        #endregion
+
+        // WIN GAME!
+        if (gameStateManager.CurrentDay == 3)
+        {
+            // Show End Game Screen
+            endScreenUI.Display(true, companyManager.Money, "With the money you made, you fled the country and your problems. You are now DA BOSS");
+            yield return new WaitForSeconds(3);
+            blackScreenUI.FadeIn();
+            yield return new WaitForSeconds(0.5f);
+            SceneManager.LoadScene(0); // Main Menu Scene
+        }
+        else
+        {
+            stateMachine.SetNewState(dayState);
+        }
+
+        
 
     }
     public override void OnExit()
