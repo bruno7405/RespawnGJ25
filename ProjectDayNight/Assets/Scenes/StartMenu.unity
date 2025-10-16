@@ -566,17 +566,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3924614320464746574, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
+    - target: {fileID: 357432276939642678, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.85851693
       objectReference: {fileID: 0}
-    - target: {fileID: 3924614320464746574, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
+    - target: {fileID: 357432276939642678, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3924614320464746574, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
+    - target: {fileID: 357432276939642678, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 357432276939642678, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489067117718207744, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4448506070618777986, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
       propertyPath: m_Pivot.x
@@ -658,13 +666,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5114920628158715492, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5280159109713863319, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
       propertyPath: m_Name
       value: HelpCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958543252871602911, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
+      propertyPath: m_Name
+      value: Panel1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958543252871602911, guid: 712c0678df1a8064fa1fda697196dbb1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
