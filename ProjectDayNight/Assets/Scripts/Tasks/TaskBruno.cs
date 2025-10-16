@@ -11,7 +11,7 @@ public class TaskBruno : MonoBehaviour, IInteractable
 
     private Color normalColor;
     private bool taskActive;
-
+    [SerializeField] int moneyReward = 100;
     private void Awake()
     {
         normalColor = GetComponent<SpriteRenderer>().color;
@@ -49,7 +49,8 @@ public class TaskBruno : MonoBehaviour, IInteractable
     {
         countdown = false;
         GetComponent<SpriteRenderer>().color = Color.red;
-        StartCoroutine(RemoveTask(3));
+        StartCoroutine(RemoveTask(1));
+        InformationPopupUI.Instance.DisplayText($"{eventName} Failed!", false, 2f);
 
         // TODO Increment mistakes
     }
@@ -61,12 +62,14 @@ public class TaskBruno : MonoBehaviour, IInteractable
         countdown = false;
        
         GetComponent<SpriteRenderer>().color = Color.green;
-        StartCoroutine(RemoveTask(3));
+        StartCoroutine(RemoveTask(1));
+        CompanyManager.Instance.AddMoney(moneyReward);
+        InformationPopupUI.Instance.DisplayText($"{eventName} Completed! Earned +${moneyReward}", true, 2f);
     }
 
     public void OnInteract(PlayerInteractor interactor)
     {
-        CompleteTask();
+        MinigameManager.Instance.StartAimTrainer(CompleteTask, FailTask);
     }
     protected IEnumerator RemoveTask(float duration)
     {
