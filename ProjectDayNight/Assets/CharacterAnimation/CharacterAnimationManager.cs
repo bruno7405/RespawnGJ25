@@ -38,5 +38,17 @@ public class CharacterAnimationManager : MonoBehaviour
     {
         sprite.flipX = false;
     }
+    public void StopAnimation()
+    {
+        animator.enabled = false;
+    }
+    public void StartAnimation()
+    {
+        animator.enabled = true;
+    }
+    void OnDisable()
+    {
+        StopAnimation();
+    }
 
 }

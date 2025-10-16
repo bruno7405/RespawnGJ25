@@ -37,7 +37,7 @@ public class Working : State
 
     bool RefusalRoll()
     {
-        float chanceToRefuse = 1f; // Increases by 12.5% for every 10 morale below 60, max 75%
+        float chanceToRefuse = Mathf.Max(6 - employee.Morale / 10, 0) * 0.125f;
         return Random.value < chanceToRefuse;
     }
 
