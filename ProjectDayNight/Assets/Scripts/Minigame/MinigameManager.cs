@@ -1,0 +1,140 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UI;
+
+public class MinigameManager : MonoBehaviour
+{
+    private static MinigameManager instance;
+    public static MinigameManager Instance => instance;
+    [Header("References")]
+    [SerializeField] GameObject panel;          // Assign AimTrainerPanel
+
+
+    [Header("Settings")]
+    [SerializeField] float roundTime = 2f;    // Time allowed per target
+    [SerializeField] int roundsToWin = 8;       // Number of hits required
+
+    GameObject currentTarget;
+    int currentRound = 0;
+    bool isPlaying = false;
+    [SerializeField] int reward = 100;
+    [SerializeField] List<GameObject> gridSlots;
+    float prevTimeScale;
+
+    public void StartAimTrainer()
+    {
+        if (isPlaying) {
+            throw new System.InvalidOperationException("Minigame already in progress");
+        }
+        isPlaying = true;
+
+        panel.SetActive(true);
+        prevTimeScale = Time.timeScale;
+        Time.timeScale = 0f; // Pause main game
+
+        currentRound = 0;
+        StartCoroutine(RunAimTrainer());
+    }
+
+    private IEnumerator RunAimTrainer()
+    {
+        while (currentRound < roundsToWin)
+        {
+            SpawnTarget();
+            float timer = 0f;
+
+            while (timer < roundTime)
+            {
+                timer += Time.unscaledDeltaTime; // Use unscaled time since game is paused
+                yield return null;
+
+                if (currentTarget == null) // Player clicked correctly
+                    break;
+            }
+
+            if (currentTarget != null) // Time ran out (didn't click)
+            {
+                currentTarget.SetActive(false);
+                Fail();
+                yield break;
+            }
+
+            currentRound++;
+        }
+
+        Win();
+    }
+
+    private void SpawnTarget()
+    {
+        if (currentTarget != null)
+            currentTarget.SetActive(false);
+        currentTarget = gridSlots[Random.Range(0, gridSlots.Count)];
+        currentTarget.SetActive(true);
+    }
+
+    private void Win()
+    {
+        Debug.Log("AimTrainer: WIN!");
+        Cleanup();
+        CompanyManager.Instance.AddMoney(reward);
+        InformationPopupUI.Instance.DisplayText($"Task complete! You earned ${reward}!", true, 2f);
+        // TODO: Reward player
+    }
+
+    private void Fail()
+    {
+        Debug.Log("AimTrainer: FAIL!");
+        InformationPopupUI.Instance.DisplayText("You failed the task!", false, 2f);
+        Cleanup();
+        // TODO: Apply penalty
+    }
+
+    private void Cleanup()
+    {
+        isPlaying = false;
+        panel.SetActive(false);
+        Time.timeScale = prevTimeScale;
+
+        if (currentTarget != null)
+            currentTarget.SetActive(false);
+    }
+    IEnumerator HandleButtonClick(Button button)
+    {
+        GameObject slot = button.gameObject;
+        if (!isPlaying || slot != currentTarget)
+        {
+            throw new System.InvalidOperationException("Clicked button is not the current target or game not active!");
+        }
+        slot.GetComponent<Image>().color = Color.green;
+        yield return new WaitForSecondsRealtime(0.1f);
+        currentTarget.GetComponent<Image>().color = Color.white; // reset before showing
+        currentTarget.SetActive(false);
+        currentTarget = null;
+    }
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        instance = this;
+        Debug.Log("MinigameManager instance set");
+        if (gridSlots == null || gridSlots.Count != 9)
+        {
+            throw new System.InvalidOperationException("MinigameManager does not have 9 grid slots assigned!");
+        }
+        foreach (var slot in gridSlots)
+        {
+            Button button = slot.GetComponent<Button>();
+            button.onClick.AddListener(() => StartCoroutine(HandleButtonClick(button)));
+            slot.SetActive(false);
+        }
+
+    }
+    void Start()
+    {
+    }
+}

@@ -131,6 +131,16 @@ public class CompanyManager : MonoBehaviour
         }
         return false; // not enough money
     }
+    public bool AddMoney(int amount)
+    {
+        if (amount < 0)
+        {
+            Debug.LogError("Cannot add negative money");
+            return false;
+        }
+        Money += amount;
+        return true;
+    }
     public void ChangeCompanyMorale(int delta)
     {
         foreach (var emp in employees)
