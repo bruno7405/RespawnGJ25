@@ -46,7 +46,8 @@ public class Escape : State
         timer += Time.deltaTime;
         if (timer >= escapeTime)
         {
-            GameStateManager.Instance.GameOver();
+            GameStateManager.Instance.IncrementMistakes();
+            InformationPopupUI.Instance.DisplayText(employee.Name + " has escaped! You have lost reputation.", false, 2f);
         }
 
         return;

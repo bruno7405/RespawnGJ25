@@ -26,6 +26,16 @@ public class GameStateManager : StateMachineManager
     public event Action DayStart;
     public event Action NightStart;
     public bool IsDay => currentState == dayState;
+    public int Mistakes { get; private set; } = 0;
+
+    public void IncrementMistakes()
+    {
+        Mistakes++;
+        if (Mistakes >= 3)
+        {
+            GameOver();
+        }
+    }
 
     public void InvokeNewDay()
     {
@@ -49,11 +59,6 @@ public class GameStateManager : StateMachineManager
 
         dayState.SetDuration(secondsPerGameDay / 2);
         //nightState.SetDuration(secondsPerGameDay / 2);
-    }
-
-    public void IncrementMistakes()
-    {
-
     }
 
     public void GameOver()

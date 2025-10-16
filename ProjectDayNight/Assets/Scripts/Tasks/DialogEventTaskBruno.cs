@@ -12,18 +12,14 @@ public class DialogEventTaskBruno : TaskBruno
 
     public override void OnInteract(PlayerInteractor interactor)
     {
-        CompleteTask();
+        if (!taskActive) return;
+        DialogEventManager.Instance.SetDialogEvent(dialogEvent, CompleteTask, FailTask);
     }
-
-
-    /// <summary>
-    /// Stops countdown (for game over), starts dialogue event
-    /// </summary>
-    protected override void CompleteTask()
+    protected override void FailTask()
     {
-        base.CompleteTask();
-        DialogEventManager.Instance.SetDialogEvent(dialogEvent);
-
-        StartCoroutine(RemoveTask(5));
+        base.FailTask();
+        GameStateManager.Instance.IncrementMistakes();
     }
+
+
 }
