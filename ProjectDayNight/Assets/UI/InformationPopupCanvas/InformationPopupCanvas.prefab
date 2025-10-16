@@ -296,7 +296,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_TargetDisplay: 0
 --- !u!114 &9147578351344363208
 MonoBehaviour:
@@ -354,7 +354,6 @@ MonoBehaviour:
   animator: {fileID: 1302808053027424092}
   popupTMP: {fileID: 5491158807051408509}
   backgroundImage: {fileID: 2544211826831723508}
-  displayDuration: 2
   dayTextColor: {r: 0.3529412, g: 0.8392157, b: 1, a: 1}
   dayBackgroundColor: {r: 0, g: 0, b: 0, a: 0.9019608}
   nightTextColor: {r: 0.6415094, g: 0.21181908, b: 0.21181908, a: 1}
