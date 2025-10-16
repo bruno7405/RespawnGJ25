@@ -10,6 +10,7 @@ public class MinimapManager : MonoBehaviour
     public static MinimapManager Instance => instance;
     private static MinimapIconSprites iconData;
 
+    [SerializeField] GameObject root;
     [SerializeField] private RawImage minimapImage;
     [SerializeField] private GameObject iconPrefab;
     [SerializeField] private int tilePixelSize;
@@ -158,5 +159,21 @@ public class MinimapManager : MonoBehaviour
         float normY = (worldPos.y - WorldMin.y) / WorldSize.y - 0.5f;
         RectTransform rt = minimapImage.rectTransform;
         return new(normX * rt.rect.width, normY * rt.rect.height);
+    }
+
+    public void Toggle()
+    {
+        if (!root.activeInHierarchy)
+        {
+            root.SetActive(true);
+            PlayerMovement.Instance.DisableMovement();
+        }
+        else
+        {
+            PlayerMovement.Instance.EnableMovement();
+            root.SetActive(false);
+        }
+
+            AudioManager.Instance.PlayOneShot("FileCabinetPages", 0.05f);
     }
 }

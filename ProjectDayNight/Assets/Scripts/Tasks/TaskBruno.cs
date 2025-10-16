@@ -70,8 +70,6 @@ public class TaskBruno : MonoBehaviour, IInteractable
     protected virtual void CompleteTask()
     {
         if (!taskActive) return;
-
-        countdown = false;
        
         GetComponent<SpriteRenderer>().color = Color.green;
         StartCoroutine(RemoveTask(1));
@@ -87,10 +85,26 @@ public class TaskBruno : MonoBehaviour, IInteractable
     protected IEnumerator RemoveTask(float duration)
     {
         taskActive = false;
+        countdown = false;
         gameObject.layer = 9; // move to not interactable layer
         PlayerInteractor.Instance.RemoveInteractable(transform); // manually remove from interactables list (b/c OnTriggerExit doesnt see this task anymore)
         yield return new WaitForSeconds(duration);
         GetComponent<SpriteRenderer>().color = normalColor;
         BossTaskManagerBruno.Instance.RemoveTask(this);
+    }
+
+    private void Deactivate()
+    {
+        StartCoroutine(RemoveTask(0));
+    }
+
+    private void OnEnable()
+    {
+        GameStateManager.Instance.NightStart += Deactivate;
+    }
+
+    private void OnDisable()
+    {
+        GameStateManager.Instance.NightStart -= Deactivate;
     }
 }

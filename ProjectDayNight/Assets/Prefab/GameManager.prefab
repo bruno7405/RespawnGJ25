@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
   currentState: {fileID: 1811495818559965897}
-  secondsPerGameDay: 10
+  secondsPerGameDay: 20
   timeScale: 1
   dayState: {fileID: 1811495818559965897}
   nightState: {fileID: 2758786526998476788}
@@ -713,6 +713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndOfDayStatsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6529133085338242679, guid: cb3b3b3ff284fe24f8ece5e43f98d41b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -745,6 +749,10 @@ PrefabInstance:
     - target: {fileID: 752342193005377461, guid: 1a3d6391ef7b87746bccfc69b6a4943a, type: 3}
       propertyPath: m_Name
       value: DayNightTransitionCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193911680899239823, guid: 1a3d6391ef7b87746bccfc69b6a4943a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7013217668177197487, guid: 1a3d6391ef7b87746bccfc69b6a4943a, type: 3}
       propertyPath: m_Pivot.x
@@ -855,6 +863,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8408124085509858745}
     m_Modifications:
+    - target: {fileID: 4308269639925903445, guid: 8806560298111f84d856ff7cbfc63511, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6876356663572275847, guid: 8806560298111f84d856ff7cbfc63511, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1256,6 +1268,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6818465512980938334, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9177479725434697297, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1365,6 +1381,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8408124085509858745}
     m_Modifications:
+    - target: {fileID: 1083367050051927887, guid: 0a43025eb4c57024ab07d1aaa8364257, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3637041392322492890, guid: 0a43025eb4c57024ab07d1aaa8364257, type: 3}
       propertyPath: m_Pivot.x
       value: 0

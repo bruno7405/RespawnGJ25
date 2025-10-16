@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     private InputAction moveAction;
     private InputAction interactAction;
     private InputAction attackAction;
+    private InputAction mapAction;
 
     private Vector2 moveVector;
 
@@ -36,7 +37,11 @@ public class PlayerInput : MonoBehaviour
 
         // Attack Action
         attackAction = playerControls.FindActionMap("Player").FindAction("Attack");
-        
+
+        // Map Action
+        mapAction = playerControls.FindActionMap("Player").FindAction("Map");
+
+
     }
 
     private void OnEnable()
@@ -44,10 +49,12 @@ public class PlayerInput : MonoBehaviour
         moveAction.Enable();
         interactAction.Enable();
         attackAction.Enable();
+        mapAction.Enable();
 
 
         interactAction.performed += Interact;
         attackAction.performed += Attack;
+        mapAction.performed += ToggleMap;
     }
 
     private void OnDisable()
@@ -55,9 +62,11 @@ public class PlayerInput : MonoBehaviour
         moveAction.Disable();
         interactAction.Disable();
         attackAction.Disable();
+        mapAction.Disable();
 
         interactAction.started -= Interact;
         attackAction.started -= Attack;
+        mapAction.started -= ToggleMap;
     }
 
     private void Update()
@@ -77,5 +86,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (!active) return;
         playerAttack.Attack();
+    }
+
+    private void ToggleMap(InputAction.CallbackContext context)
+    {
+        if (!active) return;
+        MinimapManager.Instance.Toggle();
     }
 }

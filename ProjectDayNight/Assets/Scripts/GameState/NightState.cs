@@ -55,6 +55,7 @@ public class NightState : State
     {
         inTransition = true;
         PlayerInput.active = false;
+        PlayerMovement.Instance.DisableMovement();
 
         #region Splash Art Transition
         blackScreenUI.FadeIn();
@@ -75,6 +76,7 @@ public class NightState : State
 
         audioManager.PlayBackgroundMusic("NightSong");
         PlayerInput.active = true;
+        PlayerMovement.Instance.EnableMovement();
 
         try
         {
