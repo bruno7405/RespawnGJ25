@@ -11,7 +11,7 @@ public class TaskBruno : MonoBehaviour, IInteractable
     bool countdown = false;
 
     private Color normalColor;
-    private bool taskActive;
+    protected bool taskActive;
     [SerializeField] int moneyReward = 100;
     InformationPopupUI informationPopupUI;
 
@@ -80,6 +80,7 @@ public class TaskBruno : MonoBehaviour, IInteractable
 
     public virtual void OnInteract(PlayerInteractor interactor)
     {
+        countdown = false;
         MinigameManager.Instance.StartAimTrainer(CompleteTask, FailTask);
     }
     protected IEnumerator RemoveTask(float duration)

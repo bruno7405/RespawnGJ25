@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +22,10 @@ public class DialogEventManager : MonoBehaviour
 
     private DialogEvent currentDialogEvent;
     private int currentLineIndex = 0;
+    Action onGoodEnd;
+    Action onBadEnd;
+    int good = 2;
 
-    
 
     private void Awake()
     {
@@ -35,10 +38,14 @@ public class DialogEventManager : MonoBehaviour
     /// <summary>
     /// Start a dialogue event (called when interacting with an NPC)
     /// </summary>
-    public void SetDialogEvent(DialogEvent d)
+    public void SetDialogEvent(DialogEvent d, Action goodEnd, Action badEnd)
     {
+        onGoodEnd = goodEnd;
+        onBadEnd = badEnd;
+        good = 2;
         currentDialogEvent = d;
         currentLineIndex = 0;
+        Time.timeScale = 0f; // pause game
         DisplayUI();
     }
 
@@ -89,6 +96,7 @@ public class DialogEventManager : MonoBehaviour
         }
         else
         {
+            good--;
             Debug.Log("Wrong choice: " + choice.choiceText);
         }
 
@@ -100,6 +108,16 @@ public class DialogEventManager : MonoBehaviour
 
     private void EndDialog()
     {
+        if (good > 0)
+        {
+            onGoodEnd?.Invoke();
+        }
+        else
+        {
+            onBadEnd?.Invoke();
+        }
         animator.SetTrigger("slideOut");
+        Time.timeScale = 1f; // resume game
+
     }
 }

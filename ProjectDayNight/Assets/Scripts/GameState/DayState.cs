@@ -8,7 +8,7 @@ public class DayState : State
     float timeElapsed;
 
     [Header("Parameters")]
-    [SerializeField] int timeBetweenTasks;
+    [SerializeField] float timeBetweenTasks;
     private float taskTimer = 0;
     private int taskCount = 0;
     private int dialogTaskCount = 0;
@@ -25,6 +25,7 @@ public class DayState : State
 
     public override void OnStart()
     {
+        timeBetweenTasks = duration / (2 + (GameStateManager.Instance.CurrentDay * 2)); // More tasks as days go on
         // Visuals
         // Show day number
         // Invoke events in random time?
