@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameStatsUI : MonoBehaviour
+public class EndOfDayStatsUI : MonoBehaviour
 {
     [SerializeField] GameObject root;
     [SerializeField] RectTransform statsContainer; // where stats are spawned

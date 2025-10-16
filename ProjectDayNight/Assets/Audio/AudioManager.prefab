@@ -70,6 +70,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Death
+    audioClip: {fileID: 8300000, guid: b88ec66d24d4bd5499c706619fc56171, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &469359001790339111
 AudioSource:
   m_ObjectHideFlags: 0
