@@ -7,11 +7,10 @@ public class Working : State
 {
     private Employee employee;
     private EmployeeJob currentJob;
-    private Action cancelWalk;
 
     public override void OnExit()
     {
-        cancelWalk?.Invoke();
+        employee.StopMoving();
     }
 
     public override void OnStart()
@@ -57,7 +56,7 @@ public class Working : State
 
         currentJob = newJob;
         Debug.Log("Employee " + employee.Name + " starting " + currentJob.Name + " at " + currentJob.Location + " for " + currentJob.Duration + " seconds");
-        cancelWalk = employee.WalkTo(currentJob.Location, () => StartCoroutine(CompleteTask()));
+        employee.WalkTo(currentJob.Location, () => StartCoroutine(CompleteTask()));
     }
 
     IEnumerator CompleteTask()
