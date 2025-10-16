@@ -26,14 +26,16 @@ public class AStarPathfinder
 
     public List<Vector2> FindPath(Vector2Int start, Vector2Int goal)
     {
-        //Debug.Log(start);
-        //Debug.Log(GridManager.GroundTilemap.CellToWorld((Vector3Int)start));
-        if (!GridManager.IsWalkable(start.x, start.y))
-            throw new ArgumentException("Start position is not walkable.");
-        if (!GridManager.IsWalkable(goal.x, goal.y))
-            throw new ArgumentException("Goal position is not walkable.");
-        if (start == goal)
-            return new() { start };
+        // if (!GridManager.IsWalkable(start.x, start.y))
+        //     throw new ArgumentException($"Start position is not walkable. {GridManager.WorldTileCenter(start)}");
+        // if (!GridManager.IsWalkable(goal.x, goal.y))
+        //     throw new ArgumentException($"Goal position is out of bounds. {GridManager.WorldTileCenter(goal)}");
+        if (!GridManager.IsInBounds(start.x, start.y))
+            throw new ArgumentException($"Start position is out of bounds. {GridManager.WorldTileCenter(start)}");
+        if (!GridManager.IsInBounds(goal.x, goal.y))
+            throw new ArgumentException($"Goal position is out of bounds. {GridManager.WorldTileCenter(goal)}");
+        
+        if (start == goal) return new() { start };
 
         var openSet = new PriorityQueue<Node>();
         var allNodes = new Dictionary<Vector2Int, Node>();
@@ -47,8 +49,7 @@ public class AStarPathfinder
         {
             Node current = openSet.Dequeue();
 
-            if (current.position == goal)
-                return ReconstructPath(current);
+            if (current.position == goal) return ReconstructPath(current);
 
             current.closed = true;
 
@@ -56,10 +57,10 @@ public class AStarPathfinder
             {
                 Vector2Int neighborPos = current.position + dir;
 
-                if (!GridManager.IsWalkable(neighborPos.x, neighborPos.y)) continue;
+                if (neighborPos != goal && !GridManager.IsWalkable(neighborPos.x, neighborPos.y)) continue;
 
                 // Prevent cutting corners through obstacles
-                if (Mathf.Abs(dir.x) + Mathf.Abs(dir.y) == 2)
+                if (neighborPos != goal && dir.magnitude == SQRT2)
                 {
                     if (!GridManager.IsWalkable(current.position.x, current.position.y + dir.y)) continue;
                     if (!GridManager.IsWalkable(current.position.x + dir.x, current.position.y)) continue;

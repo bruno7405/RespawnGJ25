@@ -40,6 +40,15 @@ public class GridManager : MonoBehaviour
             return false;
         return walkableGrid[y * Width + x];
     }
+    public static bool IsInBounds(int x, int y, bool isTilemapDomain = true)
+    {
+        if (isTilemapDomain)
+        {
+            x -= offset.x;
+            y -= offset.y;
+        }
+        return x >= 0 && x < Width && y >= 0 && y < Height;
+    }
 
     public void SetGridData(bool[] newGrid, Vector2Int size, Vector2Int offset)
     {
