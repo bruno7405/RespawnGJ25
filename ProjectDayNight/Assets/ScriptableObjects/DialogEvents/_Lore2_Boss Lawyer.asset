@@ -23,9 +23,9 @@ MonoBehaviour:
       isCorrect: 0
   - npcLine: Could I come in for you to sign them?
     choices:
-    - choiceText: "Today is not a good day\u2026I promise I will get you the money
-        soon."
-      isCorrect: 1
     - choiceText: "NO! We are working really hard to get the money. My team\u2013
         I mean, I need a little more time."
       isCorrect: 0
+    - choiceText: "Today is not a good day\u2026I promise I will get you the money
+        soon."
+      isCorrect: 1

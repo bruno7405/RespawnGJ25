@@ -16,11 +16,11 @@ MonoBehaviour:
   lines:
   - npcLine: My husband forgot his food at home. Can I come in and give it to him?
     choices:
+    - choiceText: "He doesn\u2019t deserve food!"
+      isCorrect: 0
     - choiceText: Sorry, he just left on an errand. I can hold onto the food until
         he gets back.
       isCorrect: 1
-    - choiceText: "He doesn\u2019t deserve food!"
-      isCorrect: 0
   - npcLine: "Oh, I\u2019ll just wait here then\u2026"
     choices:
     - choiceText: "It\u2019s gonna take a while, and I\u2019m sure you have other

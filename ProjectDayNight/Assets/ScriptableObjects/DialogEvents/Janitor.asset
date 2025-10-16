@@ -22,8 +22,8 @@ MonoBehaviour:
       isCorrect: 0
   - npcLine: "But I am here now. Can\u2019t I just come in?"
     choices:
+    - choiceText: Too bad. Walking up the stairs is good for cardio.
+      isCorrect: 0
     - choiceText: "Don\u2019t worry, I just had my intern do it. But thanks for stopping
         by."
       isCorrect: 1
-    - choiceText: Too bad. Walking up the stairs is good for cardio.
-      isCorrect: 0

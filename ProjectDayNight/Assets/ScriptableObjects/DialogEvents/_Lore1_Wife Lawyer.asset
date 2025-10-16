@@ -24,6 +24,6 @@ MonoBehaviour:
     choices:
     - choiceText: "No! Leave and never come back. I am not becoming a divorcee on
         top of a\u2013 never mind\u2026"
-      isCorrect: 1
+      isCorrect: 0
     - choiceText: We are really busy at the office right now. Can you come by later?
       isCorrect: 1

@@ -16,11 +16,11 @@ MonoBehaviour:
   lines:
   - npcLine: "Hi, I\u2019m just making the rounds. How are you guys doing up here?"
     choices:
-    - choiceText: Great! Thanks for stopping by.
-      isCorrect: 1
     - choiceText: Uh, hi, everything is totally normal up here. Nothing weird going
         on, pal.
       isCorrect: 0
+    - choiceText: Great! Thanks for stopping by.
+      isCorrect: 1
   - npcLine: Can I come in?
     choices:
     - choiceText: I heard a ruckus on the floor above us. You might want to go check

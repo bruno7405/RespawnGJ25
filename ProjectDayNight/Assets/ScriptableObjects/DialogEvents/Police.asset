@@ -22,7 +22,7 @@ MonoBehaviour:
       isCorrect: 0
   - npcLine: Can we come inside and check, sir?
     choices:
-    - choiceText: "I\u2019m just locking up right now. There\u2019s no one here."
-      isCorrect: 1
     - choiceText: NO! LEAVE RIGHT NOW!
       isCorrect: 0
+    - choiceText: "I\u2019m just locking up right now. There\u2019s no one here."
+      isCorrect: 1

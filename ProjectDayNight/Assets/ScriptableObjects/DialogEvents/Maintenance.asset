@@ -16,13 +16,13 @@ MonoBehaviour:
   lines:
   - npcLine: I am here to change the air filters!
     choices:
-    - choiceText: Oh, already?
-      isCorrect: 1
     - choiceText: "We don\u2019t need fresh air."
       isCorrect: 0
+    - choiceText: Oh, already?
+      isCorrect: 1
   - npcLine: I have to change them regularly. Building policy.
     choices:
-    - choiceText: They were just changed the other day! But thank you!
-      isCorrect: 1
     - choiceText: "We\u2019ll just open the windows! Leave!"
       isCorrect: 0
+    - choiceText: They were just changed the other day! But thank you!
+      isCorrect: 1
