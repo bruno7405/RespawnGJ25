@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Coffee Bar
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   upgradeName: Coffee Bar
-  image: {fileID: 0}
+  image: {fileID: 951174417296231735, guid: 6bacc1b3a5bafa94e85b3475910f38d2, type: 3}
+  backgroundColor: {r: 0.5740477, g: 0.77889174, b: 0.8490566, a: 1}
   description: Make them addicted to caffeine
-  stat: 0
-  increasePercentage: 15
+  category: 0
+  increasePercentage: 30

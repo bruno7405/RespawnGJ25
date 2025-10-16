@@ -42,7 +42,7 @@ public class UpgradeState : State
         {
             int index = Random.Range(0, upgrades.Count);
             upgradesUI.CreateUpgradeButton(upgrades[index]);
-            //upgrades.RemoveAt(index);
+            upgrades.RemoveAt(index);
         }
     }
 

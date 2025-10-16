@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Pizza Party
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   upgradeName: Pizza Party
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 409f92fbf5d0d3a4f9a13d98cdac40bd, type: 3}
+  backgroundColor: {r: 0.8742138, g: 0.6687669, b: 0.118211135, a: 1}
   description: Only one slice per person :)
   category: 0
   increasePercentage: 20

@@ -14414,9 +14414,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3034366036559957375, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008600889875816565, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
+      propertyPath: currentState
+      value: 
+      objectReference: {fileID: 2858451495972272461}
     - target: {fileID: 5008600889875816565, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: secondsPerGameDay
-      value: 300
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8726432498261460643, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_Name
@@ -14427,6 +14435,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
+--- !u!114 &2858451495972272461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2758786526998476788, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
+  m_PrefabInstance: {fileID: 2858451495972272460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8ac4c8e85ce284abd1826ec72d87d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NightState
 --- !u!212 &2863531931119540108
 SpriteRenderer:
   m_ObjectHideFlags: 0

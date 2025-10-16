@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Long Arms
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   upgradeName: Longer Arms
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 857e261992887b84b8dea333daa8514b, type: 3}
+  backgroundColor: {r: 0.6742691, g: 0.38604084, b: 0.8238993, a: 1}
   description: Well that's quite Fantastic ain't it.
   category: 3
-  increasePercentage: 15
+  increasePercentage: 25

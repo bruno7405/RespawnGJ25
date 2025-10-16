@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Motivational Posters
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   upgradeName: Live Laugh Love
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 33b607191f20cb241a9944b0b959439b, type: 3}
+  backgroundColor: {r: 0.42241198, g: 0.74213827, b: 0.4262292, a: 1}
   description: Great! You found a motivational poster in the storage. Your employees
     feel inspired.
   category: 1

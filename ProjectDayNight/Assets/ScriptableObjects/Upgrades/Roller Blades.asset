@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Roller Blades
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   upgradeName: Rollerblades
-  image: {fileID: -7475355450725988645, guid: 7a26d7a059b5e0b4191c61e280de8f66, type: 3}
+  image: {fileID: 21300000, guid: 41ac3de9e4f4e04458e50b1c44bdcd94, type: 3}
+  backgroundColor: {r: 0.73295283, g: 0.51257855, b: 1, a: 1}
   description: Would you look at that! Your new shoes got delivered.
   category: 2
-  increasePercentage: 15
+  increasePercentage: 30

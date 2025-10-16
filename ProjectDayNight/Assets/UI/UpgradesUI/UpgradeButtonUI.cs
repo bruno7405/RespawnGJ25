@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class UpgradeButtonUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI title;
-    [SerializeField] Image image;
+    [SerializeField] Image iconSprite;
+    [SerializeField] Image backgroundImage;
     [SerializeField] TextMeshProUGUI description;
     [SerializeField] TextMeshProUGUI statText;
 
@@ -23,7 +24,8 @@ public class UpgradeButtonUI : MonoBehaviour
     {
         upgrade = u;
         title.text = upgrade.name;
-        image.sprite = upgrade.image;
+        iconSprite.sprite = upgrade.image;
+        backgroundImage.color = upgrade.backgroundColor;
         description.text = upgrade.description;
 
         // set stat text based on upgrade category

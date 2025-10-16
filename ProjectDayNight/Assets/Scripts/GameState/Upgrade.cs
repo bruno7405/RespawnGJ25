@@ -14,6 +14,7 @@ public class Upgrade : ScriptableObject
 
     public string upgradeName;
     public Sprite image;
+    public Color backgroundColor;
     public string description;
     public Category category;
     public int increasePercentage;

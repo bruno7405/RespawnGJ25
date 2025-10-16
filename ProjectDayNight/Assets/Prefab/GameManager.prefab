@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DayState
   stateMachine: {fileID: 5008600889875816565}
   parent: {fileID: 8726432498261460643}
-  timeBetweenTasks: 10
+  timeBetweenTasks: 5
   dialogEvents:
   - {fileID: 11400000, guid: de9ec30b3ea43b0428c1b606eb25c9ab, type: 2}
   - {fileID: 11400000, guid: e984b2afeaf01ab498c1e99d3cc3b592, type: 2}
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
   currentState: {fileID: 1811495818559965897}
-  secondsPerGameDay: 120
+  secondsPerGameDay: 10
   timeScale: 1
   dayState: {fileID: 1811495818559965897}
   nightState: {fileID: 2758786526998476788}
@@ -1032,6 +1032,10 @@ PrefabInstance:
     - target: {fileID: 6125899411661203881, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
       propertyPath: m_Name
       value: UpgradesCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125899411661203881, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9177479725434697297, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
       propertyPath: m_Pivot.x
