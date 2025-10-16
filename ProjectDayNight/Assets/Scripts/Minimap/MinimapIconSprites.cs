@@ -1,9 +1,15 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct MinimapIconBaseSprite
+public struct MinimapIconSource
 {
     public bool longHair;
+    public Sprite sprite;
+    public string name;
+}
+[System.Serializable]
+public struct MinimapIcon
+{
     public Sprite sprite;
     public string name;
 }
@@ -11,14 +17,30 @@ public struct MinimapIconBaseSprite
 [CreateAssetMenu(fileName = "MinimapIconSprites", menuName = "Sprites/MinimapIconSprites")]
 public class MinimapIconSprites : ScriptableObject
 {
-    [SerializeField] private MinimapIconBaseSprite boss;
-    public MinimapIconBaseSprite Boss => boss;
+    [SerializeField] private MinimapIconSource boss;
+    public MinimapIconSource Boss => boss;
     [SerializeField] private Sprite bossHead;
-    public Sprite BossHead => bossHead;
+    public MinimapIcon BossHead => new () { name = boss.name, sprite = bossHead };
     [SerializeField] private Sprite bossTask;
-    public Sprite BossTask => bossTask;
-    [SerializeField] private MinimapIconBaseSprite[] employees;
-    public MinimapIconBaseSprite[] Employees => employees;
-    [SerializeField] private Sprite[] employeeHeads;
-    public Sprite[] EmployeeHeads => employeeHeads;
+    public MinimapIcon BossTask => new () { name = boss.name, sprite = bossTask };
+    [SerializeField] private MinimapIconSource[] employees;
+    public MinimapIconSource[] Employees => employees;
+    [SerializeField] private MinimapIcon[] employeeHeads;
+    public MinimapIcon[] EmployeeHeads => employeeHeads;
+
+    public void SetEmployeeHeads(MinimapIcon[] heads)
+    {
+        employeeHeads = heads;
+    }
+
+    public MinimapIcon GetMinimapIcon(string name)
+    {
+        foreach (var icon in employeeHeads)
+        {
+            if (icon.name == name)
+                return icon;
+        }
+        Debug.LogWarning($"No head sprite found for name: {name}");
+        return default;
+    }
 }

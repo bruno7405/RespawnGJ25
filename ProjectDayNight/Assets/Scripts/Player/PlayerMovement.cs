@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    void Start()
+    {
+        MinimapManager.Instance.RegisterBoss();
+    }
+
     void FixedUpdate()
     {
         if (!canMove) return;

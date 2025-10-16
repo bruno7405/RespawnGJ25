@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using System;
 
 [CustomEditor(typeof(MinimapIconSprites))]
 public class MinimapIconEditor : Editor
@@ -19,13 +20,14 @@ public class MinimapIconEditor : Editor
 
     private void ExtractHeads(MinimapIconSprites data)
     {
+        data.SetEmployeeHeads(Array.ConvertAll(data.Employees, ExtractHead));
         EditorUtility.SetDirty(data);
         Debug.Log("Extracted Employee Heads!");
 
         AssetDatabase.SaveAssets();
     }
 
-    public static Sprite ExtractHead(MinimapIconBaseSprite source)
+    public static MinimapIcon ExtractHead(MinimapIconSource source)
     {
         Texture2D tex = source.sprite.texture;
 
@@ -40,24 +42,33 @@ public class MinimapIconEditor : Editor
 
         if (source.longHair)
         {
-            for (int x = 1; x <= 4; x++)
+            for (int i = 1; i <= 4; i++)
             {
-                pixels[x] = Color.clear; // bottom row is index 0–5 in row-major order
+                pixels[i] = Color.clear; // bottom row is index 0–5 in row-major order
             }
+        } else
+        {
+            Color[] newPixels = new Color[headWidth * longHeadHeight];
+            for (int i = 0; i <= 5; i++)
+            {
+                newPixels[i] = Color.clear;
+            }
+            Array.Copy(pixels, 0, newPixels, 6, pixels.Length);
+            pixels = newPixels;
         }
 
-        Texture2D headTex = new(headWidth, longHeadHeight, TextureFormat.ARGB32, false);
+        Texture2D headTex = new(headWidth, longHeadHeight, TextureFormat.ARGB32, false) {
+            filterMode = FilterMode.Point
+        };
         headTex.SetPixels(pixels);
         headTex.Apply();
-
-        // Create sprite
-        Sprite headSprite = Sprite.Create(
-            headTex,
-            new Rect(0, 0, headWidth, headHeight),
-            new Vector2(0.5f, 2/5f),
-            source.sprite.pixelsPerUnit
-        );
-
-        return headSprite;
+        
+        string path = "Assets/Sprite/MinimapHeads/" + source.name + "Head.png";
+        byte[] pngData = headTex.EncodeToPNG();
+        System.IO.File.WriteAllBytes(path, pngData);
+        AssetDatabase.ImportAsset(path);
+        Texture2D importedTex = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+        Sprite assetSprite = Sprite.Create(importedTex, new(0, 0, importedTex.width, importedTex.height), new(0.5f, 2 / 5f));
+        return new MinimapIcon { sprite = assetSprite, name = source.name };
     }
 }

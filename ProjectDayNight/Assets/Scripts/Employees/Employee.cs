@@ -127,6 +127,7 @@ public class Employee : StateMachineManager
         if (GameStateManager.Instance != null) GameStateManager.Instance.NightStart -= HandleNightStart;
         if (CompanyManager.Instance == null) return;
         CompanyManager.Instance.UnregisterEmployee(this);
+        MinimapManager.Instance.UnregisterEmployee(this);
     }
     void HandleNightStart()
     {
@@ -175,6 +176,7 @@ public class Employee : StateMachineManager
     {
         base.Start();
         CompanyManager.Instance.RegisterEmployee(this);
+        MinimapManager.Instance.RegisterEmployee(this);
         GameStateManager.Instance.DayStart -= HandleNightStart;
         GameStateManager.Instance.NightStart += HandleNightStart;
     }

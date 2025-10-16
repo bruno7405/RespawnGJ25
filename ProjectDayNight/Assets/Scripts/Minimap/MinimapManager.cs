@@ -8,24 +8,29 @@ public class MinimapManager : MonoBehaviour
 {
     private static MinimapManager instance;
     public static MinimapManager Instance => instance;
+    private static MinimapIconSprites iconData;
 
     [SerializeField] private RawImage minimapImage;
+    [SerializeField] private GameObject iconPrefab;
     [SerializeField] private int tilePixelSize;
     [SerializeField] private Color floorColor;
     [SerializeField] private Color wallColor;
     private int borderWidth => tilePixelSize / 2;
-    private List<GameObject> employeeIcons;
-    private List<GameObject> taskIcons;
+    private Dictionary<Employee, RectTransform> employeeIcons;
+    private RectTransform bossIcon;
     public Vector2Int MinimapSize { get; private set; }
     private bool[,] grid; // your boolean grid
+    public Vector2 PlayerPos => PlayerMovement.Instance.transform.position;
 
     void Awake()
     {
         instance = this;
+        iconData = Resources.Load<MinimapIconSprites>("MinimapIconSprites");
     }
     void Start()
     {
         NullCheck();
+        employeeIcons = new();
         MinimapSize = new Vector2Int(GridWidth, GridHeight) * tilePixelSize + new Vector2Int(borderWidth * 2, borderWidth * 2);
         grid = new bool[GridWidth, GridHeight];
         for (int i = 0; i < GridWidth * GridHeight; i++)
@@ -36,6 +41,18 @@ public class MinimapManager : MonoBehaviour
         }
 
         GenerateMinimap();
+    }
+
+    void Update()
+    {
+        if (bossIcon != null)
+        {
+            bossIcon.anchoredPosition = WorldToMinimap(PlayerPos);
+        }
+        if (employeeIcons.Count > 0)
+        {
+            employeeIcons.ToList().ForEach(kvp => kvp.Value.anchoredPosition = WorldToMinimap(kvp.Key.transform.position));
+        }
     }
 
     private void GenerateMinimap()
@@ -56,7 +73,7 @@ public class MinimapManager : MonoBehaviour
             {
                 bool isFloor = grid[x, y];
 
-                tex.SetPixels(x*tilePixelSize + borderWidth, y*tilePixelSize + borderWidth, tilePixelSize, tilePixelSize, isFloor ? floorSquare : wallSquare);
+                tex.SetPixels(x * tilePixelSize + borderWidth, y * tilePixelSize + borderWidth, tilePixelSize, tilePixelSize, isFloor ? floorSquare : wallSquare);
             }
         }
 
@@ -66,18 +83,80 @@ public class MinimapManager : MonoBehaviour
         minimapImage.texture = tex;
     }
 
-    public void AddIcon(GameObject iconPrefab, Vector2 worldPos)
+    public void RegisterEmployee(Employee employee)
     {
-        Vector2 anchoredPos = WorldToMinimap(worldPos);
-        GameObject icon = Instantiate(iconPrefab, minimapImage.transform);
-        icon.GetComponent<RectTransform>().anchoredPosition = anchoredPos;
+        Debug.Log($"Registering employee {employee.Name} on minimap");
+        string name = employee.Name;
+        MinimapIcon headIcon = iconData.GetMinimapIcon(name);
+        RectTransform rt = AddIcon(headIcon, employee.transform.position);
+        employeeIcons.Add(employee, rt);
+    }
+    public void UnregisterEmployee(Employee employee)
+    {
+        employeeIcons.Remove(employee);
+        foreach (Transform child in minimapImage.transform)
+        {
+            if (child.name == employee.Name)
+            {
+                Destroy(child.gameObject);
+                break;
+            }
+        }
     }
 
-    private Vector2 WorldToMinimap(Vector3 worldPos)
+    public void RegisterTask(TaskBruno task)
     {
-        float normX = (worldPos.x - WorldMin.x) / WorldSize.x;
-        float normY = (worldPos.z - WorldMin.y) / WorldSize.y;
+        Debug.Log($"Registering task {task.Name} on minimap");
+        MinimapIcon taskIcon = iconData.BossTask;
+        AddIcon(taskIcon, task.transform.position, task.Name);
+    }
+    public void UnregisterTask(TaskBruno task)
+    {
+        foreach (Transform child in minimapImage.transform)
+        {
+            if (child.name == task.Name)
+            {
+                Destroy(child.gameObject);
+                break;
+            }
+        }
+    }
+
+    public void RegisterBoss()
+    {
+        bossIcon = AddIcon(iconData.BossHead, PlayerPos);
+    }
+    public void UnregisterBoss()
+    {
+        foreach (Transform child in minimapImage.transform)
+        {
+            if (child.name == iconData.BossHead.name)
+            {
+                Destroy(child.gameObject);
+                break;
+            }
+        }
+    }
+
+    public RectTransform AddIcon(MinimapIcon icon, Vector2 worldPos, string name = null)
+    {
+        Vector2 anchoredPos = WorldToMinimap(worldPos);
+        GameObject instane = Instantiate(iconPrefab, minimapImage.transform);
+        RectTransform rt = instane.GetComponent<RectTransform>();
+
+        instane.name = name ?? icon.name;
+        instane.GetComponent<Image>().sprite = icon.sprite;
+        rt.sizeDelta = new(2 * tilePixelSize, 2 * tilePixelSize);
+        rt.anchoredPosition = anchoredPos;
+        
+        return rt;
+    }
+
+    private Vector2 WorldToMinimap(Vector2 worldPos)
+    {
+        float normX = (worldPos.x - WorldMin.x) / WorldSize.x - 0.5f;
+        float normY = (worldPos.y - WorldMin.y) / WorldSize.y - 0.5f;
         RectTransform rt = minimapImage.rectTransform;
-        return new Vector2(normX * rt.rect.width, normY * rt.rect.height);
+        return new(normX * rt.rect.width, normY * rt.rect.height);
     }
 }

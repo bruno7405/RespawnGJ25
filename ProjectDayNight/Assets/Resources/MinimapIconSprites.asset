@@ -15,21 +15,43 @@ MonoBehaviour:
   boss:
     longHair: 0
     sprite: {fileID: -6248741079362886434, guid: cf145bc44569fa643815b2ade33ed6ee, type: 3}
+    name: 
   bossHead: {fileID: 0}
   bossTask: {fileID: 0}
   employees:
   - longHair: 0
     sprite: {fileID: 21300000, guid: eb380807cd46371459d819c4604bc0c5, type: 3}
+    name: Bruno
   - longHair: 0
     sprite: {fileID: -1248069245556451396, guid: 72b9cb6281a6d3549aa02aaf6b01c7f7, type: 3}
+    name: Cristiana
   - longHair: 0
     sprite: {fileID: -8983709974163030090, guid: a6a71d6d7c2bc454aa54bc2f30845104, type: 3}
+    name: Ben
   - longHair: 0
     sprite: {fileID: 2452452464603050717, guid: ff512076064008b45bac15fdd036324e, type: 3}
+    name: Anirudh
   - longHair: 0
     sprite: {fileID: -1034481086501669045, guid: 6b672a874ab2e274d925ad76965a0348, type: 3}
+    name: Adin
   - longHair: 1
     sprite: {fileID: -9192006335155660214, guid: 81d4de0d676ee8f459fa8734340ca0a1, type: 3}
+    name: Annie
   - longHair: 1
     sprite: {fileID: -2563477977979148753, guid: 6ea5f73cdf919f542af7e2cd5958fa1c, type: 3}
-  employeeHeads: []
+    name: Catherine
+  employeeHeads:
+  - sprite: {fileID: 21300000, guid: a5a28e866932c114fb13202ec1515e2f, type: 3}
+    name: Bruno
+  - sprite: {fileID: 21300000, guid: 00fcdea27f4ca78469c726cacb0f1939, type: 3}
+    name: Cristiana
+  - sprite: {fileID: 21300000, guid: c29ee8fb77abaa6478da24647b80f72e, type: 3}
+    name: Ben
+  - sprite: {fileID: 21300000, guid: 12001d88f809cb2438e848f7b648081a, type: 3}
+    name: Anirudh
+  - sprite: {fileID: 21300000, guid: 5014aca1aa36b204ab46ee5e2d5b9f99, type: 3}
+    name: Adin
+  - sprite: {fileID: 21300000, guid: 1ebb0a5cd06dd0d4ca6d33b886c93797, type: 3}
+    name: Annie
+  - sprite: {fileID: 21300000, guid: d31a9f94ca1d37b4899ff940ba49ccf3, type: 3}
+    name: Catherine

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TaskBruno : MonoBehaviour, IInteractable
 {
     [SerializeField] private string eventName;
+    public string Name => eventName;
 
     float timeLeft;
     bool countdown = false;
@@ -20,9 +21,10 @@ public class TaskBruno : MonoBehaviour, IInteractable
         gameObject.layer = 9; // move to not interactable layer
     }
 
-    private void Start()
+    void Start()
     {
         informationPopupUI = InformationPopupUI.Instance;
+        MinimapManager.Instance.RegisterTask(this);
     }
 
     void Update()
@@ -60,6 +62,7 @@ public class TaskBruno : MonoBehaviour, IInteractable
         GetComponent<SpriteRenderer>().color = Color.red;
         StartCoroutine(RemoveTask(1));
         informationPopupUI.DisplayText($"{eventName} Failed!", false, 2f);
+        MinimapManager.Instance.UnregisterTask(this);
 
         // TODO Increment mistakes
     }
@@ -74,6 +77,7 @@ public class TaskBruno : MonoBehaviour, IInteractable
         StartCoroutine(RemoveTask(1));
         CompanyManager.Instance.AddMoney(moneyReward);
         informationPopupUI.DisplayText($"{eventName} Completed! Earned +${moneyReward}", true, 2f);
+        MinimapManager.Instance.UnregisterTask(this);
     }
 
     public virtual void OnInteract(PlayerInteractor interactor)
