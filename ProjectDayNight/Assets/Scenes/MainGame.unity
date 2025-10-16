@@ -8459,7 +8459,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.84, y: 0.33}
+  m_Size: {x: 2.11, y: 0.33}
   m_EdgeRadius: 0
 --- !u!1 &2411786318335039955
 GameObject:
@@ -9480,6 +9480,10 @@ PrefabInstance:
     - target: {fileID: 3620971736190764567, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008600889875816565, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
+      propertyPath: secondsPerGameDay
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5501166290784377134, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -33604,7 +33608,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.84, y: 0.33}
+  m_Size: {x: 2.11, y: 0.33}
   m_EdgeRadius: 0
 --- !u!61 &7166621624622726580
 BoxCollider2D:
@@ -36234,7 +36238,7 @@ Transform:
   m_GameObject: {fileID: 4197037753155718838}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.59, y: 0.9500004, z: 0}
+  m_LocalPosition: {x: -0.475, y: 1.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
