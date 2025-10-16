@@ -30,7 +30,7 @@ public static class SlackOffSpots
     public static List<SlackOffSpot> GetAvailableSpots(SlackOffRoom room) => Spots.Where(job => !job.IsAssigned && job.Room == room).ToList();
     public static List<SlackOffSpot> GetAvailableSpots() => Spots.Where(job => !job.IsAssigned).ToList();
 
-    public static SlackOffSpot TakeRandomSpot(bool takeAssigned = true)
+    public static SlackOffSpot TakeRandomSpot(bool takeAssigned = false)
     {
         SlackOffRoom slackOffRoom;
         List<SlackOffSpot> availableOfType;

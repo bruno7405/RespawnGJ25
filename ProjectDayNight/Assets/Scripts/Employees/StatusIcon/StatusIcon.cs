@@ -19,7 +19,7 @@ public class StatusIcon : MonoBehaviour
     public Sprite SlackingOffSprite => statusIconSprites.SlackingOffSprite;
     public bool Active => gameObject.activeSelf;
 
-    void Awake()
+    void Start()
     {
         transform.localScale = Vector3.zero;
         SetAlpha(0f);

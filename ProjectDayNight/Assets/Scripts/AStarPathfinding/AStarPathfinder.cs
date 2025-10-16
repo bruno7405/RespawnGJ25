@@ -97,7 +97,7 @@ public class AStarPathfinder
 
     private static List<Vector2> ReconstructPath(Node end, Vector2 preciseGoal)
     {
-        List<Vector2> path = preciseGoal != default ? new() { preciseGoal } : new();
+        List<Vector2> path = new();
         Node current = end;
         while (current != null)
         {
@@ -105,7 +105,8 @@ public class AStarPathfinder
             current = current.parent;
         }
         path.Reverse();
-        Debug.Log(string.Join(" -> ", path));
+        if (preciseGoal != default) path[^1] = preciseGoal;
+        // Debug.Log(string.Join(" -> ", path));
         return path;
     }
 
