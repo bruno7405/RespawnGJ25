@@ -129,6 +129,7 @@ public class CompanyManager : MonoBehaviour
             Money -= amount;
             return true;
         }
+        PlayerStatsUI.Instance.SetMoney(Money);
         return false; // not enough money
     }
     public bool AddMoney(int amount)
@@ -139,6 +140,7 @@ public class CompanyManager : MonoBehaviour
             return false;
         }
         Money += amount;
+        PlayerStatsUI.Instance.SetMoney(Money);
         return true;
     }
     public void ChangeCompanyMorale(int delta)
@@ -167,6 +169,8 @@ public class CompanyManager : MonoBehaviour
     public void AddProfit()
     {
         Money += GetProfit();
+        PlayerStatsUI.Instance.SetMoney(Money);
+
         if (Money < 0)
         {
             GameStateManager.Instance.GameOver();
