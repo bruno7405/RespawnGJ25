@@ -106,13 +106,6 @@ public class Employee : StateMachineManager
     {
         motionManager.Stop();
     }
-    public EmployeeJob GetNewJob()
-    {
-        var availableJobs = EmployeeJobRegistry.GetAvailableJobs(Role);
-        var randomJob = availableJobs.Count > 0 ? availableJobs[Random.Range(0, availableJobs.Count)] : null;
-        randomJob?.Assign();
-        return randomJob;
-    }
 
     void OnEnable()
     {

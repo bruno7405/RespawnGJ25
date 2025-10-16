@@ -10,11 +10,13 @@ public class EmployeeJob : MonoBehaviour
     [SerializeField] private Role[] allowedRoles = (Role[])Enum.GetValues(typeof(Role));
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Vector2 locationOffset;
+    [SerializeField] private JobType jobType;
     public int Duration => duration;
     public Role[] AllowedRoles => allowedRoles;
     public string Name => jobName;
     public string Description => description;
     public bool IsAssigned { get; private set; }
+    public JobType Type => jobType;
     private Vector2 location;
     public Vector2 Location => location;
 

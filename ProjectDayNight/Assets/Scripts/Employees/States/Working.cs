@@ -45,7 +45,7 @@ public class Working : State
     void StartJob()
     {
         employee.readyForJob = false;
-        var newJob = employee.GetNewJob();
+        var newJob = EmployeeJobRegistry.TakeRandomJob(employee.Role);
         currentJob?.Unassign();
 
         if (newJob == null)
