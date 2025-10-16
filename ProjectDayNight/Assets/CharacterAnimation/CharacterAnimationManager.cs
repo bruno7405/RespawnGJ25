@@ -8,46 +8,35 @@ public class CharacterAnimationManager : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] ParticleSystem walkParticles;
-    
-
-    private Vector2 posChange;
-    private Vector2 lastPosition;
 
     void Start()
     {
-        lastPosition = transform.position;
-
         var emission = walkParticles.emission;
         emission.enabled = false;
     }
 
-    void Update()
+    public void ToggleWalk()
     {
-        posChange = (Vector2) transform.position - (Vector2) lastPosition;
-
-        if (posChange.magnitude > 0.01)
-        {
-            animator.SetBool("isMoving", true);
-            if (posChange.x > 0.005f)
-            {
-                sprite.flipX = false;
-            }
-            else if (posChange.x < 0.005f)
-            {
-                sprite.flipX = true;
-            }
-
-            // Particles
-            var emission = walkParticles.emission;
-            emission.enabled = true;
-        }
-        else
-        {
-            animator.SetBool("isMoving", false);
-            var emission = walkParticles.emission;
-            emission.enabled = false;
-        }
-
-        lastPosition = transform.position;
+        animator.SetBool("isMoving", true);
+        var emission = walkParticles.emission;
+        emission.enabled = true;
     }
+
+    public void ToggleIdle()
+    {
+        animator.SetBool("isMoving", false);
+        var emission = walkParticles.emission;
+        emission.enabled = false;
+    }
+
+    public void FaceLeft()
+    {
+        sprite.flipX = true;
+    }
+
+    public void FaceRight()
+    {
+        sprite.flipX = false;
+    }
+
 }

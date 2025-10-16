@@ -16,6 +16,8 @@ public class EmployeeMotionManager : MonoBehaviour
 
     public bool IsMoving => currentPath != null && currentPathIndex != -1;
     public bool IsMovingLeft => IsMoving && (currentPath[currentPathIndex].x < transform.position.x);
+    CharacterAnimationManager charVisuals;
+
 
     /// <summary>
     /// Makes employee walk to location
@@ -94,6 +96,12 @@ public class EmployeeMotionManager : MonoBehaviour
             currentCallback = null;   // clear first to avoid clobbering a new value set by cb
             cb?.Invoke();
         }
+
+        // Visuals
+        if (IsMoving) charVisuals.ToggleWalk();
+        else charVisuals.ToggleIdle();
+        if (IsMovingLeft) charVisuals.FaceLeft();
+        else charVisuals.FaceRight();
     }
 
     private void Start()
@@ -106,5 +114,6 @@ public class EmployeeMotionManager : MonoBehaviour
     {
         currentPath = null;
         currentPathIndex = -1;
+        charVisuals = GetComponent<CharacterAnimationManager>();
     }
 }

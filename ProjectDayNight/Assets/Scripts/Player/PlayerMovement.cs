@@ -6,8 +6,9 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement Instance => instance;
 
     [SerializeField] float speed;
-    bool canMove = true;
+    [SerializeField] CharacterAnimationManager charVisuals;
 
+    bool canMove = true;
     Vector2 movementVector;
     Rigidbody2D rb;
 
@@ -32,6 +33,27 @@ public class PlayerMovement : MonoBehaviour
     {
         v.Normalize();
         movementVector = v;
+        
+        // Change visuals
+        if (canMove)
+        {
+            if (v == Vector2.zero)
+            {
+                charVisuals.ToggleIdle();
+            }
+            else
+            {
+                charVisuals.ToggleWalk();
+                if (v.x > 0) charVisuals.FaceRight();
+                else if (v.x < 0) charVisuals.FaceLeft();
+
+            }
+        }
+        else
+        {
+            charVisuals.ToggleIdle();
+        }
+        
     }
 
     public void IncreaseSpeed(int percentage)

@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 150
+  charVisuals: {fileID: 7943279457384505637}
 --- !u!114 &6270378191802059379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +547,7 @@ MonoBehaviour:
     m_Bits: 64
   nearestInteractable: {fileID: 0}
   interactionCollider: {fileID: 8453000397385494492}
+  informationUI: {fileID: 0}
 --- !u!58 &8453000397385494492
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -592,11 +594,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3499080910351645860, guid: bf1b2da9e3b8e6040ae2c852288b8d4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.07373
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3499080910351645860, guid: bf1b2da9e3b8e6040ae2c852288b8d4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5092201
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 3499080910351645860, guid: bf1b2da9e3b8e6040ae2c852288b8d4d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -633,6 +635,14 @@ PrefabInstance:
     - target: {fileID: 6576849574905925724, guid: bf1b2da9e3b8e6040ae2c852288b8d4d, type: 3}
       propertyPath: m_Name
       value: Footsteps
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872434147469981777, guid: bf1b2da9e3b8e6040ae2c852288b8d4d, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872434147469981777, guid: bf1b2da9e3b8e6040ae2c852288b8d4d, type: 3}
+      propertyPath: EmissionModule.rateOverTime.minScalar
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
