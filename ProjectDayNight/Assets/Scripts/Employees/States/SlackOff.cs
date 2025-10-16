@@ -30,7 +30,6 @@ public class SlackOff : State
     }
 
     public override void OnUpdate()
-
     {
         if (reachedBreakSpot)
         {
