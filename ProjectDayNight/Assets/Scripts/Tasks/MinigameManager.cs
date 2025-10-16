@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
 
 public class MinigameManager : MonoBehaviour
 {
@@ -22,18 +25,20 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] int reward = 100;
     [SerializeField] List<GameObject> gridSlots;
     float prevTimeScale;
-
-    public void StartAimTrainer()
+    Action win;
+    Action lose;
+    public void StartAimTrainer(Action onWin, Action onLose)
     {
         if (isPlaying) {
-            throw new System.InvalidOperationException("Minigame already in progress");
+            throw new InvalidOperationException("Minigame already in progress");
         }
         isPlaying = true;
 
         panel.SetActive(true);
         prevTimeScale = Time.timeScale;
         Time.timeScale = 0f; // Pause main game
-
+        win = onWin;
+        lose = onLose;
         currentRound = 0;
         StartCoroutine(RunAimTrainer());
     }
@@ -57,14 +62,17 @@ public class MinigameManager : MonoBehaviour
             if (currentTarget != null) // Time ran out (didn't click)
             {
                 currentTarget.SetActive(false);
-                Fail();
+                Debug.Log("Lost minigame!");
+                Cleanup();
+                lose();
                 yield break;
             }
 
             currentRound++;
         }
-
-        Win();
+        Debug.Log("Won minigame!");
+        Cleanup();
+        win();
     }
 
     private void SpawnTarget()
@@ -73,23 +81,6 @@ public class MinigameManager : MonoBehaviour
             currentTarget.SetActive(false);
         currentTarget = gridSlots[Random.Range(0, gridSlots.Count)];
         currentTarget.SetActive(true);
-    }
-
-    private void Win()
-    {
-        Debug.Log("AimTrainer: WIN!");
-        Cleanup();
-        CompanyManager.Instance.AddMoney(reward);
-        InformationPopupUI.Instance.DisplayText($"Task complete! You earned ${reward}!", true, 2f);
-        // TODO: Reward player
-    }
-
-    private void Fail()
-    {
-        Debug.Log("AimTrainer: FAIL!");
-        InformationPopupUI.Instance.DisplayText("You failed the task!", false, 2f);
-        Cleanup();
-        // TODO: Apply penalty
     }
 
     private void Cleanup()
@@ -106,7 +97,7 @@ public class MinigameManager : MonoBehaviour
         GameObject slot = button.gameObject;
         if (!isPlaying || slot != currentTarget)
         {
-            throw new System.InvalidOperationException("Clicked button is not the current target or game not active!");
+            throw new InvalidOperationException("Clicked button is not the current target or game not active!");
         }
         slot.GetComponent<Image>().color = Color.green;
         yield return new WaitForSecondsRealtime(0.1f);
@@ -124,7 +115,7 @@ public class MinigameManager : MonoBehaviour
         Debug.Log("MinigameManager instance set");
         if (gridSlots == null || gridSlots.Count != 9)
         {
-            throw new System.InvalidOperationException("MinigameManager does not have 9 grid slots assigned!");
+            throw new InvalidOperationException("MinigameManager does not have 9 grid slots assigned!");
         }
         foreach (var slot in gridSlots)
         {
