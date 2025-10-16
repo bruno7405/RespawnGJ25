@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49bf0a319f66d843ba81100303a39c9, type: 3}
+  m_Name: MinimapIconSprites
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapIconSprites
+  boss:
+    longHair: 0
+    sprite: {fileID: -6248741079362886434, guid: cf145bc44569fa643815b2ade33ed6ee, type: 3}
+  bossHead: {fileID: 0}
+  bossTask: {fileID: 0}
+  employees:
+  - longHair: 0
+    sprite: {fileID: 21300000, guid: eb380807cd46371459d819c4604bc0c5, type: 3}
+  - longHair: 0
+    sprite: {fileID: -1248069245556451396, guid: 72b9cb6281a6d3549aa02aaf6b01c7f7, type: 3}
+  - longHair: 0
+    sprite: {fileID: -8983709974163030090, guid: a6a71d6d7c2bc454aa54bc2f30845104, type: 3}
+  - longHair: 0
+    sprite: {fileID: 2452452464603050717, guid: ff512076064008b45bac15fdd036324e, type: 3}
+  - longHair: 0
+    sprite: {fileID: -1034481086501669045, guid: 6b672a874ab2e274d925ad76965a0348, type: 3}
+  - longHair: 1
+    sprite: {fileID: -9192006335155660214, guid: 81d4de0d676ee8f459fa8734340ca0a1, type: 3}
+  - longHair: 1
+    sprite: {fileID: -2563477977979148753, guid: 6ea5f73cdf919f542af7e2cd5958fa1c, type: 3}
+  employeeHeads: []
