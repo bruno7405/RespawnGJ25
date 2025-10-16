@@ -51,6 +51,7 @@ public class UpgradeButtonUI : MonoBehaviour
 
     private void OnUpgradeChosen()
     {
+        AudioManager.Instance.PlayOneShot("UIClick");
         UpgradeState.instance.SetNewUpgrades(upgrade);
     }
 }

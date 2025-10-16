@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -25,7 +26,15 @@ public class NightState : State
     public override void OnStart()
     {
         Debug.Log("night state");
-        ((GameStateManager)stateMachine).InvokeNightStart();
+        try
+        {
+            ((GameStateManager)stateMachine).InvokeNightStart();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+        
         
         StartCoroutine(DayToNightTransition());
 

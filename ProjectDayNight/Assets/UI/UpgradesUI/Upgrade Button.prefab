@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 5700318770841585734}
   - component: {fileID: 368675641060885085}
   - component: {fileID: 5523811569705853561}
+  - component: {fileID: 6240553658480990704}
   m_Layer: 0
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -308,7 +309,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.73700607, g: 0.8308562, b: 0.9245283, a: 1}
@@ -350,6 +351,28 @@ MonoBehaviour:
   backgroundImage: {fileID: 5700318770841585734}
   description: {fileID: 5398000025853585245}
   statText: {fileID: 366442521318946637}
+--- !u!95 &6240553658480990704
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748737348353483273}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8420ab2ca27a2bd48a144437281b5638, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7829466405511863559
 GameObject:
   m_ObjectHideFlags: 0

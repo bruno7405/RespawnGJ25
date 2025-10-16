@@ -64,6 +64,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: UIClick
+    audioClip: {fileID: 8300000, guid: e1dbb56bda1d44d4e88d630a1894dda3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &469359001790339111
 AudioSource:
   m_ObjectHideFlags: 0
