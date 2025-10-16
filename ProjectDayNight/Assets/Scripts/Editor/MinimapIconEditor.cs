@@ -5,6 +5,8 @@ using System;
 [CustomEditor(typeof(MinimapIconSprites))]
 public class MinimapIconEditor : Editor
 {
+    private const string basePath = "Assets/Sprite/MinimapIcons/";
+    private const string baseSuffix = ".png";
     bool overwriteDisk = false;
     public override void OnInspectorGUI()
     {
@@ -79,7 +81,7 @@ public class MinimapIconEditor : Editor
 
         if (overwriteDisk)
         {
-            string path = "Assets/Sprite/MinimapHeads/" + source.name + "Head.png";
+            string path = $"{basePath}{source.name}Head{baseSuffix}";
             byte[] pngData = headTex.EncodeToPNG();
             System.IO.File.WriteAllBytes(path, pngData);
             AssetDatabase.ImportAsset(path);
@@ -93,7 +95,7 @@ public class MinimapIconEditor : Editor
             importer.spritePixelsPerUnit = 1;
             importer.SaveAndReimport();
         }
-        Sprite importedSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprite/MinimapHeads/" + source.name + "Head.png");
+        Sprite importedSprite = AssetDatabase.LoadAssetAtPath<Sprite>($"{basePath}{source.name}Head{baseSuffix}");
         return new MinimapIcon { sprite = importedSprite, name = source.name };
     }
 }
