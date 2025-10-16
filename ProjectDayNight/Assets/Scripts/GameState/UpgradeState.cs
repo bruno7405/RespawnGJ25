@@ -90,6 +90,7 @@ public class UpgradeState : State
     {
         blackScreenUI.FadeIn();
         yield return new WaitForSeconds(1);
+
         stateMachine.SetNewState(dayState);
 
     }
