@@ -82,6 +82,54 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: StartMenuSong
+    audioClip: {fileID: 8300000, guid: c1980c977c77cad4a9949d1b63a00afd, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FileCabinetPages
+    audioClip: {fileID: 8300000, guid: 87828d7951b7ae045b675bd390510ca2, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ToiletFlush
+    audioClip: {fileID: 8300000, guid: d5548cbb2a551ac4bad099c8d64b6181, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ConferenceRoomAmbiance
+    audioClip: {fileID: 8300000, guid: d7bcfddf5d38e2d43afafae3beef43c7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: KeyboardTyping
+    audioClip: {fileID: 8300000, guid: 79b701ac5a6e375419b53bf21ff8a4aa, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BonkSound
+    audioClip: {fileID: 8300000, guid: a0eb4d560618b6e43bccb6ad23305c97, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Error
+    audioClip: {fileID: 8300000, guid: f283f37886a5ff247941b338f35491bd, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TickingClock
+    audioClip: {fileID: 8300000, guid: 2bcec83f7ae4a774c860bbb929c67797, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &469359001790339111
 AudioSource:
   m_ObjectHideFlags: 0
