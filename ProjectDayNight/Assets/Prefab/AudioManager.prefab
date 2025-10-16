@@ -58,6 +58,12 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: LightSwitch
+    audioClip: {fileID: 8300000, guid: 32a54539e7f32514295d86d8884fed35, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &469359001790339111
 AudioSource:
   m_ObjectHideFlags: 0
