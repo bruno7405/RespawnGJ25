@@ -10,6 +10,12 @@ public class DialogEventTaskBruno : TaskBruno
         dialogEvent = dialog;
     }
 
+    public override void OnInteract(PlayerInteractor interactor)
+    {
+        CompleteTask();
+    }
+
+
     /// <summary>
     /// Stops countdown (for game over), starts dialogue event
     /// </summary>

@@ -12,10 +12,17 @@ public class TaskBruno : MonoBehaviour, IInteractable
     private Color normalColor;
     private bool taskActive;
     [SerializeField] int moneyReward = 100;
+    InformationPopupUI informationPopupUI;
+
     private void Awake()
     {
         normalColor = GetComponent<SpriteRenderer>().color;
         gameObject.layer = 9; // move to not interactable layer
+    }
+
+    private void Start()
+    {
+        informationPopupUI = InformationPopupUI.Instance;
     }
 
     void Update()
@@ -43,6 +50,8 @@ public class TaskBruno : MonoBehaviour, IInteractable
         // Visuals
         GetComponent<SpriteRenderer>().color = Color.blue;
         // SFX
+
+        informationPopupUI.DisplayText(eventName, true);
     }
 
     protected virtual void FailTask()
@@ -50,7 +59,7 @@ public class TaskBruno : MonoBehaviour, IInteractable
         countdown = false;
         GetComponent<SpriteRenderer>().color = Color.red;
         StartCoroutine(RemoveTask(1));
-        InformationPopupUI.Instance.DisplayText($"{eventName} Failed!", false, 2f);
+        informationPopupUI.DisplayText($"{eventName} Failed!", false, 2f);
 
         // TODO Increment mistakes
     }
@@ -64,10 +73,10 @@ public class TaskBruno : MonoBehaviour, IInteractable
         GetComponent<SpriteRenderer>().color = Color.green;
         StartCoroutine(RemoveTask(1));
         CompanyManager.Instance.AddMoney(moneyReward);
-        InformationPopupUI.Instance.DisplayText($"{eventName} Completed! Earned +${moneyReward}", true, 2f);
+        informationPopupUI.DisplayText($"{eventName} Completed! Earned +${moneyReward}", true, 2f);
     }
 
-    public void OnInteract(PlayerInteractor interactor)
+    public virtual void OnInteract(PlayerInteractor interactor)
     {
         MinigameManager.Instance.StartAimTrainer(CompleteTask, FailTask);
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6062748491891798025}
   - component: {fileID: 7474857891898456297}
+  - component: {fileID: 5521777739304372098}
   m_Layer: 0
   m_Name: Door Sprite
   m_TagString: Untagged
@@ -90,6 +91,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5521777739304372098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511644757383919744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72406c6381c649b40ba0085a479e0854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogEventTaskBruno
+  eventName: Answer Door
+  moneyReward: 100
+  dialogEvent: {fileID: 0}
 --- !u!1 &1336351042402247074
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,8 +169,6 @@ MonoBehaviour:
   - {fileID: 1439971626147964181, guid: e8796904812a91c4cbf754d5413cbeed, type: 3}
   - {fileID: 1179227167226542285, guid: d24ae0b2129c73c4ca575de81d91a1a4, type: 3}
   - {fileID: 5585815800368619782, guid: fd2cc6dc514475c46824a1287be731ab, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1924178333530707181
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,6 @@ public class MinigameManager : MonoBehaviour
 
         panel.SetActive(true);
         prevTimeScale = Time.timeScale;
-        Time.timeScale = 0f; // Pause main game
         win = onWin;
         lose = onLose;
         currentRound = 0;

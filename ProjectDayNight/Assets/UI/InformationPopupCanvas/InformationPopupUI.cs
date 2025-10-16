@@ -21,6 +21,7 @@ public class InformationPopupUI : MonoBehaviour
     [SerializeField] Color nightTextColor;
     [SerializeField] Color nightBackgroundColor;
 
+    private Coroutine popupCoroutine;
 
     private void Awake()
     {
@@ -35,11 +36,17 @@ public class InformationPopupUI : MonoBehaviour
 
     public void DisplayText(string text, bool isDay)
     {
+        if (popupCoroutine != null) StopCoroutine(popupCoroutine);
         StartCoroutine(DisplaySequence(text, isDay));
     }
 
     public void DisplayText(string text, bool isDay, float duration = displayDuration)
     {
+        if (popupCoroutine != null)
+        {
+            StopCoroutine(popupCoroutine);
+            popupCoroutine = null;
+        }
         StartCoroutine(DisplaySequence(text, isDay, duration));
     }
 
@@ -63,8 +70,9 @@ public class InformationPopupUI : MonoBehaviour
 
         animator.SetTrigger("slideOut");
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
 
+        popupCoroutine = null;
         root.SetActive(false);
     }
 
@@ -88,8 +96,9 @@ public class InformationPopupUI : MonoBehaviour
 
         animator.SetTrigger("slideOut");
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
 
+        popupCoroutine = null;
         root.SetActive(false);
     }
 
