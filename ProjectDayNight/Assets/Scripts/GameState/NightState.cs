@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NightState : State
 {
-    float duration;
+    //float duration;
     float timeElapsed;
 
     [SerializeField] State endState;
@@ -37,16 +37,16 @@ public class NightState : State
         timeElapsed += Time.deltaTime;
         timeUI.SetTimeElasped(timeElapsed, false);
 
-        if (timeElapsed >= duration)
+        if (CompanyManager.Instance.NumEscapists <= 0)
         {
             stateMachine.SetNewState(endState);
         }
     }
 
-    public void SetDuration(float d)
-    {
-        duration = d;
-    }
+    // public void SetDuration(float d)
+    // {
+    //     duration = d;
+    // }
 
     IEnumerator DayToNightTransition()
     {

@@ -10,6 +10,7 @@ public class Running : State
     public override void OnExit()
     {
         CompanyManager.Instance.RemoveRunner(employee);
+        employee.StopMoving();
     }
 
     public override void OnStart()

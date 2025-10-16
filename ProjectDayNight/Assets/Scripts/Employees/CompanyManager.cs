@@ -32,6 +32,7 @@ public class CompanyManager : MonoBehaviour
     [SerializeField] int numExits = 2;
     [SerializeField] Transform[] exitPositions;
     Exit[] exits;
+    public int NumEscapists;
 
     void HandleNightStart()
     {
@@ -39,14 +40,14 @@ public class CompanyManager : MonoBehaviour
         // Calculate # Escapists
         if (minEscapists > NumEmployees)
             throw new System.InvalidOperationException("minEscapists cannot be greater than startingNumEmployees!");
-        int numEscapists = Mathf.Max(employees.Count - Morale * employees.Count / 100, minEscapists);
-        List<Employee> escapingEmployees = employees.OrderBy(e => e.Morale).Take(numEscapists).ToList();
-        for (int i = 0; i < Mathf.Min(numExits, numEscapists); i++)
+        NumEscapists = Mathf.Max(employees.Count - Morale * employees.Count / 100, minEscapists);
+        List<Employee> escapingEmployees = employees.OrderBy(e => e.Morale).Take(NumEscapists).ToList();
+        for (int i = 0; i < Mathf.Min(numExits, NumEscapists); i++)
         {
             escapingEmployees[i].transform.position = exits[i].position;
             escapingEmployees[i].StartEscape(exits[i]);
         }
-        for (int i = numExits; i < numEscapists; i++)
+        for (int i = numExits; i < NumEscapists; i++)
         {
             escapingEmployees[i].SetNewState(escapingEmployees[i].RunningState);
         }

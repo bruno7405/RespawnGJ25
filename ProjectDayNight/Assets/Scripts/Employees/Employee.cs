@@ -59,7 +59,15 @@ public class Employee : StateMachineManager
     }
     public void KillEmployee()
     {
-        SetNewState(deathState);
+        if (GameStateManager.Instance.currentState != GameStateManager.Instance.NightState)
+            throw new InvalidOperationException("Can only kill employees at night!");
+        if (StateName == EmployeeState.Running || StateName == EmployeeState.Escaping)
+        {
+            CompanyManager.Instance.NumEscapists--;
+        }
+        currentState?.OnExit();
+        currentState = deathState;
+        currentState.OnStart();
     }
     public void UrgeWork()
     {
@@ -139,6 +147,10 @@ public class Employee : StateMachineManager
         if (newState == escapeState)
         {
             throw new ArgumentException("Use StartEscape(Exit) to set Escape state");
+        }
+        if (newState == deathState)
+        {
+            throw new ArgumentException("Use KillEmployee() to set Death state");
         }
         base.SetNewState(newState);
     }

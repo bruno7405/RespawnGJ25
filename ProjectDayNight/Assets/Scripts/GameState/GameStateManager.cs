@@ -19,11 +19,7 @@ public class GameStateManager : StateMachineManager
     [SerializeField] NightState nightState;
     public NightState NightState => nightState;
     TimeUI timeUI;
-
     public int CurrentDay { get; private set; } = 0;
-
-
-
     public event Action DayStart;
     public event Action NightStart;
     public bool IsDay => currentState == dayState;
@@ -48,8 +44,7 @@ public class GameStateManager : StateMachineManager
         timeUI.SetSecondsPerGameDay(secondsPerGameDay);
 
         dayState.SetDuration(secondsPerGameDay / 2);
-        nightState.SetDuration(secondsPerGameDay / 2);
-
+        //nightState.SetDuration(secondsPerGameDay / 2);
     }
 
     public void AddUpgrade()
