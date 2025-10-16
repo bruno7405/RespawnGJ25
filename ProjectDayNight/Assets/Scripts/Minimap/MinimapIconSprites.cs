@@ -32,6 +32,14 @@ public class MinimapIconSprites : ScriptableObject
     {
         employeeHeads = heads;
     }
+    public void SetBossHead(MinimapIcon head)
+    {
+        SetBossHead(head.sprite);
+    }
+    public void SetBossHead(Sprite head)
+    {
+        bossHead = head;
+    }
 
     public MinimapIcon GetMinimapIcon(string name)
     {
