@@ -2,9 +2,11 @@ using Random = UnityEngine.Random;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using static JobType;
 
 public enum JobType
 {
+    WaterPlant,
     UsingBathroom,
     ConferenceTable,
     ShelvesCabinets,
@@ -16,16 +18,19 @@ public enum JobType
 public static class EmployeeJobRegistry
 {
     private static readonly Dictionary<JobType, float> jobWeights = new() {
-        { JobType.UsingBathroom, 1f },
-        { JobType.ConferenceTable, 1f },
-        { JobType.ShelvesCabinets, 1f },
-        { JobType.DeskWork, 1f },
-        { JobType.Custodial, 1f },
-        { JobType.Print, 1f },
+        { WaterPlant, 1f },
+        { UsingBathroom, 0.8f },
+        { ConferenceTable, 0.3f },
+        { ShelvesCabinets, 1f },
+        { DeskWork, 1f },
+        { Custodial, 1f },
+        { Print, 0.3f },
     };
     public static List<EmployeeJob> Jobs { get; } = new();
-    public static List<EmployeeJob> GetAvailableJobs(Role role) => Jobs.Where(job => !job.IsAssigned && job.AllowedRoles.Contains(role)).ToList();
-    public static List<EmployeeJob> GetAvailableJobs() => Jobs.Where(job => !job.IsAssigned).ToList();
+    // public static List<EmployeeJob> GetAvailableJobs() => Jobs.Where(job => !job.IsAssigned).ToList();
+    // public static List<EmployeeJob> GetAvailableJobs(Role role) => Jobs.Where(job => !job.IsAssigned && job.AllowedRoles.Contains(role)).ToList();
+    // public static List<EmployeeJob> GetAvailableJobs(JobType type) => Jobs.Where(job => !job.IsAssigned && job.Type == type).ToList();
+    public static List<EmployeeJob> GetAvailableJobs(Role role, JobType type) => Jobs.Where(job => !job.IsAssigned && job.AllowedRoles.Contains(role) && job.Type == type).ToList();
 
     public static EmployeeJob TakeRandomJob(Role role)
     {
@@ -37,7 +42,7 @@ public static class EmployeeJobRegistry
         {
             jobType = PickWeighted(shallowJobWeights);
             shallowJobWeights.Remove(jobType);
-            availableOfType = GetAvailableJobs(role).Where(job => job.Type == jobType).ToList();
+            availableOfType = GetAvailableJobs(role, jobType).ToList();
         } while (availableOfType.Count == 0 && shallowJobWeights.Count > 0);
 
         if (availableOfType.Count == 0) return null;

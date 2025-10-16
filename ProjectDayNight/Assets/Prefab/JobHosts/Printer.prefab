@@ -156,3 +156,4 @@ MonoBehaviour:
   allowedRoles: 000000000100000002000000
   sr: {fileID: 7195112138725184381}
   locationOffset: {x: 0, y: -0.1}
+  jobType: 5
