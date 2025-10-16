@@ -8,10 +8,10 @@ public class AStarPathfinder
 
     private static readonly Vector2Int[] Neighbors =
     {
-        new(1, 0),    // E
-        new(-1, 0),   // W
-        new(0, 1),    // N
-        new(0, -1),   // S
+        Vector2Int.right,
+        Vector2Int.left,
+        Vector2Int.up,
+        Vector2Int.down,
         new(1, 1),    // NE
         new(-1, 1),   // NW
         new(1, -1),   // SE
@@ -24,15 +24,15 @@ public class AStarPathfinder
             throw new Exception("GridManager not initialized. Please load grid.");
     }
 
-    public List<Vector2> FindPath(Vector2Int start, Vector2Int goal)
+    public List<Vector2> FindPath(Vector2Int start, Vector2Int goal, Vector2 preciseGoal = default)
     {
         // if (!GridManager.IsWalkable(start.x, start.y))
         //     throw new ArgumentException($"Start position is not walkable. {GridManager.WorldTileCenter(start)}");
         // if (!GridManager.IsWalkable(goal.x, goal.y))
         //     throw new ArgumentException($"Goal position is out of bounds. {GridManager.WorldTileCenter(goal)}");
-        if (!GridManager.IsInBounds(start.x, start.y))
+        if (!GridManager.IsInBounds(start))
             throw new ArgumentException($"Start position is out of bounds. {GridManager.WorldTileCenter(start)}");
-        if (!GridManager.IsInBounds(goal.x, goal.y))
+        if (!GridManager.IsInBounds(goal))
             throw new ArgumentException($"Goal position is out of bounds. {GridManager.WorldTileCenter(goal)}");
         
         if (start == goal) return new() { start };
@@ -49,7 +49,7 @@ public class AStarPathfinder
         {
             Node current = openSet.Dequeue();
 
-            if (current.position == goal) return ReconstructPath(current);
+            if (current.position == goal) return ReconstructPath(current, preciseGoal);
 
             current.closed = true;
 
@@ -57,13 +57,13 @@ public class AStarPathfinder
             {
                 Vector2Int neighborPos = current.position + dir;
 
-                if (neighborPos != goal && !GridManager.IsWalkable(neighborPos.x, neighborPos.y)) continue;
+                if (neighborPos != goal && !GridManager.IsWalkable(new(neighborPos.x, neighborPos.y))) continue;
 
                 // Prevent cutting corners through obstacles
                 if (neighborPos != goal && dir.magnitude == SQRT2)
                 {
-                    if (!GridManager.IsWalkable(current.position.x, current.position.y + dir.y)) continue;
-                    if (!GridManager.IsWalkable(current.position.x + dir.x, current.position.y)) continue;
+                    if (!GridManager.IsWalkable(new(current.position.x, current.position.y + dir.y))) continue;
+                    if (!GridManager.IsWalkable(new(current.position.x + dir.x, current.position.y))) continue;
                 }
 
                 Node neighbor = GetOrCreateNode(neighborPos, allNodes);
@@ -95,9 +95,9 @@ public class AStarPathfinder
         return dx + dy + (SQRT2 - 2f) * Mathf.Min(dx, dy);
     }
 
-    private static List<Vector2> ReconstructPath(Node end)
+    private static List<Vector2> ReconstructPath(Node end, Vector2 preciseGoal)
     {
-        var path = new List<Vector2>();
+        List<Vector2> path = preciseGoal != default ? new() { GridManager.PreciseWorldToCell(preciseGoal) } : new();
         Node current = end;
         while (current != null)
         {
@@ -105,6 +105,7 @@ public class AStarPathfinder
             current = current.parent;
         }
         path.Reverse();
+        Debug.Log(string.Join(" -> ", path));
         return path;
     }
 

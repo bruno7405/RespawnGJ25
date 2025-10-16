@@ -37,6 +37,7 @@ public class GameStateManager : StateMachineManager
 
     private void Awake()
     {
+        Debug.Log("GameStateManager instance set");
         instance = this;
         Time.timeScale = timeScale;
 

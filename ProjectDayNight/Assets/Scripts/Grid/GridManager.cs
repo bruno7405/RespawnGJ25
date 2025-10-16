@@ -28,8 +28,10 @@ public class GridManager : MonoBehaviour
         if (Grid == null || FloorTilemap == null) throw new Exception("Grid or floor tilemap is not set.");
     }
 
-    public static bool IsWalkable(int x, int y, bool isTilemapDomain = true)
+    public static bool IsWalkable(Vector2Int cell, bool isTilemapDomain = true)
     {
+        int x = cell.x;
+        int y = cell.y;
         if (isTilemapDomain)
         {
             x -= offset.x;
@@ -40,8 +42,10 @@ public class GridManager : MonoBehaviour
             return false;
         return walkableGrid[y * Width + x];
     }
-    public static bool IsInBounds(int x, int y, bool isTilemapDomain = true)
+    public static bool IsInBounds(Vector2 pos, bool isTilemapDomain = true)
     {
+        float x = pos.x;
+        float y = pos.y;
         if (isTilemapDomain)
         {
             x -= offset.x;
@@ -138,6 +142,14 @@ public class GridManager : MonoBehaviour
         return FloorTilemap.CellToWorld((Vector3Int)coord) + FloorTilemap.cellSize / 2;
     }
 
+    public static Vector2 PreciseWorldToCell(Vector2 worldPos)
+    {
+        NullCheck();
+        Vector2Int cellPos = (Vector2Int)FloorTilemap.WorldToCell(worldPos);
+        Vector2 cellOriginWorld = FloorTilemap.CellToWorld((Vector3Int)cellPos);
+        return worldPos - cellOriginWorld;
+    }
+
     public static Vector2 RandomWalkablePos()
     {
         int x, y;
@@ -145,7 +157,7 @@ public class GridManager : MonoBehaviour
         {
             x = Random.Range(0, Width);
             y = Random.Range(0, Height);
-        } while (!IsWalkable(x, y));
+        } while (!IsWalkable(new(x, y)));
         return WorldTileCenter(new(x, y));
     }
 }

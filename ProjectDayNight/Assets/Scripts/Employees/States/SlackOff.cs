@@ -6,6 +6,7 @@ public class SlackOff : State
     bool reachedBreakSpot;
     static float timeLimit = 10f;
     float timeElapsed;
+    SlackOffSpot currentSpot;
 
     public override void OnExit()
     {
@@ -16,11 +17,17 @@ public class SlackOff : State
 
     public override void OnStart()
     {
+
+        var newSpot = SlackOffSpots.TakeRandomSpot() ?? SlackOffSpots.TakeRandomSpot(true);
+        if (newSpot == null) throw new System.Exception("No available slack off spots for " + employee.Name);
+        currentSpot?.Unassign();
+        currentSpot = newSpot;
+
         employee.StatusIcon.SetSprite(employee.StatusIcon.SlackingOffSprite);
         employee.StateName = EmployeeState.SlackingOff;
         reachedBreakSpot = false;
         //employee.Morale += 10;  //Gain morale for idling?
-        employee.WalkTo(new(3, 4), () => {
+        employee.WalkTo(newSpot.Location, () => {
             Debug.Log("Employee " + employee.Name + " reached break spot");
             reachedBreakSpot = true;
             employee.StatusIcon.Show();

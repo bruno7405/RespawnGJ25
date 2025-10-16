@@ -5,18 +5,17 @@ public class SlackOffSpot : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Vector2 locationOffset;
-    [SerializeField] private SlackOffSpotType slackOffSpotType;
+    [SerializeField] private SlackOffRoom slackOffRoom;
     public bool IsAssigned { get; private set; }
-    public SlackOffSpotType Type => slackOffSpotType;
+    public SlackOffRoom Room => slackOffRoom;
     private Vector2 location;
     public Vector2 Location => location;
 
     public void Assign()
     {
-        if (IsAssigned) throw new InvalidOperationException("Job is already assigned");
         IsAssigned = true;
-        // Visuals
-        sr.color = Color.cyan;
+        // Debug Visuals
+        sr.color = Color.red;
     }
     public void Unassign()
     {
@@ -34,7 +33,7 @@ public class SlackOffSpot : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.cyan;
+        Gizmos.color = Color.red;
         Gizmos.DrawSphere(locationOffset + new Vector2(transform.position.x, sr.bounds.min.y), 0.05f);
     }
 }

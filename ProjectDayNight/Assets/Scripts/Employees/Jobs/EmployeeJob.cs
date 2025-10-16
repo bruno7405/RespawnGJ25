@@ -24,7 +24,7 @@ public class EmployeeJob : MonoBehaviour
     {
         if (IsAssigned) throw new InvalidOperationException("Job is already assigned");
         IsAssigned = true;
-        // Visuals
+        // Debug Visuals
         sr.color = Color.cyan;
     }
     public void Unassign()

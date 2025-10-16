@@ -2,42 +2,47 @@ using Random = UnityEngine.Random;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using static SlackOffSpotType;
+using static SlackOffRoom;
 
-public enum SlackOffSpotType
+public enum SlackOffRoom
 {
-    UsingBathroom,
-    ConferenceTable,
-    ShelvesCabinets,
-    DeskWork,
-    Custodial,
-    Print,
+    Lounge,
+    TopKitchen,
+    BottomKitchen,
+    Couch,
+    SmallTable,
+    WaterCooler,
+    ChalkBoard,
 }
 
 public static class SlackOffSpots
 {
-    private static readonly Dictionary<SlackOffSpotType, float> slackOffWeights = new() {
-        { UsingBathroom, 1f },
-        { ConferenceTable, 1f },
-        { ShelvesCabinets, 1f },
-        { DeskWork, 1f },
-        { Custodial, 1f },
-        { Print, 1f },
+    private static readonly Dictionary<SlackOffRoom, float> slackOffWeights = new() {
+        { Lounge, 1f },
+        { TopKitchen, 1f },
+        { BottomKitchen, 1f },
+        { Couch, 1f },
+        { SmallTable, 1f },
+        { WaterCooler, 1f },
+        { ChalkBoard, 1f },
     };
     public static List<SlackOffSpot> Spots { get; } = new();
+    public static List<SlackOffSpot> GetAvailableSpots(SlackOffRoom room) => Spots.Where(job => !job.IsAssigned && job.Room == room).ToList();
     public static List<SlackOffSpot> GetAvailableSpots() => Spots.Where(job => !job.IsAssigned).ToList();
 
-    public static SlackOffSpot TakeRandomSpot()
+    public static SlackOffSpot TakeRandomSpot(bool takeAssigned = true)
     {
-        SlackOffSpotType SlackOffSpotType;
+        SlackOffRoom slackOffRoom;
         List<SlackOffSpot> availableOfType;
 
-        var shallowJobWeights = new Dictionary<SlackOffSpotType, float>(slackOffWeights);
+        var shallowJobWeights = new Dictionary<SlackOffRoom, float>(slackOffWeights);
         do
         {
-            SlackOffSpotType = PickWeighted(shallowJobWeights);
-            shallowJobWeights.Remove(SlackOffSpotType);
-            availableOfType = GetAvailableSpots().Where(job => job.Type == SlackOffSpotType).ToList();
+            slackOffRoom = PickWeighted(shallowJobWeights);
+            shallowJobWeights.Remove(slackOffRoom);
+            availableOfType = takeAssigned ?
+                Spots.Where(job => job.Room == slackOffRoom).ToList() :
+                GetAvailableSpots(slackOffRoom).Where(job => job.Room == slackOffRoom).ToList();
         } while (availableOfType.Count == 0 && shallowJobWeights.Count > 0);
 
         if (availableOfType.Count == 0) return null;
@@ -47,7 +52,7 @@ public static class SlackOffSpots
         return randomJob;
     }
 
-    public static SlackOffSpotType PickWeighted(Dictionary<SlackOffSpotType, float> jobWeights)
+    public static SlackOffRoom PickWeighted(Dictionary<SlackOffRoom, float> jobWeights)
     {
         float totalWeight = jobWeights.Values.Sum();
         float randomValue = Random.value * totalWeight;

@@ -153,15 +153,6 @@ public class CompanyManager : MonoBehaviour
 
         Money = startingMoney;
         NumEmployees = startingNumEmployees;
-        exits = new Exit[numExits];
-        if (exitPositions.Length < numExits)
-        {
-            throw new System.InvalidOperationException("Not enough exit positions set in CompanyManager!");
-        }
-        for (int i = 0; i < numExits; i++)
-        {
-            exits[i] = new Exit { position = exitPositions[i].position, Occupied = false };
-        }
     }
 
 
@@ -173,6 +164,16 @@ public class CompanyManager : MonoBehaviour
 
         GameStateManager.Instance.NightStart -= HandleNightStart;
         GameStateManager.Instance.NightStart += HandleNightStart;
+
+        exits = new Exit[numExits];
+        if (exitPositions.Length < numExits)
+        {
+            throw new System.InvalidOperationException("Not enough exit positions set in CompanyManager!");
+        }
+        for (int i = 0; i < numExits; i++)
+        {
+            exits[i] = new Exit { position = exitPositions[i].position, Occupied = false };
+        }
     }
     void OnEnable()
     {
