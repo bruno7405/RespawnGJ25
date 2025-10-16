@@ -6,12 +6,16 @@ using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 public class GridManager : MonoBehaviour
 {
+    [SerializeField] private bool printGridOnGeneration;
     [SerializeField] private Grid grid;
-    private static Vector2Int size;
-    public static int Width => size.x;
-    public static int Height => size.y;
+    private static Vector2Int gridSize;
+    public static int GridWidth => gridSize.x;
+    public static int GridHeight => gridSize.y;
     private static bool[] walkableGrid;
     private static Vector2Int offset;
+    public static Vector2 WorldMin;
+    public static Vector2 WorldMax;
+    public static Vector2 WorldSize => WorldMax - WorldMin;
     public static Grid Grid;
     public static Tilemap FloorTilemap;
 
@@ -30,6 +34,7 @@ public class GridManager : MonoBehaviour
 
     public static bool IsWalkable(Vector2Int cell, bool isTilemapDomain = true)
     {
+        if (walkableGrid == null || walkableGrid.Length == 0) throw new InvalidOperationException("Walkable grid is empty or not initialized");
         int x = cell.x;
         int y = cell.y;
         if (isTilemapDomain)
@@ -37,10 +42,9 @@ public class GridManager : MonoBehaviour
             x -= offset.x;
             y -= offset.y;
         }
-        if (walkableGrid == null || walkableGrid.Length == 0) throw new InvalidOperationException("Walkable grid is empty or not initialized");
-        if (x < 0 || x >= Width || y < 0 || y >= Height)
+        if (x < 0 || x >= GridWidth || y < 0 || y >= GridHeight)
             return false;
-        return walkableGrid[y * Width + x];
+        return walkableGrid[y * GridWidth + x];
     }
     public static bool IsInBounds(Vector2 pos, bool isTilemapDomain = true)
     {
@@ -51,13 +55,13 @@ public class GridManager : MonoBehaviour
             x -= offset.x;
             y -= offset.y;
         }
-        return x >= 0 && x < Width && y >= 0 && y < Height;
+        return x >= 0 && x < GridWidth && y >= 0 && y < GridHeight;
     }
 
     public void SetGridData(bool[] newGrid, Vector2Int size, Vector2Int offset)
     {
         if (newGrid.Length != size.x * size.y) throw new ArgumentException("Impossible grid size given size");
-        GridManager.size = size;
+        gridSize = size;
         GridManager.offset = offset;
         walkableGrid = newGrid;
     }
@@ -86,6 +90,8 @@ public class GridManager : MonoBehaviour
         int maxX = positions.Max(p => p.x);
         int minY = positions.Min(p => p.y);
         int maxY = positions.Max(p => p.y);
+        WorldMin = walkableLayer.CellToWorld(new(minX, minY));
+        WorldMax = walkableLayer.CellToWorld(new(maxX + 1, maxY + 1)); // +1 to get top-right tile corner
 
         int width = maxX - minX + 1;
         int height = maxY - minY + 1;
@@ -116,6 +122,20 @@ public class GridManager : MonoBehaviour
 
         SetGridData(walkableGrid, new(width, height), new(minX, minY));
 
+        if (printGridOnGeneration)
+        {
+            string gridString = "";
+            for (int y = height - 1; y >= 0; y--)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    gridString += (walkableGrid[y * width + x] ? "1" : "0") + "\t";
+                }
+                gridString += "\n";
+            }
+            Debug.Log(gridString);
+        }
+
         Debug.Log("GridData generated from tilemap layers!");
     }
 
@@ -142,21 +162,13 @@ public class GridManager : MonoBehaviour
         return FloorTilemap.CellToWorld((Vector3Int)coord) + FloorTilemap.cellSize / 2;
     }
 
-    // public static Vector2 PreciseWorldToCell(Vector2 worldPos)
-    // {
-    //     NullCheck();
-    //     Vector2Int cellPos = (Vector2Int)FloorTilemap.WorldToCell(worldPos);
-    //     Vector2 cellOriginWorld = FloorTilemap.CellToWorld((Vector3Int)cellPos);
-    //     return worldPos - cellOriginWorld;
-    // }
-
     public static Vector2 RandomWalkablePos()
     {
         int x, y;
         do
         {
-            x = Random.Range(0, Width);
-            y = Random.Range(0, Height);
+            x = Random.Range(0, GridWidth);
+            y = Random.Range(0, GridHeight);
         } while (!IsWalkable(new(x, y)));
         return WorldTileCenter(new(x, y));
     }
