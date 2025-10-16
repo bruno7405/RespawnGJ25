@@ -96,9 +96,9 @@ public class Employee : StateMachineManager
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
     /// <returns>Action to force cancel path</returns>
-    public Action WalkTo(Vector2 destination, Action callback = null)
+    public Action WalkTo(Vector2 destination, Action callback = null, bool preciseGoal = false)
     {
-        return motionManager.WalkTo(destination, callback);
+        return motionManager.WalkTo(destination, callback, preciseGoal);
     }
     /// <summary>
     /// Makes employee run to location
@@ -106,9 +106,9 @@ public class Employee : StateMachineManager
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
     /// <returns>Action to force cancel path</returns>
-    public Action RunTo(Vector2 destination, Action callback = null)
+    public Action RunTo(Vector2 destination, Action callback = null, bool preciseGoal = false)
     {
-        return motionManager.RunTo(destination, callback);
+        return motionManager.RunTo(destination, callback, preciseGoal);
     }
     public void StopMoving()
     {

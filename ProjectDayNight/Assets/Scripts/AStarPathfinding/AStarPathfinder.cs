@@ -97,7 +97,7 @@ public class AStarPathfinder
 
     private static List<Vector2> ReconstructPath(Node end, Vector2 preciseGoal)
     {
-        List<Vector2> path = preciseGoal != default ? new() { GridManager.PreciseWorldToCell(preciseGoal) } : new();
+        List<Vector2> path = preciseGoal != default ? new() { preciseGoal } : new();
         Node current = end;
         while (current != null)
         {

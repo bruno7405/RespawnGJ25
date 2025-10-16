@@ -31,7 +31,7 @@ public class SlackOff : State
             Debug.Log("Employee " + employee.Name + " reached break spot");
             reachedBreakSpot = true;
             employee.StatusIcon.Show();
-        });
+        }, true);
 
         EmployeeStatusUI.Instance.UpdateUI();
     }

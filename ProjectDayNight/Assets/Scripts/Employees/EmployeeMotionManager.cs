@@ -25,10 +25,10 @@ public class EmployeeMotionManager : MonoBehaviour
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
     /// <returns>Action to force cancel path</returns>
-    public Action WalkTo(Vector2 destination, Action callback = null)
+    public Action WalkTo(Vector2 destination, Action callback = null, bool preciseGoal = false)
     {
         currentSpeed = walkSpeed;
-        SetPath(destination, callback);
+        SetPath(destination, callback, preciseGoal);
         return () => { currentPathIndex = -1; currentPath = null; currentCallback = null; };
     }
     /// <summary>
@@ -37,25 +37,25 @@ public class EmployeeMotionManager : MonoBehaviour
     /// <param name="destination">Tilemap Coordinates</param>
     /// <param name="callback">Callback to invoke after reaching destination</param>
     /// <returns>Action to force cancel path</returns>
-    public Action RunTo(Vector2 destination, Action callback = null)
+    public Action RunTo(Vector2 destination, Action callback = null, bool preciseGoal = false)
     {
         currentSpeed = runSpeed;
-        SetPath(destination, callback);
+        SetPath(destination, callback, preciseGoal);
         return () => { currentPathIndex = -1; currentPath = null; currentCallback = null; };
     }
 
-    void SetPath(Vector2 location, Action callback = null)
+    void SetPath(Vector2 goal, Action callback = null, bool preciseGoal = false)
     {
         currentCallback = callback;
         Vector2Int currentCell = GridManager.PositionToCell(transform.position);
-        Vector2Int goalCell = GridManager.PositionToCell(location);
+        Vector2Int goalCell = GridManager.PositionToCell(goal);
         try
         {
-            currentPath = pathfinder.FindPath(currentCell, goalCell);
+            currentPath = pathfinder.FindPath(currentCell, goalCell, preciseGoal ? goal : default);
         }
         catch (InvalidOperationException e) // No path found - add error context
         {
-            string msg = "Impossible path for employee: " + location;
+            string msg = $"Impossible path for employee: {currentCell} -> {goal}";
             Debug.LogError(msg);
             throw new InvalidOperationException(msg, e);
         }

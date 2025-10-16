@@ -142,13 +142,13 @@ public class GridManager : MonoBehaviour
         return FloorTilemap.CellToWorld((Vector3Int)coord) + FloorTilemap.cellSize / 2;
     }
 
-    public static Vector2 PreciseWorldToCell(Vector2 worldPos)
-    {
-        NullCheck();
-        Vector2Int cellPos = (Vector2Int)FloorTilemap.WorldToCell(worldPos);
-        Vector2 cellOriginWorld = FloorTilemap.CellToWorld((Vector3Int)cellPos);
-        return worldPos - cellOriginWorld;
-    }
+    // public static Vector2 PreciseWorldToCell(Vector2 worldPos)
+    // {
+    //     NullCheck();
+    //     Vector2Int cellPos = (Vector2Int)FloorTilemap.WorldToCell(worldPos);
+    //     Vector2 cellOriginWorld = FloorTilemap.CellToWorld((Vector3Int)cellPos);
+    //     return worldPos - cellOriginWorld;
+    // }
 
     public static Vector2 RandomWalkablePos()
     {
