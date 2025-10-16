@@ -34201,6 +34201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7604178b72a54942ae2e0e2654b980c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
+  printGridOnGeneration: 0
   grid: {fileID: 6693403135204102200}
 --- !u!212 &7694944444300318196
 SpriteRenderer:

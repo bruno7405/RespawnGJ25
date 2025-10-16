@@ -234,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439971626147964181}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.49, y: -1.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -339,7 +339,7 @@ MonoBehaviour:
   empSprite: {fileID: 2974153366042344639}
   bloodSprite: {fileID: 326015388502356942}
   deathParticles: {fileID: 3720638125415218326}
-  groundOffset: -0.5
+  groundOffset: -0.1
 --- !u!114 &301665017204873383
 MonoBehaviour:
   m_ObjectHideFlags: 0

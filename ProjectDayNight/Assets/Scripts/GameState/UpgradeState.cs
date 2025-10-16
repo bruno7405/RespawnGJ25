@@ -115,6 +115,7 @@ public class UpgradeState : State
         if (gameStateManager.CurrentDay == 3)
         {
             // Show End Game Screen
+            //audioManager.PlayBackgroundMusic("GameOv");
             endScreenUI.Display(true, companyManager.Money, "With the money you made, you fled the country and your problems. You are now DA BOSS");
             yield return new WaitForSeconds(3);
             blackScreenUI.FadeIn();

@@ -58,6 +58,12 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: GameOverSong
+    audioClip: {fileID: 8300000, guid: 753b7f165f71e5e4f842e1e8720166a1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - name: LightSwitch
     audioClip: {fileID: 8300000, guid: 32a54539e7f32514295d86d8884fed35, type: 3}
     volume: 0.25
@@ -91,7 +97,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

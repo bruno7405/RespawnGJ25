@@ -6,7 +6,7 @@ public class Death : State
     [SerializeField] SpriteRenderer empSprite;
     [SerializeField] GameObject bloodSprite;
     [SerializeField] ParticleSystem deathParticles;
-    [SerializeField] float groundOffset = -0.5f;
+    [Range(-1, 1)][SerializeField] float groundOffset = 0;
     const string deathSound = "Death";
     void Awake()
     {
@@ -55,5 +55,12 @@ public class Death : State
     void Update()
     {
         
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector2 point = parent.transform.position + new Vector3(0, groundOffset, 0);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(point, 0.05f);
     }
 }
