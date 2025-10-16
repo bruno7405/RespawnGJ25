@@ -24,14 +24,10 @@ public class EmployeeJob : MonoBehaviour
     {
         if (IsAssigned) throw new InvalidOperationException("Job is already assigned");
         IsAssigned = true;
-        // Debug Visuals
-        sr.color = Color.cyan;
     }
     public void Unassign()
     {
         IsAssigned = false;
-        // Reset color
-        sr.color = Color.white;
     }
 
     void Awake()

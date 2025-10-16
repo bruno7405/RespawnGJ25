@@ -7,10 +7,13 @@ public class GameStateManager : StateMachineManager
     private static GameStateManager instance;
     public static GameStateManager Instance => instance;
 
+    [Header("Time Params")]
     [SerializeField] float secondsPerGameDay;
+    [Range(0f, 10f)][SerializeField] float timeScale = 1f;
 
-    [Range(0f, 10f)]
-    [SerializeField] float timeScale = 1f;
+    [Header("Money and Mistakes")]
+    // Money Panel
+    // Mistakes Panel
 
 
     // Day and Night
@@ -41,14 +44,14 @@ public class GameStateManager : StateMachineManager
         instance = this;
         Time.timeScale = timeScale;
 
-        timeUI = GetComponentInChildren<TimeUI>();
-        timeUI.SetSecondsPerGameDay(secondsPerGameDay);
+        //timeUI = GetComponentInChildren<TimeUI>();
+        //timeUI.SetSecondsPerGameDay(secondsPerGameDay);
 
         dayState.SetDuration(secondsPerGameDay / 2);
         //nightState.SetDuration(secondsPerGameDay / 2);
     }
 
-    public void AddUpgrade()
+    public void IncrementMistakes()
     {
 
     }

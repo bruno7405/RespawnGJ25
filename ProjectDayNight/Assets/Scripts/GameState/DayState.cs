@@ -50,7 +50,7 @@ public class DayState : State
     public override void OnUpdate()
     {
         timeElapsed += Time.deltaTime;
-        timeUI.SetTimeElasped(timeElapsed, true);
+        // timeUI.SetTimeElasped(timeElapsed, true);
         
         if (timeElapsed >= duration)
         {

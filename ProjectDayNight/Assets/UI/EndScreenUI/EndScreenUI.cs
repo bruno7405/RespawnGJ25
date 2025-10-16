@@ -38,6 +38,7 @@ public class EndScreenUI : MonoBehaviour
         {
             backgroundImage.sprite = gameLoseSprite;
             highScoreTMP.text = "Game Over";
+            highScoreTMP.color = Color.softRed;
         }
 
         reasonTMP.text = reason;

@@ -620,6 +620,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6513552454575381136, guid: 4315d1f05d3b3a04481a5ff6a803d456, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7313105240424363511, guid: 4315d1f05d3b3a04481a5ff6a803d456, type: 3}
       propertyPath: m_Name
       value: MinimapManager

@@ -38,7 +38,7 @@ public class NightState : State
     {
         if (inTransition) return;
         timeElapsed += Time.deltaTime;
-        timeUI.SetTimeElasped(timeElapsed, false);
+        // timeUI.SetTimeElasped(timeElapsed, false);
 
         if (CompanyManager.Instance.NumRunners <= 0)
         {
@@ -54,6 +54,8 @@ public class NightState : State
     IEnumerator DayToNightTransition()
     {
         inTransition = true;
+        PlayerInput.active = false;
+
         #region Splash Art Transition
         blackScreenUI.FadeIn();
         yield return new WaitForSeconds(0.5f);
@@ -63,23 +65,16 @@ public class NightState : State
         yield return new WaitForSeconds(3);
 
         blackScreenUI.FadeIn();
+        AudioManager.Instance.PlayOneShot("LightSwitch");
         yield return new WaitForSeconds(0.5f);
         dayNightTransitionUI.HideUI();
-        blackScreenUI.FadeOut();
-
-        #endregion
-
-        #region Lights Off
-
-        yield return new WaitForSeconds(4);
-        blackScreenUI.Black();
         visualsManager.LightsOff();
-        audioManager.PlayOneShot("LightSwitch", 0.1f);
-        yield return new WaitForSeconds(2f);
-        audioManager.PlayBackgroundMusic("NightSong");
         blackScreenUI.FadeOut();
 
         #endregion
+
+        audioManager.PlayBackgroundMusic("NightSong");
+        PlayerInput.active = true;
 
         try
         {

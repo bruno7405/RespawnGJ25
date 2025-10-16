@@ -97,6 +97,8 @@ public class UpgradeState : State
 
     private IEnumerator UpgradesToDayTransition()
     {
+        PlayerInput.active = false;
+
         #region Splash Art Transition
         blackScreenUI.FadeIn();
         yield return new WaitForSeconds(0.5f);
@@ -120,10 +122,12 @@ public class UpgradeState : State
             yield return new WaitForSeconds(3);
             blackScreenUI.FadeIn();
             yield return new WaitForSeconds(0.5f);
+            PlayerInput.active = true;
             SceneManager.LoadScene(0); // Main Menu Scene
         }
         else
         {
+            PlayerInput.active = true;
             stateMachine.SetNewState(dayState);
         }
 
