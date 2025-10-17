@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3418899227238085505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e10c783e1d9c004cb8a07e6a1ddf2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeUI
+  root: {fileID: 8497871657815124344}
   timeText: {fileID: 111433616930859329}
 --- !u!1 &6672619572542210569
 GameObject:
@@ -529,7 +530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -17.557098}
+  m_AnchoredPosition: {x: 286.7, y: -407.2}
   m_SizeDelta: {x: 200, y: 35.1141}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4249732745769016996
@@ -619,8 +620,12 @@ MonoBehaviour:
   currentState: {fileID: 1811495818559965897}
   secondsPerGameDay: 300
   timeScale: 1
+  blackScreenUI: {fileID: 8608030201950095446}
+  dayNightTransitionUI: {fileID: 6335700217558110703}
+  endScreenUI: {fileID: 4466089683528858352}
   dayState: {fileID: 1811495818559965897}
   nightState: {fileID: 2758786526998476788}
+  currentDay: 0
 --- !u!1001 &3006790570757385113
 PrefabInstance:
   m_ObjectHideFlags: 0

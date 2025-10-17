@@ -101,9 +101,7 @@ public class MinigameManager : MonoBehaviour
         {
             throw new InvalidOperationException("Clicked button is not the current target or game not active!");
         }
-        slot.GetComponent<Image>().color = Color.green;
         yield return new WaitForSecondsRealtime(0.1f);
-        currentTarget.GetComponent<Image>().color = Color.white; // reset before showing
         currentTarget.SetActive(false);
         currentTarget = null;
     }
