@@ -24,6 +24,9 @@ public class TaskBruno : MonoBehaviour, IInteractable
     void Start()
     {
         informationPopupUI = InformationPopupUI.Instance;
+        GameStateManager.Instance.NightStart -= Deactivate;
+        GameStateManager.Instance.NightStart += Deactivate;
+
     }
 
     void Update()
@@ -101,7 +104,10 @@ public class TaskBruno : MonoBehaviour, IInteractable
 
     private void OnEnable()
     {
-        GameStateManager.Instance.NightStart += Deactivate;
+        if (GameStateManager.Instance != null)
+        {
+            GameStateManager.Instance.NightStart += Deactivate;
+        }
     }
 
     private void OnDisable()
