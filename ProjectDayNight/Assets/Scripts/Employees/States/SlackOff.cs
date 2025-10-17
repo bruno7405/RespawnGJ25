@@ -31,7 +31,7 @@ public class SlackOff : State
         //employee.Morale += 10;  //Gain morale for idling?
         Debug.Log($"SLACK OFF --- Employee {employee.Name} will slack off at {newSpot.name}: {newSpot.Location}");
         employee.WalkTo(newSpot.Location, () => {
-            Debug.Log("Employee " + employee.Name + " reached break spot");
+            // Debug.Log("Employee " + employee.Name + " reached break spot");
             reachedBreakSpot = true;
             employee.StatusIcon.Show();
         }, true);

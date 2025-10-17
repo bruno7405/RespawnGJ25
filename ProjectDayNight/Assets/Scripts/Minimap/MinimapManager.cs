@@ -78,7 +78,7 @@ public class MinimapManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"Grid Size: {GridWidth}x{GridHeight} Minimap generated with size: {MinimapSize.x}x{MinimapSize.y} Texture size: {tex.width}x{tex.height} TilePixelSize: {tilePixelSize}");
+        // Debug.Log($"Grid Size: {GridWidth}x{GridHeight} Minimap generated with size: {MinimapSize.x}x{MinimapSize.y} Texture size: {tex.width}x{tex.height} TilePixelSize: {tilePixelSize}");
         tex.Apply();
         minimapImage.rectTransform.sizeDelta = MinimapSize;
         minimapImage.texture = tex;
@@ -86,7 +86,7 @@ public class MinimapManager : MonoBehaviour
 
     public void RegisterEmployee(Employee employee)
     {
-        Debug.Log($"Registering employee {employee.Name} on minimap");
+        // Debug.Log($"Registering employee {employee.Name} on minimap");
         string name = employee.Name;
         MinimapIcon headIcon = iconData.GetMinimapIcon(name);
         RectTransform rt = AddIcon(headIcon, employee.transform.position);
@@ -107,7 +107,7 @@ public class MinimapManager : MonoBehaviour
 
     public void RegisterTask(TaskBruno task)
     {
-        Debug.Log($"Registering task {task.Name} on minimap");
+        // Debug.Log($"Registering task {task.Name} on minimap");
         MinimapIcon taskIcon = iconData.BossTask;
         AddIcon(taskIcon, task.transform.position, task.Name);
     }

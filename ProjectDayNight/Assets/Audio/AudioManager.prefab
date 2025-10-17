@@ -144,6 +144,27 @@ MonoBehaviour:
     loop: 0
     maxDuration: 30
     source: {fileID: 0}
+  - name: SFX_FindItem
+    audioClip: {fileID: 8300000, guid: 04d8183951173274a90275792797ef61, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    maxDuration: 3
+    source: {fileID: 0}
+  - name: Printer
+    audioClip: {fileID: 8300000, guid: 74bbc3c72c5a95a488904f482584907b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    maxDuration: 5
+    source: {fileID: 0}
+  - name: Printer
+    audioClip: {fileID: 8300000, guid: 514e70e3cc42461448a583ec8dbcc9a4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    maxDuration: 5
+    source: {fileID: 0}
 --- !u!82 &469359001790339111
 AudioSource:
   m_ObjectHideFlags: 0

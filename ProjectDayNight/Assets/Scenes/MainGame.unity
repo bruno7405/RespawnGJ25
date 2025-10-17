@@ -32248,6 +32248,30 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1500362322841795873, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
+      propertyPath: sounds.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500362322841795873, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
+      propertyPath: sounds.Array.data[16].name
+      value: Printer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500362322841795873, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
+      propertyPath: sounds.Array.data[16].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500362322841795873, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
+      propertyPath: sounds.Array.data[16].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500362322841795873, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
+      propertyPath: sounds.Array.data[16].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 514e70e3cc42461448a583ec8dbcc9a4, type: 3}
+    - target: {fileID: 1500362322841795873, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
+      propertyPath: sounds.Array.data[16].maxDuration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5355095122391219165, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.09778

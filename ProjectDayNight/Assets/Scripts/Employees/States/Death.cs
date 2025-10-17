@@ -24,7 +24,7 @@ public class Death : State
 
     public override void OnStart()
     {
-        Debug.Log("Employee has died");
+        // Debug.Log("Employee has died");
         statusIcon.Default(); // set icon
         employee.StateName = EmployeeState.Dead;
         EmployeeStatusUI.Instance.UpdateUI();

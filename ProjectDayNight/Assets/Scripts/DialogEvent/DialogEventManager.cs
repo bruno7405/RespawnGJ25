@@ -92,7 +92,7 @@ public class DialogEventManager : MonoBehaviour
 
         if (choice.isCorrect)
         {
-            Debug.Log("Correct choice: " + choice.choiceText);
+            // Debug.Log("Correct choice: " + choice.choiceText);
         }
         else
         {

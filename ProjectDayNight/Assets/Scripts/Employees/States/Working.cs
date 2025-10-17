@@ -1,10 +1,22 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using static JobType;
 
 public class Working : State
 {
+    private static readonly Dictionary<JobType, string> jobSounds = new() {
+        { WaterPlant, null },
+        { UsingBathroom, "ToiletFlush" },
+        { ConferenceTable, null },
+        { ShelvesCabinets, "FileCabinetPages" },
+        { DeskWork, "KeyboardTyping" },
+        { Custodial, "SFX_FindItem" },
+        { Print, "Printer" },
+    };
+    
     private Employee employee;
     private EmployeeJob currentJob;
     StatusIconBruno statusIcon;
@@ -30,9 +42,9 @@ public class Working : State
     {
         if (employee.readyForJob)
         {
-            if (RefusalRoll()) // Refusal Chance: 12.5% for 50-59 morale, 25% for 40-49, ... 75% for 0-9
+            if (RefusalRoll())
             {
-                Debug.Log(employee.Name + " refused to work due to low morale (" + employee.Morale + ")");
+                // Debug.Log(employee.Name + " refused to work due to low morale (" + employee.Morale + ")");
                 employee.SetNewState(employee.SlackOffState);
                 return;
             }
@@ -42,7 +54,15 @@ public class Working : State
 
     bool RefusalRoll()
     {
-        float chanceToRefuse = Mathf.Max(6 - employee.Morale / 10, 0) * 0.125f;
+        float chanceToRefuse = employee.Morale switch
+        {
+            >= 90 => 0.1f,
+            >= 70 => 0.2f,
+            >= 50 => 0.3f,
+            >= 20 => 0.4f,
+            >= 0 => 0.5f,
+            _ => 0f, // error case
+        };
         return Random.value < chanceToRefuse;
     }
 
@@ -61,7 +81,11 @@ public class Working : State
 
         currentJob = newJob;
         //Debug.Log("Employee " + employee.Name + " starting " + currentJob.Name + " at " + currentJob.Location + " for " + currentJob.Duration + " seconds");
-        employee.WalkTo(currentJob.Location, () => StartCoroutine(CompleteTask()), true);
+        employee.WalkTo(currentJob.Location, () =>
+        {
+            AudioManager.Instance.PlayOneShot(jobSounds[currentJob.Type]);
+            StartCoroutine(CompleteTask());
+        }, true);
     }
 
     IEnumerator CompleteTask()
