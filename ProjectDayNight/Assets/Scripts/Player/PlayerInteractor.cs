@@ -38,7 +38,7 @@ public class PlayerInteractor : MonoBehaviour
         if (interactablesInRange.Count == 0)
         {
             nearestInteractable = null;
-            informationUI.SetActive(false);
+            informationUI?.SetActive(false);
             return;
         }
 

@@ -26,7 +26,6 @@ public class SlackOff : State
         currentSpot?.Unassign();
         currentSpot = newSpot;
 
-        employee.StatusIcon.SetSprite(employee.StatusIcon.SlackingOffSprite);
         employee.StateName = EmployeeState.SlackingOff;
         reachedBreakSpot = false;
         //employee.Morale += 10;  //Gain morale for idling?
