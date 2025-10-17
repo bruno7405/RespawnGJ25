@@ -63,18 +63,21 @@ public class PlayerAttack : MonoBehaviour
         }
 
         // Kill the nearest employee
-        if (nearestEmployee != null)
-        {
-            // Move player
-            Vector2 direction = (nearestEmployee.position - transform.position) * 0.9f;
-            transform.position += (Vector3) direction;
+        if (nearestEmployee == null) return;
+        var employee = nearestEmployee.GetComponent<Employee>();
+        if (employee.StateName is EmployeeState.Dead
+            or EmployeeState.Working
+            or EmployeeState.Sleeping)
+            return;
+        // Move player
+        Vector2 direction = (nearestEmployee.position - transform.position) * 0.9f;
+        transform.position += (Vector3)direction;
 
-            // Kill employee
-            var employee = nearestEmployee.GetComponent<Employee>();
-            // TODO VERY UNSEMANTIC, THIS IS ALL IN ATTACK METHOD/FILE
-            if (!gameManager.IsDay) employee.KillEmployee();
-            else employee.UrgeWork();
-        }
+        // Kill employee
+        // TODO VERY UNSEMANTIC, THIS IS ALL IN ATTACK METHOD/FILE
+        if (!gameManager.IsDay) employee.KillEmployee();
+        else employee.UrgeWork();
+
     }
 
     public void IncreaseRange(int percentage)
