@@ -109,7 +109,7 @@ public class MinimapManager : MonoBehaviour
     {
         // Debug.Log($"Registering task {task.Name} on minimap");
         MinimapIcon taskIcon = iconData.BossTask;
-        AddIcon(taskIcon, task.transform.position, task.Name);
+        AddIcon(taskIcon, task.transform.position, new(1, 16/6f), task.Name);
     }
     public void UnregisterTask(TaskBruno task)
     {
@@ -139,15 +139,17 @@ public class MinimapManager : MonoBehaviour
         }
     }
 
-    public RectTransform AddIcon(MinimapIcon icon, Vector2 worldPos, string name = null)
+    public RectTransform AddIcon(MinimapIcon icon, Vector2 worldPos, Vector2 sizeScale = default, string name = null)
     {
+        if (sizeScale == default) sizeScale = Vector2.one;
+        
         Vector2 anchoredPos = WorldToMinimap(worldPos);
         GameObject instane = Instantiate(iconPrefab, minimapImage.transform);
         RectTransform rt = instane.GetComponent<RectTransform>();
 
         instane.name = name ?? icon.name;
         instane.GetComponent<Image>().sprite = icon.sprite;
-        rt.sizeDelta = new(2 * tilePixelSize, 2 * tilePixelSize);
+        rt.sizeDelta = new(2 * tilePixelSize * sizeScale.x, 2 * tilePixelSize * sizeScale.y);
         rt.anchoredPosition = anchoredPos;
         
         return rt;
