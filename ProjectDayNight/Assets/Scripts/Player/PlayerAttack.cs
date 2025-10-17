@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -68,13 +66,9 @@ public class PlayerAttack : MonoBehaviour
         // Kill the nearest employee
         if (nearestEmployee == null) return;
         var employee = nearestEmployee.GetComponent<Employee>();
-        if (employee.StateName is EmployeeState.Dead
-            or EmployeeState.Working
-            or EmployeeState.Sleeping)
-            return;
         // Move player
-        Vector2 direction = (nearestEmployee.position - transform.position) * 0.9f;
-        transform.position += (Vector3)direction;
+        //Vector2 direction = (nearestEmployee.position - transform.position) * 0.5f;
+        //transform.position += (Vector3)direction;
 
         // Kill employee
         // TODO VERY UNSEMANTIC, THIS IS ALL IN ATTACK METHOD/FILE
