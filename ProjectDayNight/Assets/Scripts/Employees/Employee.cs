@@ -62,6 +62,9 @@ public class Employee : StateMachineManager
     {
         if (GameStateManager.Instance.currentState != GameStateManager.Instance.NightState)
             throw new InvalidOperationException("Can only kill employees at night!");
+
+        MinimapManager.Instance.UnregisterEmployee(this);
+        
         if (StateName == EmployeeState.Running || StateName == EmployeeState.Escaping)
         {
             CompanyManager.Instance.NumRunners--;
