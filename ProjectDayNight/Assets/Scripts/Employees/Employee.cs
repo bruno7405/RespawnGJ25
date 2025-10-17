@@ -73,6 +73,7 @@ public class Employee : StateMachineManager
     public void UrgeWork()
     {
         Debug.Log("Urge");
+        AudioManager.Instance.PlayOneShot("BonkSound");
         SetNewState(workingState);
     }
 

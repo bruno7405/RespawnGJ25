@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'W,A,S,D - move the Boss around the Office
+  m_text: 'W,A,S,D - Move the Boss around the office
 
 
     E - Interact with objects
@@ -75,7 +75,7 @@ MonoBehaviour:
     Open the mini-map for a better view
 
 
-    Click - kill
+    Click - Kill
 
 
 '
@@ -769,16 +769,16 @@ MonoBehaviour:
   m_text: 'Finish Your Tasks
 
 
-    Check the Status Panel of your Employees in Your
-    Office
+    Check the Status Panel of your employees in the
+    office.
 
 
-    Keep Morale High by interacting with your Employees. They will only
-    make money if they work
+    Keep productivity high by stopping employees from slacking off.
+    Click them to make them get back to work.
 
 
-    Shoo Visitors away at the door in the top left
-    of the map'
+    Shoo visitors away at the door
+    in the top left of the map when prompted.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b7d18f76b6aa9f74caf4e3ccaf09ced7, type: 2}
   m_sharedMaterial: {fileID: 2154237799405990349, guid: b7d18f76b6aa9f74caf4e3ccaf09ced7, type: 2}
@@ -914,11 +914,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Kill all employees who are trying to escape. Nighttime only ends when
-    all the employees are dead
+  m_text: 'Stop all employees who are trying to escape. If you don''t, no one will.
 
 
-    At the end of each night, choose an upgrade'
+    At
+    the end of each night, choose an upgrade to help you the next day.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b7d18f76b6aa9f74caf4e3ccaf09ced7, type: 2}
   m_sharedMaterial: {fileID: 2154237799405990349, guid: b7d18f76b6aa9f74caf4e3ccaf09ced7, type: 2}

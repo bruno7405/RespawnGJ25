@@ -32265,6 +32265,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1500362322841795873, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
+      propertyPath: sounds.Array.data[16].name
+      value: DoorKnock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500362322841795873, guid: 5cb3efe458f7dd747a7b5a7982ff50e4, type: 3}
       propertyPath: sounds.Array.data[10].audioClip
       value: 
       objectReference: {fileID: 8300000, guid: aafca3aee013f0844aff906199c1c275, type: 3}
