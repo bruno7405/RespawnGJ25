@@ -27,7 +27,7 @@ public class TimeUI : MonoBehaviour
         timePercentage = timeElapsed / secondsPerGameDay;
         hour = Mathf.Lerp(0, 24, Mathf.Clamp(timePercentage, 0, 1));
         int minutes = (int) Mathf.Lerp(0, 60, hour % 1);
-        timeToText((int) hour + 6, minutes);
+        timeToText((int) hour + 9, minutes);
     }
 
     void timeToText(int hour, int min)
