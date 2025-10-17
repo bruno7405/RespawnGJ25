@@ -108,6 +108,7 @@ public class DialogEventManager : MonoBehaviour
 
     private void EndDialog()
     {
+        Time.timeScale = 1f; // resume game
         if (good > 0)
         {
             onGoodEnd?.Invoke();
@@ -117,7 +118,6 @@ public class DialogEventManager : MonoBehaviour
             onBadEnd?.Invoke();
         }
         animator.SetTrigger("slideOut");
-        Time.timeScale = 1f; // resume game
 
     }
 }
