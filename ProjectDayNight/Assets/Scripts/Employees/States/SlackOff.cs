@@ -15,7 +15,6 @@ public class SlackOff : State
     {
         //Debug.Log("Employee " + employee.Name + " finished slacking off");
         employee.StopMoving();
-        employee.StatusIcon.Hide();
     }
 
     public override void OnStart()
@@ -33,7 +32,6 @@ public class SlackOff : State
         employee.WalkTo(newSpot.Location, () => {
             // Debug.Log("Employee " + employee.Name + " reached break spot");
             reachedBreakSpot = true;
-            employee.StatusIcon.Show();
         }, true);
 
         EmployeeStatusUI.Instance.UpdateUI();
