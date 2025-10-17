@@ -16,7 +16,7 @@ public class MinigameManager : MonoBehaviour
 
 
     [Header("Settings")]
-    [SerializeField] float roundTime = 0.5f;    // Time allowed per target
+    [SerializeField] float roundTime = 3f;    // Time allowed per target
     [SerializeField] int roundsToWin = 10;       // Number of hits required
 
     GameObject currentTarget;
@@ -25,8 +25,10 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] int reward = 100;
     [SerializeField] List<GameObject> gridSlots;
     float prevTimeScale;
+    float decrement = 0.25f;
     Action win;
     Action lose;
+    const float timePerRound = 3f;
     public void StartAimTrainer(Action onWin, Action onLose)
     {
         if (isPlaying) {
@@ -40,6 +42,7 @@ public class MinigameManager : MonoBehaviour
         lose = onLose;
         currentRound = 0;
         PlayerMovement.Instance.DisableMovement();
+        roundTime = timePerRound;
         StartCoroutine(RunAimTrainer());
     }
 
@@ -49,8 +52,6 @@ public class MinigameManager : MonoBehaviour
         {
             SpawnTarget();
             float timer = 0f;
-
-            if (currentRound == 0) timer = -0.5f;
 
             while (timer < roundTime)
             {
@@ -69,7 +70,7 @@ public class MinigameManager : MonoBehaviour
                 lose();
                 yield break;
             }
-
+            roundTime -= decrement;
             currentRound++;
         }
         Debug.Log("Won minigame!");
@@ -132,5 +133,7 @@ public class MinigameManager : MonoBehaviour
     }
     void Start()
     {
+        roundTime = 3f;
+        roundsToWin = 10;
     }
 }
