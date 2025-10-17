@@ -12,8 +12,8 @@ public class Working : State
         { UsingBathroom, "ToiletFlush" },
         { ConferenceTable, null },
         { ShelvesCabinets, "FileCabinetPages" },
-        { DeskWork, "KeyboardTyping" },
-        { Custodial, "SFX_FindItem" },
+        { DeskWork, null },
+        { Custodial, null },
         { Print, "Printer" },
     };
     

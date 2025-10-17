@@ -56,6 +56,20 @@ public class MinimapManager : MonoBehaviour
         }
     }
 
+    private void HandleNightStart()
+    {
+        foreach (GameObject child in minimapImage.transform)
+        {
+            if (child.name == iconData.BossHead.name || employeeIcons.Any(kvp => kvp.Key.Name == child.name)) continue;
+            Destroy(child.gameObject);
+        }
+        if (bossIcon != null) UnregisterBoss();
+        foreach (var emp in employeeIcons.Keys.ToList())
+        {
+            UnregisterEmployee(emp);
+        }
+    }
+
     private void GenerateMinimap()
     {
         Texture2D tex = new(MinimapSize.x, MinimapSize.y)
@@ -109,7 +123,7 @@ public class MinimapManager : MonoBehaviour
     {
         // Debug.Log($"Registering task {task.Name} on minimap");
         MinimapIcon taskIcon = iconData.BossTask;
-        AddIcon(taskIcon, task.transform.position, new(1, 16/6f), task.Name);
+        AddIcon(taskIcon, task.transform.position, new(1/2f, 4/3f), task.Name);
     }
     public void UnregisterTask(TaskBruno task)
     {
@@ -168,11 +182,11 @@ public class MinimapManager : MonoBehaviour
         if (!root.activeInHierarchy)
         {
             root.SetActive(true);
-            PlayerMovement.Instance.DisableMovement();
+            // PlayerMovement.Instance.DisableMovement();
         }
         else
         {
-            PlayerMovement.Instance.EnableMovement();
+            // PlayerMovement.Instance.EnableMovement();
             root.SetActive(false);
         }
 

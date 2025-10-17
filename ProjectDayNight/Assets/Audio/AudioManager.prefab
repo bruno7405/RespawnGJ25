@@ -116,13 +116,6 @@ MonoBehaviour:
     loop: 0
     maxDuration: 3
     source: {fileID: 0}
-  - name: KeyboardTyping
-    audioClip: {fileID: 8300000, guid: aafca3aee013f0844aff906199c1c275, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    maxDuration: 3
-    source: {fileID: 0}
   - name: BonkSound
     audioClip: {fileID: 8300000, guid: a0eb4d560618b6e43bccb6ad23305c97, type: 3}
     volume: 0.5
@@ -158,7 +151,7 @@ MonoBehaviour:
     loop: 0
     maxDuration: 5
     source: {fileID: 0}
-  - name: Printer
+  - name: DoorKnock
     audioClip: {fileID: 8300000, guid: 514e70e3cc42461448a583ec8dbcc9a4, type: 3}
     volume: 0.5
     pitch: 1
