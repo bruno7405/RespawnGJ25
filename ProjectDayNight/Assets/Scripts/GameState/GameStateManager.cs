@@ -31,6 +31,7 @@ public class GameStateManager : StateMachineManager
     public void IncrementMistakes()
     {
         Mistakes++;
+        PlayerStatsUI.Instance.SetLives(3 - Mistakes);
         if (Mistakes >= 3)
         {
             GameOver();

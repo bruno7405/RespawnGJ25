@@ -20,7 +20,7 @@ public class PlayerStatsUI : MonoBehaviour
         }
         instance = this;
 
-        SetLives(2);
+        SetLives(3);
     }
 
     public void SetMoney(int money)
