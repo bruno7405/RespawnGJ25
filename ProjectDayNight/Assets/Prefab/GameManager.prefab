@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
   currentState: {fileID: 1811495818559965897}
-  secondsPerGameDay: 300
+  secondsPerGameDay: 200
   timeScale: 1
   blackScreenUI: {fileID: 8608030201950095446}
   dayNightTransitionUI: {fileID: 6335700217558110703}
