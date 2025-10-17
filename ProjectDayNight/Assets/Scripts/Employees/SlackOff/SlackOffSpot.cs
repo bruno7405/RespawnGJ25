@@ -14,14 +14,10 @@ public class SlackOffSpot : MonoBehaviour
     public void Assign()
     {
         IsAssigned = true;
-        // Debug Visuals
-        sr.color = Color.red;
     }
     public void Unassign()
     {
         IsAssigned = false;
-        // Reset color
-        sr.color = Color.white;
     }
 
     void Awake()
