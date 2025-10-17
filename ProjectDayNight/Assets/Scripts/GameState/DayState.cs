@@ -33,6 +33,9 @@ public class DayState : State
         Debug.Log("day state");
         ((GameStateManager)stateMachine).InvokeNewDay();
 
+        // Time UI
+        timeUI.EnableUI();
+
         // UI Popup
         InformationPopupUI.Instance.DisplayText("Keep employees on task", true);
 
@@ -54,7 +57,7 @@ public class DayState : State
     public override void OnUpdate()
     {
         timeElapsed += Time.deltaTime;
-        // timeUI.SetTimeElasped(timeElapsed, true);
+        timeUI.SetTimeElasped(timeElapsed, true);
 
         if (!last30sec && duration - timeElapsed < 30f)
         {

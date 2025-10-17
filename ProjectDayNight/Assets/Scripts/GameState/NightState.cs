@@ -38,7 +38,7 @@ public class NightState : State
     {
         if (inTransition) return;
         timeElapsed += Time.deltaTime;
-        // timeUI.SetTimeElasped(timeElapsed, false);
+        timeUI.SetTimeElasped(timeElapsed, false);
 
         if (CompanyManager.Instance.NumRunners <= 0)
         {
@@ -46,10 +46,10 @@ public class NightState : State
         }
     }
 
-    // public void SetDuration(float d)
-    // {
-    //     duration = d;
-    // }
+    public void SetDuration(float d)
+    {
+        //duration = d;
+    }
 
     IEnumerator DayToNightTransition()
     {
@@ -60,6 +60,7 @@ public class NightState : State
         #region Splash Art Transition
         blackScreenUI.FadeIn();
         yield return new WaitForSeconds(0.5f);
+        timeUI.DisableUI();
         blackScreenUI.FadeOut();
 
         dayNightTransitionUI.TransitionToNight(3f);

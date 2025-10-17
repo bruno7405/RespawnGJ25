@@ -58,17 +58,20 @@ public class GameStateManager : StateMachineManager
         Debug.Log("GameStateManager instance set");
         instance = this;
         Time.timeScale = timeScale;
-
-        //timeUI = GetComponentInChildren<TimeUI>();
-        //timeUI.SetSecondsPerGameDay(secondsPerGameDay);
-
+        
+        // Time UI
+        timeUI = GetComponentInChildren<TimeUI>();
+        timeUI.SetSecondsPerGameDay(secondsPerGameDay);
         dayState.SetDuration(secondsPerGameDay / 2);
-        //nightState.SetDuration(secondsPerGameDay / 2);
+        nightState.SetDuration(secondsPerGameDay / 2);
     }
-
     public IEnumerator GameOver()
     {
-        endScreenUI.Display(true, CompanyManager.Instance.Money, "With the money you made, you fled the country and your problems. You are now DA BOSS");
+        PlayerInput.active = false;
+        blackScreenUI.FadeIn();
+        yield return new WaitForSeconds(1);
+        blackScreenUI.FadeOut();
+        endScreenUI.Display(false, CompanyManager.Instance.Money, "You've been busted");
         yield return new WaitForSeconds(3);
         blackScreenUI.FadeIn();
         yield return new WaitForSeconds(0.5f);

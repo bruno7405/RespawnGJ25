@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TimeUI : MonoBehaviour
 {
+    [SerializeField] GameObject root;
     [SerializeField] TextMeshProUGUI timeText;
     float secondsPerGameDay;
     float timeElapsed;
@@ -76,5 +77,15 @@ public class TimeUI : MonoBehaviour
     {
         if (isDay) timeElapsed = t;
         else timeElapsed = t + secondsPerGameDay/2;
+    }
+
+    public void EnableUI()
+    {
+        root.SetActive(true);
+    }
+
+    public void DisableUI()
+    {
+        root.SetActive(false);
     }
 }
