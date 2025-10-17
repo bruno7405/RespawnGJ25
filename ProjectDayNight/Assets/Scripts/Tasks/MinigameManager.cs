@@ -39,6 +39,7 @@ public class MinigameManager : MonoBehaviour
         win = onWin;
         lose = onLose;
         currentRound = 0;
+        PlayerMovement.Instance.DisableMovement();
         StartCoroutine(RunAimTrainer());
     }
 
@@ -90,6 +91,8 @@ public class MinigameManager : MonoBehaviour
 
         if (currentTarget != null)
             currentTarget.SetActive(false);
+        PlayerMovement.Instance.EnableMovement();
+
     }
     IEnumerator HandleButtonClick(Button button)
     {
