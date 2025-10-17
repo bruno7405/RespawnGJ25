@@ -44,6 +44,7 @@ public class BossTaskManagerBruno : MonoBehaviour
 
         phoneTask.Activate(timeForDialogTasks, dialog);
         currentTasks.Add((TaskBruno)phoneTask);
+        AudioManager.Instance.PlayOneShot("DoorKnock");
     }
 
     public void RemoveTask(TaskBruno task)
