@@ -40,6 +40,7 @@ public class Working : State
 
     public override void OnUpdate()
     {
+        if (!GameStateManager.Instance.IsDay) employee.SetNewState(employee.RunningState);
         if (employee.readyForJob)
         {
             if (RefusalRoll())
