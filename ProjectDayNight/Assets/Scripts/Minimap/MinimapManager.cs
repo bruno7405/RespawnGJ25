@@ -59,9 +59,10 @@ public class MinimapManager : MonoBehaviour
 
     private void HandleNightStart()
     {
-        foreach (GameObject child in minimapImage.transform)
+        foreach (Transform child in minimapImage.transform)
         {
-            if (child.name == iconData.BossHead.name || employeeIcons.Any(kvp => kvp.Key.Name == child.name)) continue;
+            string childName = child.gameObject.name; 
+            if (childName == iconData.BossHead.name || employeeIcons.Any(kvp => kvp.Key.Name == childName)) continue;
             Destroy(child.gameObject);
         }
         if (bossIcon != null) UnregisterBoss();
