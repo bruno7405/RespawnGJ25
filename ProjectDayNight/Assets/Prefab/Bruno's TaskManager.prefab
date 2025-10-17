@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossTaskManagerBruno
   timeForNormalTasks: 15
-  timeForDialogTasks: 25
+  timeForDialogTasks: 20
   tasks:
   - {fileID: 0}
   - {fileID: 0}

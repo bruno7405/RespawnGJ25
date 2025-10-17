@@ -31588,18 +31588,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1781899180}
     - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
-      propertyPath: tasks.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
-      propertyPath: timeForDialogTasks
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
-      propertyPath: timeForNormalTasks
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
       propertyPath: 'tasks.Array.data[0]'
       value: 
       objectReference: {fileID: 8129395291510642073}
@@ -31627,10 +31615,6 @@ PrefabInstance:
       propertyPath: 'tasks.Array.data[6]'
       value: 
       objectReference: {fileID: 1944940649497066036}
-    - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
-      propertyPath: 'tasks.Array.data[7]'
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7084119048014110477, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
       propertyPath: m_Name
       value: Bruno's TaskManager
