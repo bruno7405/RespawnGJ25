@@ -27,6 +27,7 @@ public class CompanyManager : MonoBehaviour
     [SerializeField] float minEscapeInterval = 10f;
     [SerializeField] float maxEscapeInterval = 30f;
     public bool Escaping = false;
+    [SerializeField] List<Transform> deskPositions = new();
 
     [SerializeField] List<GameObject> employeePrefabs;
 
@@ -37,10 +38,18 @@ public class CompanyManager : MonoBehaviour
         if (minEscapists > NumEmployees)
             throw new System.InvalidOperationException("minEscapists cannot be greater than startingNumEmployees!");
         NumRunners = Mathf.Max(employees.Count - Morale * employees.Count / 100, minEscapists);
-        runningEmployees = new(employees.OrderBy(e => e.Morale).Take(NumRunners));
+        runningEmployees = new(employees.OrderBy(e => e.Morale));
+        int count = 0;
         foreach (var emp in runningEmployees)
         {
-            emp.SetNewState(emp.RunningState);
+            if (count < NumRunners)
+                emp.SetNewState(emp.RunningState);
+            else
+            {
+                if (deskPositions.Count <= count - NumRunners) continue;
+                emp.transform.position = deskPositions[count - NumRunners].position;
+                emp.SetNewState(emp.SleepingState);
+            }
         }
         StartCoroutine(EscapeLoop());
     }
