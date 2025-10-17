@@ -101,7 +101,10 @@ public class MinigameManager : MonoBehaviour
         {
             throw new InvalidOperationException("Clicked button is not the current target or game not active!");
         }
+        slot.GetComponent<Image>().color = Color.green;
+        AudioManager.Instance.PlayOneShot("UISelect");
         yield return new WaitForSecondsRealtime(0.1f);
+        slot.GetComponent<Image>().color = Color.red;
         currentTarget.SetActive(false);
         currentTarget = null;
     }

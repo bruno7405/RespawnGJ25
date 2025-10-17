@@ -44,6 +44,7 @@ public class GameStateManager : StateMachineManager
 
     public void InvokeNewDay()
     {
+        if (currentState != dayState) return;
         currentDay++;
         DayStart?.Invoke();
     }
