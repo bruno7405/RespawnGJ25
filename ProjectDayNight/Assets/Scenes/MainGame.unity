@@ -494,6 +494,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4791349729767337629}
     m_Modifications:
+    - target: {fileID: 283893775041907329, guid: 17ed499535b4439408c2340112d13835, type: 3}
+      propertyPath: locationOffset.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 283893775041907329, guid: 17ed499535b4439408c2340112d13835, type: 3}
+      propertyPath: locationOffset.y
+      value: -0.53
+      objectReference: {fileID: 0}
     - target: {fileID: 4688874346467734377, guid: 17ed499535b4439408c2340112d13835, type: 3}
       propertyPath: m_Name
       value: Chalk Board

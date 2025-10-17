@@ -72,6 +72,7 @@ public class Employee : StateMachineManager
     }
     public void UrgeWork()
     {
+        Debug.Log("Urge");
         SetNewState(workingState);
     }
 
