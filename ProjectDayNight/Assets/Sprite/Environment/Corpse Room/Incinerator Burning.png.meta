@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: aba47a732f747614ab15760399c7bb06
+guid: 43685fec160688d47991c227ae846d26
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -7367540683227661781
     second: Incinerator Burning_0
-  - first:
-      213: 8709273868650714772
-    second: Incinerator Burning_1
-  - first:
-      213: 8593585677328409294
-    second: Incinerator Burning_2
-  - first:
-      213: -7777142871601275563
-    second: Incinerator Burning_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -114,7 +105,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 23
+        width: 88
         height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -126,72 +117,6 @@ TextureImporter:
       bones: []
       spriteID: b2af9f398cc31c990800000000000000
       internalID: -7367540683227661781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Incinerator Burning_1
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 0
-        width: 22
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4969488907e8dd870800000000000000
-      internalID: 8709273868650714772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Incinerator Burning_2
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 0
-        width: 22
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec26b0c84ac824770800000000000000
-      internalID: 8593585677328409294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Incinerator Burning_3
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 0
-        width: 22
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 55d9eba63c9021490800000000000000
-      internalID: -7777142871601275563
       vertices: []
       indices: 
       edges: []
@@ -211,9 +136,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Incinerator Burning_0: -7367540683227661781
-      Incinerator Burning_1: 8709273868650714772
-      Incinerator Burning_2: 8593585677328409294
-      Incinerator Burning_3: -7777142871601275563
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
