@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 6ea5f73cdf919f542af7e2cd5958fa1c
+guid: 329699c83a497094eb1758aa75bac6bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2563477977979148753
-    second: Office Worker 7_0
+      213: 52038658852591514
+    second: Morales_0
+  - first:
+      213: -3001645142815961961
+    second: Morales_1
+  - first:
+      213: -3187781464444701683
+    second: Morales_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +30,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +119,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Office Worker 7_0
+      name: HighMorale
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 6
-        height: 11
+        width: 26
+        height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f2624056c52bc6cd0800000000000000
-      internalID: -2563477977979148753
+      spriteID: a971f7f62e0e8b000800000000000000
+      internalID: 52038658852591514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumMorale
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 0
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79c8da065a30856d0800000000000000
+      internalID: -3001645142815961961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LowMorale
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d04f23ec5a9b2c3d0800000000000000
+      internalID: -3187781464444701683
       vertices: []
       indices: 
       edges: []
@@ -138,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b672048943e07fa4dade349c619270f6
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Office Worker 7_0: -2563477977979148753
+      HighMorale: 52038658852591514
+      LowMorale: -3187781464444701683
+      MediumMorale: -3001645142815961961
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

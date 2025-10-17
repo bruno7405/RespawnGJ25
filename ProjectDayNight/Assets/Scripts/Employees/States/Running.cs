@@ -18,6 +18,7 @@ public class Running : State
         employee.StateName = EmployeeState.Running;
         CompanyManager.Instance.AddRunner(employee);
         EmployeeStatusUI.Instance.UpdateUI();
+        GetComponentInChildren<StatusIconBruno>().Default();
         RunLoop();
     }
     void RunLoop()

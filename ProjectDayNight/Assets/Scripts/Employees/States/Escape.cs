@@ -24,6 +24,7 @@ public class Escape : State
 
     public override void OnStart()
     {
+        GetComponentInChildren<StatusIconBruno>().Default();
         if (exit == null)
         {
             throw new System.InvalidOperationException("Escape state started without an exit assigned!");

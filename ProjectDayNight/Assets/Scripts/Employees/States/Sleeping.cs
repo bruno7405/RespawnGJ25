@@ -1,10 +1,16 @@
+using UnityEngine;
+
 public class Sleeping : State
 {
     Employee employee;
+    StatusIconBruno statusIcon;
+
 
     void Awake()
     {
         employee = (Employee)stateMachine;
+        statusIcon = GetComponentInChildren<StatusIconBruno>();
+
     }
     public override void OnExit()
     {
@@ -17,6 +23,7 @@ public class Sleeping : State
         employee.Sleeping = true;
         employee.StateName = EmployeeState.Sleeping;
         EmployeeStatusUI.Instance.UpdateUI();
+        statusIcon.Sleeping();
     }
 
     public override void OnUpdate()
