@@ -5,13 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-	public void PlayGame()
+    [SerializeField] BlackScreenUI blackScreenUI;
+
+    private void Start()
+    {
+        AudioManager.Instance.PlayBackgroundMusic("StartMenuSong");
+    }
+
+    public void PlayGame()
 	{
-		SceneManager.LoadSceneAsync(1);
-	}
+        StartCoroutine(FadeToBlackTransition());
+
+    }
 
 	public void QuitGame()
 	{
 		Application.Quit();
+    }
+
+
+    IEnumerator FadeToBlackTransition()
+    {
+        blackScreenUI.FadeIn();
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadSceneAsync(1);
     }
 }
