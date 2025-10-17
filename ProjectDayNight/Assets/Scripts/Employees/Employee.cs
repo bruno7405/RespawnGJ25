@@ -177,7 +177,7 @@ public class Employee : StateMachineManager
         base.Start();
         CompanyManager.Instance.RegisterEmployee(this);
         MinimapManager.Instance.RegisterEmployee(this);
-        GameStateManager.Instance.DayStart -= HandleNightStart;
+        GameStateManager.Instance.NightStart -= HandleNightStart;
         GameStateManager.Instance.NightStart += HandleNightStart;
     }
 
