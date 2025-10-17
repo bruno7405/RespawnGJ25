@@ -17,7 +17,7 @@ MonoBehaviour:
     sprite: {fileID: -6248741079362886434, guid: cf145bc44569fa643815b2ade33ed6ee, type: 3}
     name: Boss
   bossHead: {fileID: 21300000, guid: b1f885b98ac20b94397057247e388c62, type: 3}
-  bossTask: {fileID: 21300000, guid: bdcddd2d91838694b813e0c8e4e476df, type: 3}
+  bossTask: {fileID: 21300000, guid: 2f911fd37e2f7764ab8c3a9dcc9a85ca, type: 3}
   employees:
   - longHair: 0
     sprite: {fileID: 21300000, guid: eb380807cd46371459d819c4604bc0c5, type: 3}

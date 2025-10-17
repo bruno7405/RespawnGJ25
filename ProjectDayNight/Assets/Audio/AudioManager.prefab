@@ -117,7 +117,7 @@ MonoBehaviour:
     maxDuration: 3
     source: {fileID: 0}
   - name: KeyboardTyping
-    audioClip: {fileID: 8300000, guid: 79b701ac5a6e375419b53bf21ff8a4aa, type: 3}
+    audioClip: {fileID: 8300000, guid: aafca3aee013f0844aff906199c1c275, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

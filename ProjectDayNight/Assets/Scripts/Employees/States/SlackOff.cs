@@ -19,7 +19,6 @@ public class SlackOff : State
 
     public override void OnStart()
     {
-        statusIcon.Slacking();
         var newSpot = SlackOffSpots.TakeRandomSpot() ?? SlackOffSpots.TakeRandomSpot(true);
         if (newSpot == null) throw new System.Exception("No available slack off spots for " + employee.Name);
         currentSpot?.Unassign();
@@ -30,6 +29,7 @@ public class SlackOff : State
         //employee.Morale += 10;  //Gain morale for idling?
         Debug.Log($"SLACK OFF --- Employee {employee.Name} will slack off at {newSpot.name}: {newSpot.Location}");
         employee.WalkTo(newSpot.Location, () => {
+            statusIcon.Slacking();
             // Debug.Log("Employee " + employee.Name + " reached break spot");
             reachedBreakSpot = true;
         }, true);
