@@ -26,7 +26,7 @@ public class DayState : State
 
     public override void OnStart()
     {
-        timeBetweenTasks = duration / (2 + (GameStateManager.Instance.CurrentDay * 2)); // More tasks as days go on
+        timeBetweenTasks = duration / (3 + (GameStateManager.Instance.CurrentDay * 2)); // More tasks as days go on
         // Visuals
         // Show day number
         // Invoke events in random time?
