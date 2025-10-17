@@ -7,7 +7,7 @@ public class Working : State
 {
     private Employee employee;
     private EmployeeJob currentJob;
-
+    StatusIconBruno statusIcon;
     public override void OnExit()
     {
         employee.StopMoving();
@@ -19,6 +19,11 @@ public class Working : State
         employee.readyForJob = true;
 
         EmployeeStatusUI.Instance.UpdateUI();
+
+        // ICON
+        if (employee.Morale < 33) statusIcon.LowMorale();
+        else if (employee.Morale < 67)  statusIcon.MediumMorale();
+        else statusIcon.HighMorale();
     }
 
     public override void OnUpdate()
@@ -68,5 +73,6 @@ public class Working : State
     void Awake()
     {
         employee = (Employee)stateMachine;
+        statusIcon = GetComponentInChildren<StatusIconBruno>();
     }
 }

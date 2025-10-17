@@ -8,6 +8,9 @@ public class SlackOff : State
     float timeElapsed;
     SlackOffSpot currentSpot;
 
+    StatusIconBruno statusIcon;
+
+
     public override void OnExit()
     {
         //Debug.Log("Employee " + employee.Name + " finished slacking off");
@@ -17,7 +20,7 @@ public class SlackOff : State
 
     public override void OnStart()
     {
-
+        statusIcon.Slacking();
         var newSpot = SlackOffSpots.TakeRandomSpot() ?? SlackOffSpots.TakeRandomSpot(true);
         if (newSpot == null) throw new System.Exception("No available slack off spots for " + employee.Name);
         currentSpot?.Unassign();
@@ -51,5 +54,6 @@ public class SlackOff : State
     void Awake()
     {
         employee = (Employee)stateMachine;
+        statusIcon = GetComponentInChildren<StatusIconBruno>();
     }
 }
