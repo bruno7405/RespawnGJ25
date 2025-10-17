@@ -1031,6 +1031,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4922992543567130250, guid: 2e1b68b80661a4eee8811cb2d1f95259, type: 3}
+      propertyPath: roundTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922992543567130250, guid: 2e1b68b80661a4eee8811cb2d1f95259, type: 3}
+      propertyPath: roundsToWin
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5557333810435926057, guid: 2e1b68b80661a4eee8811cb2d1f95259, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -33596,6 +33604,14 @@ PrefabInstance:
     - target: {fileID: 1336351042402247074, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
       propertyPath: m_Name
       value: CompanyManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148634147436773430, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
+      propertyPath: maxEscapeInterval
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148634147436773430, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
+      propertyPath: minEscapeInterval
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8101702625085874308, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
       propertyPath: m_LocalPosition.x

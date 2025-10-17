@@ -65,11 +65,6 @@ public class MinimapManager : MonoBehaviour
             if (childName == iconData.BossHead.name || employeeIcons.Any(kvp => kvp.Key.Name == childName)) continue;
             Destroy(child.gameObject);
         }
-        if (bossIcon != null) UnregisterBoss();
-        foreach (var emp in employeeIcons.Keys.ToList())
-        {
-            UnregisterEmployee(emp);
-        }
     }
 
     private void GenerateMinimap()

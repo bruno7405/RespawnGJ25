@@ -50,9 +50,11 @@ public class MinigameManager : MonoBehaviour
             SpawnTarget();
             float timer = 0f;
 
+            if (currentRound == 0) timer = -0.5f;
+
             while (timer < roundTime)
             {
-                timer += Time.unscaledDeltaTime; // Use unscaled time since game is paused
+                timer += Time.deltaTime; // Use unscaled time since game is paused
                 yield return null;
 
                 if (currentTarget == null) // Player clicked correctly
@@ -104,7 +106,7 @@ public class MinigameManager : MonoBehaviour
         slot.GetComponent<Image>().color = Color.green;
         AudioManager.Instance.PlayOneShot("UISelect");
         yield return new WaitForSecondsRealtime(0.1f);
-        slot.GetComponent<Image>().color = Color.red;
+        slot.GetComponent<Image>().color = new Color32(250, 95, 95, 255);
         currentTarget.SetActive(false);
         currentTarget = null;
     }
