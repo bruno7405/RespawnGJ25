@@ -34,6 +34,8 @@ public class AStarPathfinder
             throw new ArgumentException($"Start position is out of bounds. {GridManager.WorldTileCenter(start)}");
         if (!GridManager.IsInBounds(goal))
             throw new ArgumentException($"Goal position is out of bounds. {GridManager.WorldTileCenter(goal)}");
+        if (preciseGoal != default && !GridManager.IsInBounds(GridManager.PositionToCell(preciseGoal)))
+            throw new ArgumentException($"Goal position is out of bounds. {preciseGoal}");
         
         if (start == goal) return new() { start };
 

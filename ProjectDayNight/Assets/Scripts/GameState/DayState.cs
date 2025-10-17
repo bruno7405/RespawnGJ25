@@ -12,6 +12,7 @@ public class DayState : State
     private float taskTimer = 0;
     private int taskCount = 0;
     private int dialogTaskCount = 0;
+    private bool last30sec = false;
 
     [Header("DialogTasks")]
     [SerializeField] List<DialogEvent> dialogEvents = new List<DialogEvent>();
@@ -46,12 +47,21 @@ public class DayState : State
         dialogTaskCount = 0;
 
         timeElapsed = 0;
+
+        last30sec = false;
     }
 
     public override void OnUpdate()
     {
         timeElapsed += Time.deltaTime;
         // timeUI.SetTimeElasped(timeElapsed, true);
+
+        if (!last30sec && duration - timeElapsed < 30f)
+        {
+            last30sec = true;
+            // InformationPopupUI.Instance.DisplayText("30 seconds left!", false);
+            AudioManager.Instance.PlayOneShot("TickingClock");
+        }
         
         if (timeElapsed >= duration)
         {

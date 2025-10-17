@@ -48,6 +48,7 @@ public class Task : MonoBehaviour, IInteractable
     {
         countdown = false;
         resolved = true;
+        AudioManager.Instance.PlayOneShot("Error");
         // TODO Increment mistake bar
     }
 
