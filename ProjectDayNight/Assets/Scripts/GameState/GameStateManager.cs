@@ -25,7 +25,7 @@ public class GameStateManager : StateMachineManager
     [SerializeField] NightState nightState;
     public NightState NightState => nightState;
     TimeUI timeUI;
-    [SerializeField] int currentDay = 1;
+    [SerializeField] int currentDay = 0;
     public int CurrentDay => currentDay;
     public event Action DayStart;
     public event Action NightStart;
