@@ -1694,20 +1694,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4314555453150437806, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
   m_PrefabInstance: {fileID: 1953715656}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &857840751 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3961467548530812346, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
-  m_PrefabInstance: {fileID: 2858451495972272460}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &861495364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4970782707547045875, guid: f3470c6680b590f44952212823d94192, type: 3}
   m_PrefabInstance: {fileID: 1003116316120418373}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &867965106 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3385998751538580598, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
-  m_PrefabInstance: {fileID: 2858451495972272460}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &949466330
 GameObject:
@@ -2513,11 +2503,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f405467900011c34db19740ac82d3c26, type: 3}
---- !u!1 &1711626743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4743616881162894452, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
-  m_PrefabInstance: {fileID: 2858451495972272460}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1781899177 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 511644757383919744, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
@@ -9141,22 +9126,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4463215379519243068, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
-      propertyPath: blobs.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463215379519243068, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
-      propertyPath: 'blobs.Array.data[0]'
-      value: 
-      objectReference: {fileID: 857840751}
-    - target: {fileID: 4463215379519243068, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
-      propertyPath: 'blobs.Array.data[1]'
-      value: 
-      objectReference: {fileID: 867965106}
-    - target: {fileID: 4463215379519243068, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
-      propertyPath: 'blobs.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1711626743}
     - target: {fileID: 5046973217854676550, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

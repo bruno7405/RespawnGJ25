@@ -782,7 +782,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!114 &7772059036647426764
 MonoBehaviour:
@@ -836,7 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90a86583e77b424bb9c18744f314819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndBackground
-  sceneToLoad: MainMenu
+  sceneToLoad: StartMenu
   root: {fileID: 5931976131490299809}
   highScoreTMP: {fileID: 2788431248962267630}
   reasonTMP: {fileID: 3807855161317120687}

@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class EndScreenUI : MonoBehaviour
 {
-
-    [SerializeField] private string sceneToLoad = "MainGame";
-
     [Header("UI References")]
     [SerializeField] GameObject root;
     [SerializeField] TextMeshProUGUI highScoreTMP;

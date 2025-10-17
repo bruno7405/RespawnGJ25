@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : StateMachineManager
 {
@@ -11,9 +13,10 @@ public class GameStateManager : StateMachineManager
     [SerializeField] float secondsPerGameDay;
     [Range(0f, 10f)][SerializeField] float timeScale = 1f;
 
-    [Header("Money and Mistakes")]
-    // Money Panel
-    // Mistakes Panel
+    [Header("UI")]
+    [SerializeField] BlackScreenUI blackScreenUI;
+    [SerializeField] DayNightTransitionUI dayNightTransitionUI;
+    [SerializeField] EndScreenUI endScreenUI;
 
 
     // Day and Night
@@ -34,7 +37,7 @@ public class GameStateManager : StateMachineManager
         PlayerStatsUI.Instance.SetLives(3 - Mistakes);
         if (Mistakes >= 3)
         {
-            GameOver();
+            StartCoroutine(GameOver());
         }
     }
 
@@ -62,9 +65,14 @@ public class GameStateManager : StateMachineManager
         //nightState.SetDuration(secondsPerGameDay / 2);
     }
 
-    public void GameOver()
+    public IEnumerator GameOver()
     {
-        Debug.Log("game over!");
+        endScreenUI.Display(true, CompanyManager.Instance.Money, "With the money you made, you fled the country and your problems. You are now DA BOSS");
+        yield return new WaitForSeconds(3);
+        blackScreenUI.FadeIn();
+        yield return new WaitForSeconds(0.5f);
+        PlayerInput.active = true;
+        SceneManager.LoadScene(0); // Main Menu Scene
     }
 
 }

@@ -14,6 +14,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] LayerMask wallLayer;
     Transform nearestEmployee;
 
+    [SerializeField] Texture2D normalCursor;
+    [SerializeField] Texture2D attackCursor;
+
+
     Rigidbody2D rb;
     Vector2 raycastHitPoint = new Vector2(100, 100);
 
@@ -51,7 +55,6 @@ public class PlayerAttack : MonoBehaviour
             float distance = Vector2.Distance(transform.position, hitCollider.transform.position);
             if (Physics2D.Raycast(transform.position, hitCollider.transform.position - transform.position, distance, wallLayer)) 
             {
-                Debug.Log("Wall in the way");
                 continue;
             }
 
