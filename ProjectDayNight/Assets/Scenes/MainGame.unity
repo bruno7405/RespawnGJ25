@@ -7407,6 +7407,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3235983173743700452, guid: 05ed7a5d24d36d747bc2a73d76d17003, type: 3}
   m_PrefabInstance: {fileID: 1787801534}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1944940649497066036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5842926203340743170, guid: 05ed7a5d24d36d747bc2a73d76d17003, type: 3}
+  m_PrefabInstance: {fileID: 1787801534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ba817a5d4d6404d9fd2d649b57a5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskBruno
 --- !u!212 &1967393089556775538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22450,6 +22461,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6918832755211814973, guid: 17ed499535b4439408c2340112d13835, type: 3}
   m_PrefabInstance: {fileID: 171605440}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4659850345458747043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4826781281601464562, guid: 17ed499535b4439408c2340112d13835, type: 3}
+  m_PrefabInstance: {fileID: 171605440}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ba817a5d4d6404d9fd2d649b57a5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskBruno
 --- !u!1 &4682107813655854023
 GameObject:
   m_ObjectHideFlags: 0
@@ -31494,7 +31516,7 @@ PrefabInstance:
     - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
       propertyPath: 'tasks.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4659850345458747043}
     - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
       propertyPath: 'tasks.Array.data[2]'
       value: 
@@ -31514,7 +31536,7 @@ PrefabInstance:
     - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
       propertyPath: 'tasks.Array.data[6]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1944940649497066036}
     - target: {fileID: 1874752507940310211, guid: 0ad3589701a2dab4d9b9154f5cd3617d, type: 3}
       propertyPath: 'tasks.Array.data[7]'
       value: 

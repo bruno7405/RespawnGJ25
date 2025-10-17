@@ -100,3 +100,8 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 .DS_Store
+ProjectDayNight/Packages/manifest.json
+ProjectDayNight/Packages/manifest.json
+ProjectDayNight/Packages/packages-lock.json
+ProjectDayNight/ProjectDayNight.slnx
+ProjectDayNight/Packages/packages-lock.json
