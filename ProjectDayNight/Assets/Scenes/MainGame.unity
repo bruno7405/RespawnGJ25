@@ -1033,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4922992543567130250, guid: 2e1b68b80661a4eee8811cb2d1f95259, type: 3}
       propertyPath: roundTime
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4922992543567130250, guid: 2e1b68b80661a4eee8811cb2d1f95259, type: 3}
       propertyPath: roundsToWin
