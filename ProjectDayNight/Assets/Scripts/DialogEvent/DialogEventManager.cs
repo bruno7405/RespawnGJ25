@@ -45,7 +45,7 @@ public class DialogEventManager : MonoBehaviour
         good = 2;
         currentDialogEvent = d;
         currentLineIndex = 0;
-        Time.timeScale = 0f; // pause game
+        //Time.timeScale = 0.1f; // pause game
         DisplayUI();
     }
 
@@ -108,7 +108,7 @@ public class DialogEventManager : MonoBehaviour
 
     private void EndDialog()
     {
-        Time.timeScale = 1f; // resume game
+        //Time.timeScale = 1f; // resume game
         if (good > 0)
         {
             onGoodEnd?.Invoke();

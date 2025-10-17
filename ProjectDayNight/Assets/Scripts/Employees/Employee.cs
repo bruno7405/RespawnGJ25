@@ -47,9 +47,6 @@ public class Employee : StateMachineManager
     public int MoraleDecreasePerDay => moraleDecreasePerDay;
     [SerializeField] private StatusIcon statusIcon;
     public StatusIcon StatusIcon => statusIcon;
-
-
-
     /// <summary>
     /// Calculates profit made by this employee for one day
     /// </summary>
