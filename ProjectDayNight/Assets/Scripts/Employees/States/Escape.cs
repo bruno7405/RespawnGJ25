@@ -4,7 +4,7 @@ public class Escape : State
 {
     Employee employee;
     Exit exit;
-    static float escapeTime = 30f;
+    [SerializeField] float escapeTime = 20f;
     float timer = 0f;
 
     public void SetExit(Exit exit)

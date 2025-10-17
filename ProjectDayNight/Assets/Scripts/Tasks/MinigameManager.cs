@@ -16,8 +16,8 @@ public class MinigameManager : MonoBehaviour
 
 
     [Header("Settings")]
-    [SerializeField] float roundTime = 2f;    // Time allowed per target
-    [SerializeField] int roundsToWin = 8;       // Number of hits required
+    [SerializeField] float roundTime = 0.5f;    // Time allowed per target
+    [SerializeField] int roundsToWin = 10;       // Number of hits required
 
     GameObject currentTarget;
     int currentRound = 0;

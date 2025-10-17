@@ -42,6 +42,7 @@ public class MinimapManager : MonoBehaviour
         }
 
         GenerateMinimap();
+        GameStateManager.Instance.NightStart += HandleNightStart;
     }
 
     void Update()

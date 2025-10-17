@@ -24,14 +24,12 @@ public class CompanyManager : MonoBehaviour
     [SerializeField] Transform[] exitPositions;
     Exit[] exits;
     public int NumRunners;
-    [SerializeField] float minEscapeInterval = 10f;
-    [SerializeField] float maxEscapeInterval = 30f;
+    [SerializeField] float minEscapeInterval = 5f;
+    [SerializeField] float maxEscapeInterval = 15f;
     public bool Escaping = false;
-    [SerializeField] List<Transform> deskPositions = new();
 
     [SerializeField] List<GameObject> employeePrefabs;
 
-    //Day stats
     public int MistakesToday;
     public int MoraleGained;
 
@@ -41,24 +39,13 @@ public class CompanyManager : MonoBehaviour
         // Calculate # Escapists
         if (minEscapists > NumEmployees)
             throw new System.InvalidOperationException("minEscapists cannot be greater than startingNumEmployees!");
-        NumRunners = Mathf.Max(employees.Count - Morale * employees.Count / 100, minEscapists);
+        NumRunners = NumEmployees;
         List<Employee> emps = new(employees.OrderBy(e => e.Morale));
         runningEmployees = new();
-        int count = 0;
         foreach (var emp in emps)
         {
-            if (count < NumRunners)
-            {
-                emp.SetNewState(emp.RunningState);
-                runningEmployees.Add(emp);
-            }
-            else
-            {
-                if (deskPositions.Count <= count - NumRunners) continue;
-                emp.transform.position = deskPositions[count - NumRunners].position;
-                emp.SetNewState(emp.SleepingState);
-            }
-            count++;
+            emp.SetNewState(emp.RunningState);
+            runningEmployees.Add(emp);
         }
         StartCoroutine(EscapeLoop());
     }
@@ -110,6 +97,10 @@ public class CompanyManager : MonoBehaviour
         }
         MistakesToday = 0;
         MoraleGained = 0;
+        foreach (var emp in employees)
+        {
+            emp.SetNewState(emp.WorkingState);
+        }
     }
     public void AddRunner(Employee e)
     {

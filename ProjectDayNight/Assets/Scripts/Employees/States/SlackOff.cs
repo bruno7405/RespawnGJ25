@@ -4,7 +4,7 @@ public class SlackOff : State
 {
     Employee employee;
     bool reachedBreakSpot;
-    static float timeLimit = 10f;
+    [SerializeField] float timeLimit = 30f;
     float timeElapsed;
     SlackOffSpot currentSpot;
 
@@ -19,10 +19,12 @@ public class SlackOff : State
 
     public override void OnStart()
     {
+        timeLimit -= (GameStateManager.Instance.CurrentDay - 1) * 5; // Decrease time limit as days go on
         var newSpot = SlackOffSpots.TakeRandomSpot() ?? SlackOffSpots.TakeRandomSpot(true);
         if (newSpot == null) throw new System.Exception("No available slack off spots for " + employee.Name);
         currentSpot?.Unassign();
         currentSpot = newSpot;
+        timeElapsed = 0f;
 
         employee.StateName = EmployeeState.SlackingOff;
         reachedBreakSpot = false;
