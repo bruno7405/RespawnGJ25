@@ -40,16 +40,21 @@ public class EndOfDayStatsUI : MonoBehaviour
         float lifeTime = 2f * statInterval; // fade time for each stat
 
         int profit = CompanyManager.Instance.GetProfit();
+        int mistakes = CompanyManager.Instance.MistakesToday;
+        int moraleGained = CompanyManager.Instance.MoraleGained;
 
         yield return new WaitForSeconds(0.35f); // wait for panel slide in
 
         if (profit >= 0) SpawnStat("Money: +$" + profit.ToString(), true, lifeTime);
         else SpawnStat("Money: -$" + Mathf.Abs(profit).ToString(), false, lifeTime);
         yield return new WaitForSeconds(statInterval);
-        SpawnStat("Lost 3 Employees", false, lifeTime);
+        if (moraleGained >= 0) SpawnStat("Morale: +" + moraleGained.ToString(), true, lifeTime);
+        else SpawnStat("Morale: -" + Mathf.Abs(moraleGained).ToString(), false, lifeTime);
         yield return new WaitForSeconds(statInterval);
-        SpawnStat("Gained 5 Morale", true, lifeTime);
+        if (mistakes >= 0) SpawnStat($"Made {mistakes} mistakes", false, lifeTime);
+        else SpawnStat($"Congratulations! You made no mistakes.", true, lifeTime);
         yield return new WaitForSeconds(statInterval);
+
 
         StartCoroutine(CloseStatsPanel());
     }

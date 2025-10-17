@@ -31,6 +31,10 @@ public class CompanyManager : MonoBehaviour
 
     [SerializeField] List<GameObject> employeePrefabs;
 
+    //Day stats
+    public int MistakesToday;
+    public int MoraleGained;
+
     void HandleNightStart()
     {
         AddProfit();
@@ -99,7 +103,9 @@ public class CompanyManager : MonoBehaviour
                 }
             }
         }
-        
+        MistakesToday = 0;
+        MoraleGained = 0;
+
         // Set employees to work
         foreach (var emp in employees)
         {
