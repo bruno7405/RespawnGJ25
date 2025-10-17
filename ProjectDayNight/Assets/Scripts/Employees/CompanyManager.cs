@@ -103,7 +103,7 @@ public class CompanyManager : MonoBehaviour
                 if (skipEmployee) continue;
                 else
                 {
-                    Debug.Log("Respawning: " + candidate.name);
+                    // Debug.Log("Respawning: " + candidate.name);
                     Instantiate(employeePrefab, GridManager.RandomWalkablePos(), Quaternion.identity);
                 }
             }

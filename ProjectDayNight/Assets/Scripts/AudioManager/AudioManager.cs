@@ -50,6 +50,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayOneShot(string name, float pitchRandomization = 0)
     {
+        if (name == null) return;
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {

@@ -35,7 +35,7 @@ public class Escape : State
         }
         CompanyManager.Instance.Escaping = true;
         exit.Occupied = true;
-        Debug.Log("Employee " + employee.Name + " is escaping");
+        // Debug.Log("Employee " + employee.Name + " is escaping");
         timer = 0f;
         employee.StateName = EmployeeState.Escaping;
         EmployeeStatusUI.Instance.UpdateUI();
