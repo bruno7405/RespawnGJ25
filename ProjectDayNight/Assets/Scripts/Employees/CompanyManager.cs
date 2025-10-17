@@ -42,18 +42,23 @@ public class CompanyManager : MonoBehaviour
         if (minEscapists > NumEmployees)
             throw new System.InvalidOperationException("minEscapists cannot be greater than startingNumEmployees!");
         NumRunners = Mathf.Max(employees.Count - Morale * employees.Count / 100, minEscapists);
-        runningEmployees = new(employees.OrderBy(e => e.Morale));
+        List<Employee> emps = new(employees.OrderBy(e => e.Morale));
+        runningEmployees = new();
         int count = 0;
-        foreach (var emp in runningEmployees)
+        foreach (var emp in emps)
         {
             if (count < NumRunners)
+            {
                 emp.SetNewState(emp.RunningState);
+                runningEmployees.Add(emp);
+            }
             else
             {
                 if (deskPositions.Count <= count - NumRunners) continue;
                 emp.transform.position = deskPositions[count - NumRunners].position;
                 emp.SetNewState(emp.SleepingState);
             }
+            count++;
         }
         StartCoroutine(EscapeLoop());
     }
