@@ -59,13 +59,6 @@ public class DayState : State
         timeElapsed += Time.deltaTime;
         timeUI.SetTimeElasped(timeElapsed, true);
 
-        if (!last30sec && duration - timeElapsed < 30f)
-        {
-            last30sec = true;
-            // InformationPopupUI.Instance.DisplayText("30 seconds left!", false);
-            AudioManager.Instance.PlayOneShot("TickingClock");
-        }
-        
         if (timeElapsed >= duration)
         {
             stateMachine.SetNewState(nightState);

@@ -41,10 +41,14 @@ public class CharacterAnimationManager : MonoBehaviour
     public void StopAnimation()
     {
         animator.enabled = false;
+        var emission = walkParticles.emission;
+        emission.enabled = false;
     }
     public void StartAnimation()
     {
         animator.enabled = true;
+        var emission = walkParticles.emission;
+        emission.enabled = true;
     }
     void OnDisable()
     {

@@ -39,11 +39,12 @@ public class Death : State
         empSprite.sortingOrder = 1;
         employee.StopMoving();
         employee.GetComponent<EmployeeMotionManager>().enabled = false;
-        employee.GetComponent<CharacterAnimationManager>().enabled = false;
+        employee.GetComponent<CharacterAnimationManager>().StopAnimation();
         bloodSprite.SetActive(true);
         AudioManager.Instance.PlayOneShot(deathSound);
         parent.GetComponent<Collider2D>().enabled = false;
         employee.enabled = false;
+        employee.gameObject.layer = 0;
     }
 
     public override void OnUpdate()

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6062748491891798025}
   - component: {fileID: 7474857891898456297}
   - component: {fileID: 5521777739304372098}
-  m_Layer: 0
+  - component: {fileID: 8912065373433853019}
+  m_Layer: 6
   m_Name: Door Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +107,52 @@ MonoBehaviour:
   eventName: Answer Door
   moneyReward: 100
   dialogEvent: {fileID: 0}
+--- !u!61 &8912065373433853019
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511644757383919744}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.45833334, y: 0.75}
+    newSize: {x: 0.11, y: 0.18}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.45833334, y: 0.75}
+  m_EdgeRadius: 0
 --- !u!1 &1336351042402247074
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,15 +207,20 @@ MonoBehaviour:
   - {fileID: 2768490698330641287}
   - {fileID: 2414059407309026388}
   NumRunners: 0
-  minEscapeInterval: 10
-  maxEscapeInterval: 30
+  minEscapeInterval: 5
+  maxEscapeInterval: 15
   Escaping: 0
+  deskPositions: []
   employeePrefabs:
   - {fileID: 2768043933756504757, guid: ff4105496358c5940ad233ffb70288b5, type: 3}
   - {fileID: 3863598661906993202, guid: b8ffeed62a554284d8d46be032bf39a4, type: 3}
+  - {fileID: 5585815800368619782, guid: fda7fbeb50180d04bb27260ceda007f7, type: 3}
   - {fileID: 1439971626147964181, guid: e8796904812a91c4cbf754d5413cbeed, type: 3}
   - {fileID: 1179227167226542285, guid: d24ae0b2129c73c4ca575de81d91a1a4, type: 3}
+  - {fileID: 5585815800368619782, guid: 5f870ecf312209b43a8bd073a605aa60, type: 3}
   - {fileID: 5585815800368619782, guid: fd2cc6dc514475c46824a1287be731ab, type: 3}
+  MistakesToday: 0
+  MoraleGained: 0
 --- !u!1 &1924178333530707181
 GameObject:
   m_ObjectHideFlags: 0
