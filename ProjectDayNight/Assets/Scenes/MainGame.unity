@@ -2817,68 +2817,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f405467900011c34db19740ac82d3c26, type: 3}
---- !u!1 &1781899177 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 511644757383919744, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
-  m_PrefabInstance: {fileID: 7753044327571428736}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1781899180 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5521777739304372098, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
   m_PrefabInstance: {fileID: 7753044327571428736}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781899177}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72406c6381c649b40ba0085a479e0854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogEventTaskBruno
---- !u!61 &1781899181
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781899177}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.45833334, y: 0.75}
-    newSize: {x: 0.11, y: 0.18}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.45833334, y: 0.75}
-  m_EdgeRadius: 0
 --- !u!1001 &1787801534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3394,6 +3343,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6270378191802059379, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: attackCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 6c6733546ec2f3d46b29fecaf17535e0, type: 3}
+    - target: {fileID: 6270378191802059379, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
+      propertyPath: normalCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: a116bfe0ee0f32a44881fd6c7e41ec1f, type: 3}
     - target: {fileID: 8926781132231200065, guid: f30fc09ed4fcbfc41b2ac47cffe3704f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9316,7 +9273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5008600889875816565, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: secondsPerGameDay
-      value: 200
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5046973217854676550, guid: 7ef20a6e5902341b0aac559d528d01f7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -33581,21 +33538,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 641476901}
     m_Modifications:
-    - target: {fileID: 511644757383919744, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1336351042402247074, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
       propertyPath: m_Name
       value: CompanyManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3148634147436773430, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
-      propertyPath: maxEscapeInterval
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3148634147436773430, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
-      propertyPath: minEscapeInterval
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8101702625085874308, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33640,10 +33585,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 511644757383919744, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1781899181}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1ebe5ff1f01f4950a01913bf82497e2, type: 3}
 --- !u!4 &7763424497883431860
 Transform:

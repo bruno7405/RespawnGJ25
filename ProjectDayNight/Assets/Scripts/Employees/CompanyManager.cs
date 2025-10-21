@@ -97,7 +97,10 @@ public class CompanyManager : MonoBehaviour
                 bool skipEmployee = false;
                 foreach (var e in employees) // check if candidate is already alive in company
                 {
-                    if (candidate.name.Equals(e.name)) skipEmployee = true;
+                    if (candidate.name.Equals(e.name))
+                    {
+                        skipEmployee = true;
+                    }
                 }
 
                 if (skipEmployee) continue;

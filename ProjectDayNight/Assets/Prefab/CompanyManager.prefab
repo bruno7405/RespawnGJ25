@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6062748491891798025}
   - component: {fileID: 7474857891898456297}
   - component: {fileID: 5521777739304372098}
-  - component: {fileID: 8577142277558953917}
+  - component: {fileID: 8912065373433853019}
   m_Layer: 6
   m_Name: Door Sprite
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MonoBehaviour:
   eventName: Answer Door
   moneyReward: 100
   dialogEvent: {fileID: 0}
---- !u!61 &8577142277558953917
+--- !u!61 &8912065373433853019
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,8 +214,10 @@ MonoBehaviour:
   employeePrefabs:
   - {fileID: 2768043933756504757, guid: ff4105496358c5940ad233ffb70288b5, type: 3}
   - {fileID: 3863598661906993202, guid: b8ffeed62a554284d8d46be032bf39a4, type: 3}
+  - {fileID: 5585815800368619782, guid: fda7fbeb50180d04bb27260ceda007f7, type: 3}
   - {fileID: 1439971626147964181, guid: e8796904812a91c4cbf754d5413cbeed, type: 3}
   - {fileID: 1179227167226542285, guid: d24ae0b2129c73c4ca575de81d91a1a4, type: 3}
+  - {fileID: 5585815800368619782, guid: 5f870ecf312209b43a8bd073a605aa60, type: 3}
   - {fileID: 5585815800368619782, guid: fd2cc6dc514475c46824a1287be731ab, type: 3}
   MistakesToday: 0
   MoraleGained: 0

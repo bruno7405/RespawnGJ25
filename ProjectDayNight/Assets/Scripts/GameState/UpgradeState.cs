@@ -38,6 +38,7 @@ public class UpgradeState : State
         companyManager = CompanyManager.Instance;
         audioManager = AudioManager.Instance;
         informationPopupUI = InformationPopupUI.Instance;
+
     }
 
     /// <summary>
@@ -46,6 +47,7 @@ public class UpgradeState : State
     /// </summary>
     public override void OnStart()
     {
+        PlayerInput.active = false;
         gameStatsUI.DisplayStats();
     }
 
@@ -117,7 +119,7 @@ public class UpgradeState : State
         if (gameStateManager.CurrentDay == 3)
         {
             // Show End Game Screen
-            //audioManager.PlayBackgroundMusic("GameOv");
+            audioManager.PlayBackgroundMusic("GameOverSong");
             endScreenUI.Display(true, companyManager.Money, "With the money you made, you fled the country and your problems. You are now DA BOSS");
             yield return new WaitForSeconds(3);
             blackScreenUI.FadeIn();

@@ -45,8 +45,7 @@ public class Employee : StateMachineManager
     public EmployeeState StateName;
     [SerializeField] int moraleDecreasePerDay = 5;
     public int MoraleDecreasePerDay => moraleDecreasePerDay;
-    [SerializeField] private StatusIcon statusIcon;
-    public StatusIcon StatusIcon => statusIcon;
+
     /// <summary>
     /// Calculates profit made by this employee for one day
     /// </summary>
@@ -165,7 +164,6 @@ public class Employee : StateMachineManager
             Debug.LogError("Employee type not set for " + employeeName);
             return;
         }
-        gameObject.name = "Employee_" + employeeName;
         wage = type.BaseSalary;
         Revenue = type.BaseRevenue;
         morale = type.BaseMorale;
