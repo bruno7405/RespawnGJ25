@@ -36,6 +36,7 @@ public class GameStateManager : StateMachineManager
     {
         Mistakes++;
         PlayerStatsUI.Instance.SetLives(3 - Mistakes);
+        AudioManager.Instance.PlayOneShot("Error");
         if (Mistakes >= 3)
         {
             StartCoroutine(GameOver());
