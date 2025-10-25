@@ -117,7 +117,7 @@ MonoBehaviour:
     maxDuration: 3
     source: {fileID: 0}
   - name: BonkSound
-    audioClip: {fileID: 8300000, guid: a0eb4d560618b6e43bccb6ad23305c97, type: 3}
+    audioClip: {fileID: 8300000, guid: a2667d68b26a26b409f78ae950f2911d, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

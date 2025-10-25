@@ -718,10 +718,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndOfDayStatsCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6529133085338242679, guid: cb3b3b3ff284fe24f8ece5e43f98d41b, type: 3}
-      propertyPath: m_SortingOrder
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -754,10 +750,6 @@ PrefabInstance:
     - target: {fileID: 752342193005377461, guid: 1a3d6391ef7b87746bccfc69b6a4943a, type: 3}
       propertyPath: m_Name
       value: DayNightTransitionCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5193911680899239823, guid: 1a3d6391ef7b87746bccfc69b6a4943a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7013217668177197487, guid: 1a3d6391ef7b87746bccfc69b6a4943a, type: 3}
       propertyPath: m_Pivot.x
@@ -1233,33 +1225,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8408124085509858745}
     m_Modifications:
-    - target: {fileID: 2285834269865432452, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
-      propertyPath: m_Color.a
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 2285834269865432452, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2285834269865432452, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2285834269865432452, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6125899411661203881, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
       propertyPath: m_Name
       value: UpgradesCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125899411661203881, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818465512980938334, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9177479725434697297, guid: 88297b75839f2d64499c90b08c1c688a, type: 3}
       propertyPath: m_Pivot.x

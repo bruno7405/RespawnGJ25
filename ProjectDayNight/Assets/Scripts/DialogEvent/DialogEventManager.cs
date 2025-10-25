@@ -98,6 +98,8 @@ public class DialogEventManager : MonoBehaviour
         {
             good--;
             Debug.Log("Wrong choice: " + choice.choiceText);
+            GameStateManager.Instance.IncrementMistakes();
+
         }
 
         // Move to next line
